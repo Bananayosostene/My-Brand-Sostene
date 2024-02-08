@@ -35,6 +35,9 @@ header {
   z-index: 100;
   box-shadow: 0 0 20px var(--text-color);
 }
+h1{
+  color: var(--headings); 
+}
 header .logo {
   font-size: 25px;
   font-weight: 500;
@@ -56,7 +59,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: start;
-  /* border: 1px red solid; */
 }
 
 .home-container {
@@ -83,7 +85,7 @@ section {
   justify-content: center;
   align-items: end;
 }
-.social-media i{
+.social-media i {
   padding: 0 10px;
   font-size: 30px;
 }
@@ -99,7 +101,7 @@ section {
   font-size: 20px;
 }
 
-.home-right img{
+.home-right img {
   width: 50%;
   height: 30rem;
   margin-left: 25%;
@@ -114,28 +116,34 @@ section {
   font-size: 20px;
   margin-top: 8rem;
 }
-.resume-div{
+.resume-div {
   width: 100%;
   border-bottom: 1px var(--headings) solid;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   header {
-  padding: 20px 0;
-  justify-content: space-around;
-}
-/* .home-left, .home-right{
+    padding: 20px 0;
+    justify-content: space-around;
+  }
+  /* .home-left, .home-right{
   border: 1px red solid;
 } */
   nav a {
     font-size: 15px;
     margin-left: 15px;
   }
+  .home-container {
+    display: block;
+    /* margin-top: 2rem; */
+    /* padding: 0 50px; */
+    /* gap: 1rem; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 
   .home-right img {
     margin-top: 2rem;
-
-    /* width: 100%; */
-    /* height: 65vh; */
   }
   .text3 {
     font-size: 10px;
@@ -147,12 +155,11 @@ section {
     margin-top: 1rem;
   }
   .resume-button {
-  margin-top: 12rem;
+    margin-top: 12rem;
+  }
 }
 
-}
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   #menu {
     display: block;
     font-size: 2rem;
@@ -220,37 +227,249 @@ section {
     padding: 0 10% 0 10%;
   }
   .home-container {
-  padding: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-left,
+  .home-right {
+    width: 100%;
+  }
+  .home-left {
+    height: auto;
+  }
+  .texts {
+    margin-top: 0rem;
+  }
+  .text2 {
+    font-size: 50px;
+    color: var(--headings);
+  }
+  .text3 {
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 2px;
+  }
+
+  .home-right img {
+    margin-top: 0rem;
+    margin-left: 25%;
+  }
+  .resume-button {
+    margin-top: 2rem;
+  }
+}
+
+/* Reset some default styling */
+/* body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+ */
+
+/* Section styles */
+.About {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-container {
+  padding: 0 50px;
+  width: 90%;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
+  
 }
-.home-left,
-.home-right {
+
+.About h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about-inner-container {
+  display: flex;
+  /* width: 100%; */
+  gap: 20rem;
+  /* flex-wrap: wrap; */
+}
+
+/* About Left styles */
+.about-left {
+  width: 50%;
+  padding-right: 30px;
+}
+
+.about-left-inner {
+  max-width: 500px; /* Adjust the max-width as needed */
+}
+
+.About p {
+  margin-bottom: 20px;
+}
+
+.About h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.skills-container {
+  display: flex;
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.about-small-div {
+  border: 1px var(--headings) solid;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* About Right styles */
+.about-right {
+  width: 50%;
+}
+
+.about-right-inner {
+  max-width: 400px; /* Adjust the max-width as needed */
+}
+
+.right-top {
+  border: 1px var(--headings) solid;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.about-small-top-div {
+  background-color: var(--main-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.right-button {
+  border: 1px var(--headings) solid;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.right-inner-button {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .About {
+    padding: 20px;
+  }
+
+  .about-left,
+  .about-right {
+    width: 100%;
+    padding: 0;
+  }
+  .about-inner-container {
+  display: block;
+  gap: 0rem;
+
+}
+}
+
+@media screen and (max-width: 768px) {
+  .skills-container {
+    flex-direction: column;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+}
+
+/* Section Styles */
+.Portfolio {
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.portfolio-container {
+  /* max-width: 1430px; */
   width: 100%;
+  margin: 0 auto;
 }
-.home-left{
-  height: auto;
+
+.inner-container h1 {
+  /* text-align: center; */
+  margin-left: 8.5%;
 }
-  .texts {
-  margin-top: 0rem;
-}
-.text2 {
-  font-size: 50px;
+
+/* Heading Styles */
+.Portfolio h1 {
   color: var(--headings);
 }
-.text3 {
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: 2px;
+
+/* Portfolio Item Styles */
+.portfolio-inner-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.images-containner {
+  gap: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
-.home-right img{
-  margin-top: 0rem;
-  margin-left: 25%;
-}
-  .resume-button {
-  margin-top: 2rem;
+.portfolio-imgs {
+  margin-bottom: 20px;
 }
 
+.Portfolio img {
+  width: 25rem;
+  height: 20rem;
+}
 
+/* Figcaption Styles */
+.Portfolio figcaption {
+  text-align: center;
+}
+
+.Portfolio h2 {
+  color: var(--headings);
+}
+
+.Portfolio p {
+  color: var(--text-color);
+}
+
+@media screen and (max-width: 1024px) {
+  .images-containner {
+    gap: 1rem;
+    display: block;
+    padding: 0 3rem;
+  }
+  .Portfolio img {
+    width: 20rem;
+    height: 18rem;
+    margin: 0 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .images-containner {
+    gap: 0;
+    display: block;
+  }
+  .Portfolio img {
+    width: 100%;
+    height: 20rem;
+  }
 }
