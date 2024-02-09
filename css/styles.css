@@ -379,7 +379,7 @@
 .portfolio-imgs{
   width: 25.4rem;
   height: 18rem;
-  /* position: relative; */
+ 
 }
   .rightcontact{
     padding-left: 3rem;
@@ -590,6 +590,14 @@
     .rightnav ul li a{
       font-size: 70%;
     }
+    .portfolio-imgs{
+  width: 16rem;
+  height: 14rem;
+}
+.sdisc{
+  margin-top: 0rem;
+}
+
   }
 
 
