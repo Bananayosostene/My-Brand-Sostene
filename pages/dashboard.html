@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./../css/dashboard.css">
+    <link rel="stylesheet" href="./../css/login.css">
+    <link rel="shortcut icon" type="image/png" href="../images/mylog.png">
+    <link rel="stylesheet" href="./../css/addblog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+ .edit a{
+    text-decoration: none;
+    color:inherit;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+  }
+  .discript h3 {
+    text-align: start; 
+    width: inherit;
+    font-size: inherit;
+    padding: 0;
+    border-bottom: inherit;
+}
+</style>
+</head>
+<body>
+<script src="../scripts/security.js"></script>
+  <div class="sidebar">
+    <a class="active" href="../index.html" id="uniq">Sostene</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="./addblog.html">Add blog</a>
+    <a href="./login.html" id="signout">Logout</a>
+  </div>
+<div class="continer" id="super">
+
+  <div class="divs">
+    <div class="div1"> <a href="./users.html"><h2><b id="nuser"></b> Users</h2></a></div>
+    <div class="div2"> <a href="./moreblogs.html"><h2><b id="nblogs"></b> Blogs</h2></a></div>
+    <div class="div3"> <a href="./querries.html"><h2><b id="message"></b> Messages</h1></a></div>
+  </div>
+  <div id="confirm-box" style="display: none;">
+  <p id="testloader">Are you sure you want to delete this blog?</p>
+  <div class="btns">
+    <div class="btn"> <button id="yes">Yes</button></div>
+    <div class="btn">   <button id="no">No</button></div>
+ 
+  </div>
+  
+</div>
+  <div class="dash" id="blogCard">
+  </div>
+</div>
+</body>
+<script>
+</script>
+</html>

@@ -1,166 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
     <title>Sostene</title>
-    <link rel="icon" href="./imgs/mylog.png">
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Porpora&display=swap"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.cdnfonts.com/css/kanit-2" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="./images/mylog.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-     <header>
-            <h1 class="logo">BS</h1>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#blogs">Blogs</a>
-            <a href="#contact">Contact</a>
-            <a href="#">Login</a>
-        </nav>
-        <!-- <div id="theme" class="fas fa-moon"></div> -->
-        <div id="menu" class="fas fa-bars"></div>
-    </header>
-    <section id="home" class="home-section">
-       <div class="home-container">
-         <div class="home-left">
-                <p class="texts">
-                <span class="text1">Hello there, I am.</span><br><br>
-                <strong><span class="text2"> Sostene <br> BANANAYO</span><br><br></strong>
-                <span class="text3">Full stack Web developer and software <br> engineer with experience of two years.</span><br><br>
-            </p> 
-            <div class="resume-div"> <button class="resume-button">Resume</button></div> 
+  </head>
+  <body>
+
+    <div class="nav">
+      <div class="leftnav"> 
+       <label for="" class="logo">BS</label>
+      </div>
+      <div class="rightnav">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fa fa-bars"></i>
+        </label>
+        <ul>
+          <li><a class="" href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#blogs">Blogs</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="./pages/login.html" >LogIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+  <section id="home">
+        <div class="div1">
+            <div class="lefth"> 
+                <p class="hello">Hello there, I am</p>
+                <p class="name">Sostene
+                    <br>
+                    BANANAYO
+                </p>
+          
+                <p class="desc">Full stack Web developer and software engineer with <br> experience of two years.</p>
+                 <p for="" class="download"><a href="">
+                  <button>RESUME <i class="fa-solid fa-download"></i></button>
+                 </a></p>
+                <div ></div>
+                <hr class="lineh">
+                <div class="links">
+
+                  <a href="https://www.linkedin.com/in/bananayo-sostene-254565285/"><i class="fa-brands fa-linkedin"></i></a>  
+                   <a href="mailto:mwanafunzifabrice@gmail.com"><i class="fa-solid fa-envelope"></i></a> 
+                   <a href="https://github.com/Bananayosostene"><i class="fa-brands fa-github"></i></a> 
+                  <a href="https://twitter.com/SosteneBananayo"><i class="fa-brands fa-twitter"></i></a>  
+                </div>
+            </div>
+           <div class="righth">
+            <img class="my-photo" src="./images/portfolio4.png" alt="">
+
+           </div>
+
            
         </div>
-        <div class="home-right">
-           <img src="./imgs/portfolio4.png" alt="">
-            <div
-             class="social-media">
-                <i class="fa-brands fa-square-facebook"></i>
-                <i class="fa-brands fa-github"></i>
-                <i class="fa-brands fa-square-instagram"></i>
-                <i class="fa-brands fa-linkedin"></i>
-                <i class="fa-regular fa-arrow-down-to-bracket"></i>
+        
+    </section>
+
+
+    <section id="about">
+
+      <div class="refer">
+        <div class="referleft">
+           <div class="generalrefer">
+            <h2 class="hd">ABOUT ME</h2>
+            <p class="abt">I am a collaborative and solution-driven software engineer 
+              with over two years of experience working with designers,
+               developers, and programmers holding a degree in Computer
+                Science from  University of Rwanda.
+            </p>
+           </div>
+           <div class="generalskills">
+            <div class="tops"> 
+              <p>GENERAL SKILLS</p>
             </div>
-        </div>
-    </div>
-    </section>
-
-      <section id="about" class="About">
-        <div class="about-container">
-            <h1>ABOUT ME</h1>
-            <div class="about-inner-container">
-                <div class="about-left">
-                    <div class="about-left-inner">
-                            <p>
-                             I am a collaborative and solution-driven software engineer <br> 
-                             with over two years of experience working with designers, <br>
-                             developers, and programmers holding a degree in Computer <br>
-                             Science from University of Rwanda.
-                            </p>
-                            <h2>GENERAL SKILLS</h2>
-                            <div class="skills-container">
-                             <div class="left">
-                                 <div class="about-small-div"><p>Tailwind css<br>2years of experience</p> </div>
-                                 <div class="about-small-div"><p>NodeJs<br>2years of experience</p></div>
-                             </div>
-                             <div class="right">
-                                 <div  class="about-small-div"> <p>React-Native <br>1years of experience</p> </div>
-                                 <div  class="about-small-div"><p>NodeJs <br>2years of experience</p></div>
-                             </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="about-right">
-                   <div class="about-right-inner">
-                     <h2>SOSCIAL SKILLS AND COMPTENCE</h2>
-                     <div class="right-top">
-                       <div>
-                        <div  class="about-small-top-div"> <p>Self management</p></div>
-                        <div  class="about-small-top-div"><p>Hard working</p></div>
-                       </div>
-                       <div>
-                         <div class="about-small-top-div"><p>Social awerness</p></div>
-                         <div class="about-small-top-div"><p>Respect & Empathy</p></div>
-                       </div>
-                       <div>
-                         <div class="about-small-top-div"><p>decision making</p></div>
-                         <div class="about-small-top-div"><p>Relation ship skills</p></div>
-                       </div>
-                     </div>
-                     <div class="right-button">
-                         <h2>CERTIFICATES</h1>
-                            <div class="right-inner-button">
-                                <div>
-                                  <div class="about-small-div"><p>REB A-LEVEL <br> -MTh-Phy-Comp</p></div>
-                                  <div class="about-small-div"><p>REB A-LEVEL <br> -MTh-Phy-Comp</p></div>
-                                </div>
-                                <div>
-                                 <div class="about-small-div"><p>FREECODECAMP <br> -Advanced javaScript</p></div>
-                                 <div class="about-small-div"><p>CISCO NETWORKING <br> ACADEMY-IT essentials</p></div>
-                                </div>
-                            </div>
-                     </div>
-                   </div>
-                </div>
+            <div class="skillrig">
+              <div class="skillleft">
+                <p>Tailwind css</p>
+                <p>2years of experience</p>
+              </div>
+              <div class="skillright">
+                <p>ReactJs</p>
+                <p>2years of experience</p>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="Portfolio">
-        <div class="portfolio-container">
-            <div class="inner-container">
-                <h1>PORTFOLIO</h1>
-                <div class="portfolio-inner-container">
-                    <div class="images-containner">
-                        <div class="portfolio-imgs">
-                           <img src="./imgs/traffic.jpg" alt="Traffic image">
-                           <figure>
-                               <figcaption>
-                                <h2>Traffic rules system</h2>
-                                <p>By using HTML, CSS and PHP . <br> It helps you to develop  Traffic rules <br> system for learners .</p>
-                             </figcaption>
-                           </figure>
-                        </div>
-                        <div class="portfolio-imgs">
-                             <img src="./imgs/pharmacy.jpg" alt="Pharmacy image">
-                           <figure>
-                               <figcaption>
-                                <h2>Traffic rules system</h2>
-                                <p>By using HTML, CSS and PHP . <br> It helps you to develop  Traffic rules <br> system for learners.</p>
-                             </figcaption>
-                           </figure>
-                        </div>
-                        <div class="portfolio-imgs">
-                              <img src="./imgs/dairy.jpg" alt="Traffic image">
-                           <figure>
-                               <figcaption>
-                                <h2>Dairy Management sstem:</h2>
-                                <p>By using Laravel PHP web framework <br> It helps to create <br> Dairy management system</p>
-                             </figcaption>
-                           </figure>
-                        </div>
-                    </div>
-                </div>
+            <div class="skilllef">
+              <div class="skillleft">
+                 <p>TypeScript</p>
+                <p>2years of experience</p>
+              </div>
+              <div class="skillright">
+                <p>NodeJs</p>
+                <p>2years of experience</p>
+              </div>
             </div>
+           </div>
         </div>
+        <div class="referleft">
+          <div class="social">
+            <div class="top">
+              <p>SOSCIAL SKILLS AND COMPTENCE</p>
+            </div>
+            <div class="socialup">
+              <div class="sleft">
+                <p>Self managment</p>
+              </div>
+              <div class="sleft">
+                <p>Social awerness</p>
+              </div>
+              <div class="sleft">
+                <p>decision making</p>
+              </div>
+            </div>
+            <div class="socialdown">
+              <div class="sleft"> 
+                <p>Hard working</p>
+              </div>
+              <div class="sleft">
+                 <p>Respect & 
+                  Empathy</p>
+              </div>
+              <div class="sleft"> 
+                <p>Relation ship skills</p>
+              </div>
+            </div>
+          </div>
+          <div class="generalskills">
+            <div class="tops">
+              <p>CERTIFICATES</p>
+            </div>
+            <div class="skillrig">
+              <div class="skillleft">
+              <p>REB A-LEVEL</p>
+              <p>-MTh-Phy-Comp</p>
+              </div>
+              <div class="skillright">
+                <p>FREECODECAMP</p>
+                <p>-Advanced javaScript</p>
+              </div>
+            </div>
+            <div class="skilllef">
+              <div class="skillleft">
+                <p>HACKER-RANK</p>
+                <p>-Intermediate javaScript</p>
+              </div>
+              <div class="skillright">
+                <p>CISCO NETWORKING ACADEMY</p>
+                <p>-IT essentials</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
     </section>
 
-    <section id="blogs" class="blogs">
-        blogs
-    </section>
 
-    <section id="contact" class="contact">
-        contact
-    </section>
+    <section id="portfolio">
 
-    <footer>
 
-    </footer>
- <script src="./script.js"></script>
-</body>
+      <div class="blogs" id="ports">
+                <h1 class="hd" style="padding-left: 5%;">PORTFOLIO</h1>
+
+        <div class="allblog">
+          <div class="blog1">
+            <div class="photo1"><img class="portfolio-imgs" src="./images/pharmacy.jpg" alt=""></div>
+            <div class="sdisc">
+              <h3>Online food ordering system:</h3>
+              <p>By using javaScript , html and css on front end
+                and php at the surver side . It allows customer 
+                to find there meal through online.
+                         
+                </div>
+          </div>
+      
+          <div class="blog2">
+            <div class="photo1"><img class="portfolio-imgs" src="./images/laravel.jpg" alt=""></div>
+            <div class="sdisc">
+              <h3>School managment  system:</h3>
+              <p>By using java with servlet and jsp and css features. 
+                It helps a school administrator to manage schoool using online app.  
+            </div>
+          </div>
+
+        <div class="blog3">
+          <div class="photo1"><img class="portfolio-imgs" src="./images/dairy.jpg" alt=""></div>
+          <div class="sdisc">
+            <h3>Smart card:</h3>
+            <p>By using java features shuch aas jsp and 
+              servlets with its jar connectors to arduino uno. 
+              It allows the customers to pay by using e-cards
+          </div>
+        </div>
+        </div>
+        
+      </div>
+ </section>
+
+
+
+
+
+     <section id="blogs">
+      <div class="blogs" id="bolo">
+        <h1 class="hd" style="padding-left: 5%;">BLOGS</h1>
+
+        <div class="allblog" id="bloga">
+        
+   <!-- displaying blogs    -->
+   
+        </div>
+      <!-- <a href="./pages/allblogs.html"><button class="seemore" id="rmore">READMORE BLOGS</button></a>   -->
+      </div>
+     </section>
+
+
+
+ 
+      <section id="contact">
+      <div class="allcontact">
+        <div class="contact">
+          <div class="leftcontact">
+            <h3 class="hd" style="padding-bottom: 1.4rem;">CONTACT ME</h3>
+            <p>I would like to hear about your project and how I
+              could help. Please fill the form, and I’ll get back 
+              to you as soon as possible</p>
+          </div>
+          <div class="rightcontact">
+            <p id="success"></p>
+            <form action="" id="contactForm">
+            <input type="text" id="namet" placeholder="Name" style="border-bottom: 1px solid #ff6300;" required> <p id="name" class="pargraph"></p><br>  
+            <input type="text" id="mail" placeholder="Email" style="border-bottom: 1px solid #ff6300;" required> <p id="email" class="pargraph"></p> <br>
+  
+            <textarea name="" id="textarea" cols="10" rows="10" placeholder="Message" required></textarea> <p id="message" class="pargraph"></p> <br>
+            <input type="button" value="SEND MESSAGE" id="submit" class="sending"> <span id="success"></span>
+          </form>
+          </div>
+        </div>  
+
+        <div class="footer">
+          <div class="linec"></div>
+          <div class="allmainf">
+            <div class="mainf">
+             
+                <p>Sostene</p>
+                <p><a href="tel:+250788724867"> <i class="fa-solid fa-phone"></i>+250788724867</a></p>
+                <p> <a href="https://maps.google.com/maps?q=Rwanda,Musanze"><i class="fa-solid fa-location-dot"></i>Nyarugenge</a> </p>
+          
+            </div>
+            <div class="iconsf">
+              
+                <p>
+                 <a href=""><i class="fa-brands fa-facebook-f"></i></a> </p>
+                <p><a href="https://www.instagram.com/fnzfabrice/"><i class="fa-brands fa-instagram"></i></a></p>
+                <p> <a href="mailto:mwanafunzifabrice@gmail.com"><i class="fa-solid fa-envelope"></i></a></p>
+                <p> <a href="https://github.com/FabCode67"><i class="fa-brands fa-github"></i></a> </p>
+                <p> <a href="https://www.linkedin.com/in/fabrice-mwanafunzi-817249240"><i class="fa-brands fa-linkedin"></i></a></p>
+             
+            </div>
+          </div>
+             <center><p style="padding-top: 1rem; line-height: 3rem;">Ⓒ 2024 bananayosostene</p></center>
+        </div>
+      </div>
+  
+     </section>  
+  </body>
 </html>
