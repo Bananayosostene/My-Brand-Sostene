@@ -1,18 +1,487 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./../css/dashboard.css">
-    <link rel="shortcut icon" type="image/png" href="../images/mylog.png">
-    <link rel="stylesheet" href="./../css/addblog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="../images/mylog.png" />
+    <link rel="stylesheet" href="./../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/allpage.css" />
+    <link rel="stylesheet" href="./../css/addblog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="left-panel">
+        <div class="main-dashboard">
+          <div class="sidebar">
+            <div class="nav-buttons">
+              <button class="sidebar-btn" onclick="navigate('dashboard')">
+                Dashboard
+              </button>
+              <button class="sidebar-btn" onclick="navigate('blog')">
+                Blog
+              </button>
+              <button class="sidebar-btn" onclick="navigate('messages')">
+                Messages
+              </button>
+            </div>
+            <a href="../index.html"
+              ><button class="buttons sending">Logout</button></a
+            >
+          </div>
+        </div>
+      </div>
 
-</head>
-<body>
-  <div style="color: #0d0c17;"></div>
-</body>
-<script>
-</script>
+      <!--right side  -->
+      <div class="right-panel">
+        <!-- Add this inside the .main-content div -->
+        <div class="content">
+          <!-- <div class="navbar"> -->
+          <div class="topnav">
+            <div class="left-topnav">
+              <div>
+                <i
+                  id="left"
+                  class="toggle-btn fa-solid fa-angles-left"
+                  onclick="toggleLeftPanel()"
+                ></i>
+                <i
+                  id="right"
+                  class="toggle-btn fa-solid fa-angles-right"
+                  onclick="toggleRightPanel()"
+                ></i>
+              </div>
+              <div class="middle-topnav">
+                <div class="seacrh">
+                  <input type="text" placeholder="Search.." />
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="notfication-div">
+                  <button type="button" class="icon-button">
+                    <span class="material-icons">notifications</span>
+                    <span class="icon-button__badge">2</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile">
+              <center>
+                <p>Sostene <br /><small>Admin</small></p>
+              </center>
+              <div class="profile-container">
+                <img
+                  src="../images/portfolio4.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- </div> -->
+          <div class="main-content">
+            <!-- Your main content goes here -->
+          </div>
+        </div>
+
+        <div class="main-content">
+          <!-- My dashboard -->
+          <section id="dashboard-content" class="dash-section">
+            <div>
+              <div class="container">
+                <div class="dash-main-nav">
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="sms">
+                        <i class="fa-regular fa-message"></i>
+                        <p class="p">Message</p>
+                      </div>
+                      <center><p class="n-sms">434</p></center>
+                    </div>
+                  </div>
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="blogs">
+                        <i class="fa-solid fa-blog"></i>
+                        <p class="p">Blogs</p>
+                      </div>
+                      <center><p class="n-blog">4</p></center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th colspan="2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-01</td>
+                      <td>12:30 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Additional rows go here -->
+                    <tr>
+                      <td>3</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- My blogs -->
+          <section id="blog-content" class="dash-section" style="display: none">
+                <div class="container">
+                <div class="dash-main-nav">
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="blogs">
+                        <i class="fa-solid fa-blog"></i>
+                        <p class="p">Blogs</p>
+                      </div>
+                      <center><p class="n-blog">4</p></center>
+                    </div>
+                  </div>
+                </div>
+                <button style="width: 7rem; height: 2rem; border-radius: 5px 5px 0 0; background-color: #ff6300; color: white; border: none;">Add New blog</button>
+              </div>
+
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Blog</th>
+                      <th>Title</th>
+                      <th>Comments</th>
+                      <th>Likes</th>
+                      <th>Time</th>
+                      <th colspan="2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><img src="../images/Andela-blog.png" alt=""></td>
+                      <td>ATLP</td>
+                      <td>34</td>
+                      <td>6 days <b>ago</b></td>
+                      <td>12</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                     <tr>
+                      <td>2</td>
+                      <td><img src="../images/Andela-blog.png" alt=""></td>
+                      <td>ATLP</td>
+                      <td>34</td>
+                      <td>6 days <b>ago</b></td>
+                      <td>12</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Additional rows go here -->
+                    <tr>
+                      <td>3</td>
+                      <td><img src="../images/Andela-blog.png" alt=""></td>
+                      <td>ATLP</td>
+                      <td>34</td>
+                      <td>6 days <b>ago</b></td>
+                      <td>12</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><img src="../images/Andela-blog.png" alt=""></td>
+                      <td>ATLP</td>
+                      <td>34</td>
+                      <td>6 days <b>ago</b></td>
+                      <td>12</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><img src="../images/Andela-blog.png" alt=""></td>
+                      <td>ATLP</td>
+                      <td>34</td>
+                      <td>6 days <b>ago</b></td>
+                      <td>12</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+          </section>
+
+          <!-- My messages -->
+          <section id="messages-content"  class="dash-section"  style="display: none">
+              <div class="container">
+                <div class="dash-main-nav">
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="sms">
+                        <i class="fa-regular fa-message"></i>
+                        <p class="p">Message</p>
+                      </div>
+                      <center><p class="n-sms">434</p></center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th colspan="2">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-01</td>
+                      <td>12:30 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Additional rows go here -->
+                     <td>1</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-01</td>
+                      <td>12:30 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Additional rows go here -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                       <tr>
+                      <td>1</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-01</td>
+                      <td>12:30 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <!-- Additional rows go here -->
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Sostene</td>
+                      <td>sostene@example.com</td>
+                      <td>2023-01-02</td>
+                      <td>02:45 PM</td>
+                      <td><button class="show-btn">Show</button></td>
+                      <td><button class="delete-btn">Delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="../scripts/dashboard.js"></script>
+  </body>
 </html>

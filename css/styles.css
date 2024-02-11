@@ -2,7 +2,7 @@
 
 :root {
   --main-color: #03010e;
-  --main-div-color: #082636;
+  --main-div-color: #1c1c1c;
   --headings: #ff6300;
   --text-color: #ffffff;
 }
@@ -63,9 +63,9 @@ label.logo {
   padding: 0 100px;
   font-weight: bold;
 }
-#menu {
+/* #menu {
   display: none;
-}
+} */
 .div1 {
   background-color: #03010e;
   height: 96%;
@@ -133,7 +133,7 @@ a.active,
   color: white;
   float: right;
   line-height: 80px;
-  margin-right: 40px;
+  margin-right: 10px;
   cursor: pointer;
   display: none;
 }
@@ -403,7 +403,9 @@ textarea {
 
   color: #fff;
 }
-
+.sending{
+  border: 1px var(--headings) solid;
+}
 input[type="button"] {
   border: 0.5px solid var();
   background-color: #03010e;
@@ -558,9 +560,9 @@ input[type="text"] {
   padding-left: 2rem;
   color: var(--headings);
 }
-.sending {
+/* .sending {
   border: 1px var(--headings) solid;
-}
+} */
 @media (max-width: 1024px) {
   label.logo {
     font-size: 30px;
@@ -579,6 +581,9 @@ input[type="text"] {
   .sdisc {
     margin-top: 0rem;
   }
+   .my-photo {
+  padding-bottom: 0rem;
+}
 }
 
 @media (max-width: 952px) {
@@ -592,6 +597,14 @@ input[type="text"] {
   .rightnav ul li a {
     font-size: 60%;
   }
+  .my-photo {
+  padding-bottom: 0rem;
+  
+}
+.lineh {
+  margin-top: 2rem;
+}
+
 }
 
 @media (max-width: 858px) {
@@ -696,6 +709,9 @@ input[type="text"] {
   #bolo {
     height: fit-content;
   }
+  .lineh {
+  margin-top: 2rem;
+}
   .allblog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -753,6 +769,13 @@ input[type="text"] {
     height: 50%;
     width: 100%;
   }
+  .my-photo {
+  margin-left: 10%;
+  padding-bottom: 0rem;
+  padding-left: 10%;
+  height: 70%;
+  width: 80%;
+}
 
   p .hello {
     width: 34rem;
