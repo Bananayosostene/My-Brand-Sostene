@@ -131,6 +131,7 @@ a.active,
 .checkbtn {
   font-size: 30px;
   color: white;
+  /* width: 2rem; */
   float: right;
   line-height: 80px;
   margin-right: 10px;
@@ -726,6 +727,7 @@ input[type="text"] {
   }
   .checkbtn {
     display: block;
+    /* margin-right: 5px; */
   }
 
   ul {
