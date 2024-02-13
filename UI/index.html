@@ -272,11 +272,11 @@
           <div class="rightcontact">
             <p id="success"></p>
             <form action="" id="contactForm">
-            <input type="text" id="namet" placeholder="Name" style="border-bottom: 1px solid #ff6300;" required> <p id="name" class="pargraph"></p><br>  
-            <input type="text" id="mail" placeholder="Email" style="border-bottom: 1px solid #ff6300;" required> <p id="email" class="pargraph"></p> <br>
-  
-            <textarea name="" id="textarea" cols="10" rows="10" placeholder="Message" required></textarea><br>
-            <input type="button" value="SEND MESSAGE" id="submit" class="sending"> <span id="success"></span>
+            <input type="text" id="name" placeholder="Name" style="border-bottom: 1px solid #ff6300;"> <p id="name-p" class="pargraph"></p><br>  
+            <input type="text" id="mail" placeholder="Email" style="border-bottom: 1px solid #ff6300;"> <p id="email-p" class="pargraph"></p><p id="email-val-p" class="pargraph"></p><br>
+            <textarea name="" id="textarea" cols="10" rows="10" placeholder="Message" required></textarea> <p id="textarea-p" class="pargraph"></p>
+            <br>
+            <input type="button" value="SEND MESSAGE" id="submit" class="sending" onclick="validation()"> 
           </form>
           </div>
         </div>  
@@ -304,6 +304,7 @@
         </div>
       </div>
   
-     </section>  
+     </section> 
+     <script src="./scripts/index.js"></script> 
   </body>
 </html>

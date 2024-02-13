@@ -5,6 +5,9 @@
   --main-div-color: #1c1c1c;
   --headings: #ff6300;
   --text-color: #ffffff;
+  --validate: #D7332F;
+
+  --main-color-2: #7b1fa2;
 }
 * {
   padding: 0;
@@ -554,6 +557,7 @@ input[type="text"] {
   width: 100%;
   padding: 0;
   font-size: 13px;
+  color: var(--validate);
 }
 #success {
   font-size: 20px;
