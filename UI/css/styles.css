@@ -559,6 +559,12 @@ input[type="text"] {
   font-size: 13px;
   color: var(--validate);
 }
+.sent-paragraph{
+  width: 100%;
+  padding: 0;
+  font-size: 13px;
+  color: var(--headings); 
+}
 #success {
   font-size: 20px;
   padding-top: 2rem;

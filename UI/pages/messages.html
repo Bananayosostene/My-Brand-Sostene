@@ -17,23 +17,24 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
     <div class="dashboard">
-      <div class="left-panel">
-        <div class="main-dashboard">
+      <div class="left-panel side">
+        <div class="main-dashboard side">
 
 
-                <div class="sidebar">
+                <div class="sidebar side">
                 <div class="nav-buttons">
                   <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
                     <ul>
-                        <li><a href="./dashboard.html"><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
-                        <li><a href="./messages.html"><i class="fa-solid fa-message"></i><span class="txt nav-txt">Messages</span></a></li>
-                        <li><a href="./blogs.html"><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>
+                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
+                        <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
+                        <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
                     </ul><br><br><br><br>
                     <ul> 
-                      <li><a href="../index.html"><span class="logout-btn">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
+                      <li><a href="../index.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
                     </ul>
                 </div>
             </div>
@@ -46,7 +47,11 @@
       <!--right side  -->
       <div class="right-panel">
           <div class="topnav">
-            <div><p>Dashboard</p></div>
+            <div class="menu-div">
+               <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
+               <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
+              <p>Message</p>
+            </div>
              <div class="right-topnav">
               <div class="seacrh">
                   <input type="text" placeholder="Search.." />
@@ -66,9 +71,6 @@
                       class="profile-img" />
                   </div>
             </div>
-             <div>
-                <i id="menu" class="toggle-btn fa-solid fa-bars"></i>       
-              </div>
             </div>         
         </div>
 
@@ -108,7 +110,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-01</td>
                       <td>12:30 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Add more rows as needed -->
@@ -118,7 +120,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Additional rows go here -->
@@ -127,7 +129,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-01</td>
                       <td>12:30 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Add more rows as needed -->
@@ -137,7 +139,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Additional rows go here -->
@@ -147,7 +149,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -156,7 +158,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -165,7 +167,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -174,7 +176,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                        <tr>
@@ -183,7 +185,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-01</td>
                       <td>12:30 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Add more rows as needed -->
@@ -193,7 +195,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Additional rows go here -->
@@ -203,7 +205,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -212,7 +214,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -221,7 +223,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -230,7 +232,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -239,7 +241,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -248,7 +250,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -257,7 +259,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <tr>
@@ -266,7 +268,7 @@
                       <td>sostene@example.com</td>
                       <td>2023-01-02</td>
                       <td>02:45 PM</td>
-                      <td><button class="show-btn">Show</button></td>
+                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                   </tbody>

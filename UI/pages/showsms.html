@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="shortcut icon" type="image/png" href="../images/mylog.png" />
+    <link rel="stylesheet" href="./../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/allpage.css" />
+    <link rel="stylesheet" href="./../css/addblog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+        .sms-main-container{
+            width: 70%;
+            height: fit-content;
+            border: 1px var(--headings) solid;
+            border-radius: 10px;
+        }
+        .sms-main-container p{
+            padding: 2rem 1rem 2rem 1rem;
+        }
+        small, .sms{
+            font-family:'Times New Roman', Times, serif;
+        }
+      input[type="button"] {
+            border: 0.5px solid var();
+            background-color: #03010e;
+            border: 1px solid var(--headings);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            cursor: pointer;
+            width: 10rem;
+            /* height: 3rem; */
+            float: left;
+            margin-top: 2rem;
+            color: #fff;
+
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <div class="left-panel">
+        <div class="main-dashboard">
+
+
+                <div class="sidebar">
+                <div class="nav-buttons">
+                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
+                    <ul>
+                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
+                        <li><a href="./dashboard.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
+                        <li><a href="./dashboard.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
+                    </ul><br><br><br><br>
+                    <ul> 
+                      <li><a href="../index.html"><span class="logout-btn">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
+                    </ul>
+                </div>
+            </div>
+
+
+       
+        </div>
+      </div>
+
+      <!--right side  -->
+      <div class="right-panel">
+          <div class="topnav">
+            <div><p>Dashboard</p></div>
+             <div class="right-topnav">
+              <div class="seacrh">
+                  <input type="text" placeholder="Search.." />
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                  <div class="notfication-div">
+                  <button type="button" class="icon-button">
+                    <span class="material-icons">notifications</span>
+                    <span class="icon-button__badge">2</span>
+                  </button>
+                </div>
+                <div class="profile">
+                   <div class="profile-container">
+                      <img
+                      src="../images/portfolio4.png"
+                      alt="Profile Picture"
+                      class="profile-img" />
+                  </div>
+            </div>
+             <div>
+                <i id="menu" class="toggle-btn fa-solid fa-bars"></i>       
+              </div>
+            </div>         
+        </div>
+
+        <div class="main-content">
+          <!-- My dashboard -->
+          <section id="dashboard-content" class="dash-section">
+            <div>
+              <div class="container">
+                <div class="dash-main-nav">
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="sms">
+                        <i class="fa-regular fa-message"></i>
+                        <p class="p">Message</p>
+                      </div>
+                      <center><p class="n-sms">434</p></center>
+                    </div>
+                  </div>
+                  <div class="sms-blogs">
+                    <div>
+                      <div class="blogs">
+                        <i class="fa-solid fa-blog"></i>
+                        <p class="p">Blogs</p>
+                      </div>
+                      <center><p class="n-blog">4</p></center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <section class="sms-container">
+                <div id="show-sms" class="sms-show">
+                    <div>
+                        <p>Sender</p>
+                        <small>Sostene</small>
+                    </div><br>                 
+                    <div>
+                        <p>Email</p>
+                        <small>s@gmail.com</small>
+                    </div><br>                    
+                    <div>
+                        <p>Date</p>
+                        <small>Time</small>
+                    </div><br>                   
+                    <div>
+                        <p>Message</p><br>
+                        <div class="sms-main-container">
+                            <p class="sms">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Debitis quidem a accusamus, ut quisquam iure rerum 
+                                officiis molestiae autem in libero officia omnis,
+                                 beatae totam velit explicabo! Deserunt, itaque 
+                                 vitae.
+                            </p>
+                        </div>
+                    </div>
+                     <a href="https://mail.google.com/mail/u/0/#search/cohort+30?compose=new"><input type="button" value="Replay" id="replay-email" class="email-replay"> </a> 
+                </div>
+
+              </section>
+
+    <script src="../scripts/dashboard.js"></script>
+  </body>
+</html>
