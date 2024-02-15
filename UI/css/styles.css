@@ -440,7 +440,7 @@ input[type="button"]:hover {
   padding: 1rem;
   color: #fff;
   cursor: pointer;
-  border-radius: 0.7rem;
+  border-radius: .7rem;
   font-family: "Kanit", sans-serif;
 }
 .viewmore:hover {
