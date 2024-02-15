@@ -289,6 +289,7 @@ input[type="button"] {
 }
 
 
+/* Default styles for larger screens */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -300,12 +301,14 @@ td {
   border-bottom: 1px solid #ddd;
   padding: 10px;
   text-align: left;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 th {
   background-color: var(--main-div-color);
-  /* width: 100%; */
   position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .show-btn,
@@ -318,16 +321,80 @@ th {
   border: none;
   border-radius: 3px;
 }
-.update-btn{
-  background-color:  #1979c2;;
+
+.update-btn {
+  background-color: #1979c2;
 }
 
 .delete-btn {
   background-color: #f44336;
 }
+
 tr td img {
   width: 50%;
   height: 2rem;
+}
+
+@media only screen and (max-width: 780px) {
+   .seacrh {
+  display: flex;
+  background-color: #dddddd;
+  border-radius: 50%;
+  width: 80px;
+  gap: 0rem;
+  margin-right: 2rem;
+
+}
+.seacrh input {
+  width: 80px;
+  height: 40px;
+  border: none;
+  padding-left: 0.5rem;
+  background-color: var(--main-color);
+  border-bottom: 1px var(--headings) solid;
+
+}
+.seacrh i{
+  position: relative;
+  /* border: 1px red solid; */
+  color: white;
+}
+  
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+
+  th,
+  td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  th {
+    position: relative;
+    top: 0;
+    z-index: 1;
+  }
+
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+
+  .show-btn,
+  .update-btn,
+  .delete-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  tr td img {
+    width: 100%;
+  }
 }
 
 

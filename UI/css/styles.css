@@ -450,7 +450,6 @@ input[type="button"]:hover {
 }
 .allblog {
   display: flex;
-  /* height: 100%; */
   width: 100%;
   padding-right: 2rem;
 }

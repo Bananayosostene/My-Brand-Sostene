@@ -19,7 +19,7 @@
     />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   </head>
-  <body>
+  <body onload="loadDada()">
     <div class="dashboard">
       <div class="left-panel side">
         <div class="main-dashboard side">
@@ -106,10 +106,10 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-01</td>
-                      <td>12:30 PM</td>
+                      <td id="name-r">Sostene</td>
+                      <td id="email-r">sostene@example.com</td>
+                      <td id="date-r">2023-01-01</td>
+                      <td id="time-r">12:30 PM</td>
                       <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
@@ -131,56 +131,16 @@
                       <td>12:30 PM</td>
                       <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                    <tr>
-                      <td>2</td>
+                    </tr>                     
+                    <td>1</td>
                       <td>Sostene</td>
                       <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
+                      <td>2023-01-01</td>
+                      <td>12:30 PM</td>
                       <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
                       <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Additional rows go here -->
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                       <tr>
-                      <td>1</td>
+                    </tr>                     
+                    <td>1</td>
                       <td>Sostene</td>
                       <td>sostene@example.com</td>
                       <td>2023-01-01</td>
@@ -189,88 +149,7 @@
                       <td><button class="delete-btn">Delete</button></td>
                     </tr>
                     <!-- Add more rows as needed -->
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Additional rows go here -->
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
+  
                   </tbody>
                 </table>
               </div>
@@ -280,6 +159,25 @@
         </div>
       </div>
     </div>
+
+          <script>       
+        function loadDada(){
+            // Read from local storage
+            var contactData = localStorage.getItem("contactData");
+            if (contactData) {
+                displayContactData(JSON.parse(contactData));
+            }
+        };
+        
+        function displayContactData(data) {
+            document.getElementById("name-r").textContent = data.name;
+            document.getElementById("email-r").textContent = data.email;
+            document.getElementById("date-r").textContent = data.formattedDate;
+            document.getElementById("time-r").textContent = data.formattedTime;
+            document.getElementById("sms-r").textContent = data.message;
+        }
+
+    </script>
 
     <script src="../scripts/dashboard.js"></script>
   </body>

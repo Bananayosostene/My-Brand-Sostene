@@ -1,16 +1,67 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
-  --main-color: #03010E;
+  --main-color: #03010e;
   --main-div-color: #1c1c1c;
   --headings: #ff6300;
   --text-color: #ffffff;
+  --validate: #D7332F;
+  --main-color-2: #7b1fa2;
 }
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+
+
+body {
+  overflow: hidden; 
+}
+
+.container {
+    display: flex;
+    height: 100vh; 
+}
+
+.left-section,
+.right-section {
+    /* flex: 1; */
+    overflow-y: auto; 
+    height: 100%; 
+    border: 1px solid #ccc; 
+}
+
+.left-section {
+  width: 30%;
+    background-color: #f0f0f0; 
+}
+
+.right-section {
+  width: 70%;
+    background-color: #e0e0e0; 
+}
+
+.left-section::-webkit-scrollbar,
+.right-section::-webkit-scrollbar {
+    width: 0;
+}
+
+.left-section:hover::-webkit-scrollbar,
+.right-section:hover::-webkit-scrollbar {
+    width: 5px; 
+}
+
+.left-section::-webkit-scrollbar-thumb,
+.right-section::-webkit-scrollbar-thumb {
+   
+    background-color: #888; /* Scrollbar thumb color */
+}
+
+.left-section::-webkit-scrollbar-track,
+.right-section::-webkit-scrollbar-track {
+    background-color: #eee; /* Scrollbar track color */
+}

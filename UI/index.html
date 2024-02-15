@@ -209,10 +209,6 @@
 
 
      <section id="blogs">
-      <!-- <div class="blogs" id="bolo">
-        <h1 class="hd" style="padding-left: 5%;">BLOGS</h1>
-
-        <div class="allblog" id="bloga"> -->
          <div class="blogs" id="ports">
                 <h1 class="hd" style="padding-left: 5%;">BLOGS</h1>
 
@@ -262,24 +258,25 @@
  
       <section id="contact">
       <div class="allcontact">
-        <div class="contact">
-          <div class="leftcontact">
+       <div class="contact">
+        <div class="leftcontact">
             <h3 class="hd" style="padding-bottom: 1.4rem;">CONTACT ME</h3>
             <p>I would like to hear about your project and how I
-              could help. Please fill the form, and I’ll get back 
-              to you as soon as possible</p>
-          </div>
-          <div class="rightcontact">
+            could help. Please fill the form, and I’ll get back 
+            to you as soon as possible</p>
+        </div>
+        <div class="rightcontact">
             <p id="sms-sent" class="sent-paragraph"></p><br><br>
-            <form action="" id="contactForm">
-            <input type="text" id="name" placeholder="Name" style="border-bottom: 1px solid #ff6300;"> <p id="name-p" class="pargraph"></p><br>  
-            <input type="text" id="mail" placeholder="Email" style="border-bottom: 1px solid #ff6300;"> <p id="email-p" class="pargraph"></p><p id="email-val-p" class="pargraph"></p><br>
-            <textarea name="" id="textarea" cols="10" rows="10" placeholder="Message" required></textarea> <p id="textarea-p" class="pargraph"></p>
-            <br>
-            <input type="button" value="SEND MESSAGE" id="submit" class="sending" onclick="validation()"> 
-          </form>
-          </div>
-        </div>  
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Name" style="border-bottom: 1px solid #ff6300;"> <p id="name-p" class="pargraph"></p><br>  
+                <input type="text" id="email" placeholder="Email" style="border-bottom: 1px solid #ff6300;"> <p id="email-p" class="pargraph"></p><p id="email-val-p" class="pargraph"></p><br>
+                <textarea name="" id="message" cols="10" rows="10" placeholder="Message" required></textarea> <p id="message-p" class="pargraph"></p>
+                <br>
+                <input type="button" value="SEND MESSAGE" id="submit" class="sending" onclick="sendMessage()"> 
+            </form>
+        </div>
+    </div>
+
 
         <div class="footer">
           <div class="linec"></div>
@@ -305,6 +302,9 @@
       </div>
   
      </section> 
+
+                 
+
      <script src="./scripts/index.js"></script> 
   </body>
 </html>

@@ -3,50 +3,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>moreblogs</title>
-    <link rel="stylesheet" href="./../css/styles.css">
+    <title>LogIn</title>
+    <link rel="stylesheet" href="../css/moreblogs.css">
+    <link rel="stylesheet" href="./../css/login.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="../images/mylog.png">
-    <link rel="stylesheet" href="./../css/moreblogs.css">
-    <link href="https://fonts.cdnfonts.com/css/kanit-2" rel="stylesheet">
-                
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <style>
-        h3{
-            padding-top: 5%
-        }
-        a:hover{
-            font-size: 16px;
-            text-decoration: underline;
-        }
-     </style>
-</head>
 <body>
-    <div class="nav">
+      <div class="nav">
         <div class="leftnav"> 
-         <label for="" class="logo">Sostene</label>
+         <label for="" class="logo">BS</label>
         </div>
         <div class="rightnav">
-          <input type="checkbox" id="check">
-          <label for="check" class="checkbtn" style="padding-top: 1.5rem;">
-            <i class="fas fa-bars" onclick="changeIcon(this)"></i>
-          </label>
           <ul>
-            <li><a class="" href="./../index.html">Home</a></li>
-            <li><a href="./../index.html#about">About</a></li>
-            <li><a href="./../index.html#portfolio">Portfolio</a></li>
-            <li><a href="./../index.html#blogs">Blogs</a></li>
-            <li><a href="./../index.html#contact">Contact</a></li>
-            <li><a href="./login.html" id="signout">LogIn</a></li>
+            <li><a class="" href="./../index.html"></i>Home</a></li>
           </ul>
         </div>
       </div>
-      <div class="moreBox">
-        <div class="leftBox" id="alb">
-        </div>
-        <div class="rightBox" id="blo">
-        </div>
-      </div>
+    <div class="container">
+        <div class="left-section">
+        <div class="allblog">
+          <div class="blog1">
+            <div class="photo1"><img class="portfolio-imgs" src="./images/Andela-blog.png" alt=""></div>
+            <div class="sdisc">
+              <h3>Hello there,</h3>
+              <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
+                your ticket to a career in software engineering! </p>
+              </div>
+              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span> 
+          </div>
+      
+          <div class="blog2">
+            <div class="photo1"><img class="portfolio-imgs" src="./images/laravel.jpg" alt=""></div>
+            <div class="sdisc">
+              <h3> Dairy Management stem</h3>
+              <p>Laravel is a free and open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications.............
+              </p>  
+              </div>
+              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
+          </div>
 
+        <div class="blog3">
+          <div class="photo1"><img class="portfolio-imgs" src="./images/react-native.jpg" alt=""></div>
+          <div class="sdisc">
+            <h3>React native</h3>
+            <p>
+              React Native has become a popular framework to build cross-platform apps with JavaScript. Its main advantage is .............
+            </p>
+            </div>
+            <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
+        </div>
+        </div>
+       
+        
+
+        </div>
+        <div class="right-section">
+            <!-- Content for the right section goes here -->
+
+        </div>
+    </div>
 </body>
 </html>

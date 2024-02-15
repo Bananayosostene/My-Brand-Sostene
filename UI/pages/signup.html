@@ -49,14 +49,15 @@
         <div class="place" style="margin-top: 15%;">
 
             <div class="hed" style="margin-bottom: 0rem;"><h3>SignUp</h3></div>
+            <p class="pargraph1" id="success"></p>
             <form action="" id="submitUser">
-            <div class="change"> <input type="text" id="mail" placeholder="Email"><p id="email"></p></div>
-            <div class="change"> <input type="text" id="namet" placeholder="User name"><p id="nam"></p></div>
-            <div class="change"><input type="password"  id="pass" placeholder="password"><p id="secret"></p></div>
-            <div class="change"><input type="password" id="cpass" placeholder=" confirm password"><p id="confirm" style="color: red;"></p></div>
+            <div class="change"> <input type="text" id="email" placeholder="Email"><p id="sms-e"></p></div>
+            <div class="change"> <input type="text" id="name" placeholder="User name"><p id="sms-n"></p></div>
+            <div class="change"><input type="password"  id="pass" placeholder="password"><p id="sms-p"></p></div>
+            <div class="change"><input type="password" id="cpass" placeholder=" confirm password"><p id="sms-conf-p" style="color: red;"></p></div>
             <div class="change"><span><input type="radio" value="Male" name="gender">Male</span>
             <span><input type="radio" value="Female" name="gender">Female</span></div>
-            <div class="change">  <input type="button" id="signup" value="Signup"> </div>
+            <div class="change">  <input type="button" id="signup" value="Signup" onclick="signup()"> </div>
             </form>
             
             <div class="foot" style="padding-top: 0rem;">

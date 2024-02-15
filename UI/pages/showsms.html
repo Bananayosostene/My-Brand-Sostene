@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>show-message</title>
     <link rel="shortcut icon" type="image/png" href="../images/mylog.png" />
     <link rel="stylesheet" href="./../css/dashboard.css" />
     <link rel="stylesheet" href="../css/allpage.css" />
@@ -17,39 +17,68 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        .sms-main-container{
-            width: 70%;
-            height: fit-content;
-            border: 1px var(--headings) solid;
-            border-radius: 10px;
-        }
-        .sms-main-container p{
-            padding: 2rem 1rem 2rem 1rem;
-        }
-        small, .sms{
-            font-family:'Times New Roman', Times, serif;
-        }
-      input[type="button"] {
-            border: 0.5px solid var();
-            background-color: #03010e;
-            border: 1px solid var(--headings);
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            cursor: pointer;
-            width: 10rem;
-            /* height: 3rem; */
-            float: left;
-            margin-top: 2rem;
-            color: #fff;
 
+.main-content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #03010e;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sms-show {
+  text-align: left;
+}
+.sms-show .pragraph{
+  color: #ff6300;
+}
+
+.sms-show div {
+  margin-bottom: 10px;
+}
+
+.sms-main-container {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color:#03010e;
+}
+
+.sms-main-container p {
+  margin: 0;
+  padding: 0;
+}
+
+.email-replay {
+  border: 0.5px solid #03010e;
+  background-color: #03010e;
+  border: 1px solid var(--headings);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  width: 10rem;
+  margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+}
+
+.email-replay:hover {
+  background-color: #2B3245;
 }
 
     </style>
   </head>
-  <body>
+  <body onload="loadDada()">
     <div class="dashboard">
-      <div class="left-panel">
+      <div class="left-panel side">
         <div class="main-dashboard">
 
 
@@ -75,7 +104,10 @@
       <!--right side  -->
       <div class="right-panel">
           <div class="topnav">
-            <div><p>Dashboard</p></div>
+              <div class="menu-div">
+                <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
+                <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
+            </div>
              <div class="right-topnav">
               <div class="seacrh">
                   <input type="text" placeholder="Search.." />
@@ -101,62 +133,62 @@
             </div>         
         </div>
 
-        <div class="main-content">
-          <!-- My dashboard -->
-          <section id="dashboard-content" class="dash-section">
-            <div>
-              <div class="container">
-                <div class="dash-main-nav">
-                  <div class="sms-blogs">
-                    <div>
-                      <div class="sms">
-                        <i class="fa-regular fa-message"></i>
-                        <p class="p">Message</p>
-                      </div>
-                      <center><p class="n-sms">434</p></center>
-                    </div>
-                  </div>
-                  <div class="sms-blogs">
-                    <div>
-                      <div class="blogs">
-                        <i class="fa-solid fa-blog"></i>
-                        <p class="p">Blogs</p>
-                      </div>
-                      <center><p class="n-blog">4</p></center>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <section class="sms-container">
-                <div id="show-sms" class="sms-show">
-                    <div>
-                        <p>Sender</p>
-                        <small>Sostene</small>
-                    </div><br>                 
-                    <div>
-                        <p>Email</p>
-                        <small>s@gmail.com</small>
-                    </div><br>                    
-                    <div>
-                        <p>Date</p>
-                        <small>Time</small>
-                    </div><br>                   
-                    <div>
-                        <p>Message</p><br>
-                        <div class="sms-main-container">
-                            <p class="sms">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                Debitis quidem a accusamus, ut quisquam iure rerum 
-                                officiis molestiae autem in libero officia omnis,
-                                 beatae totam velit explicabo! Deserunt, itaque 
-                                 vitae.
-                            </p>
-                        </div>
-                    </div>
-                     <a href="https://mail.google.com/mail/u/0/#search/cohort+30?compose=new"><input type="button" value="Replay" id="replay-email" class="email-replay"> </a> 
-                </div>
 
-              </section>
+     <!-- message container -->
+        <div class="main-content">
+            <section class="sms-container">
+              <div id="show-sms" class="sms-show">
+                  <div>
+                      <p>Sender</p>
+                      <small id="name-r"></small>
+                  </div><br>                 
+                  <div>
+                      <p class="pragraph">Email:</p>
+                      <small id="email-r"></small>
+                  </div><br> 
+                  
+                  
+                  <div>
+                      <p class="pragraph">Date:</p>
+                      <small id="date-r"></small>
+                  </div><br>             
+                  <div>
+                      <p class="pragraph">Time:</p>
+                      <small id="time-r"></small>
+                  </div><br> 
+                  
+                  
+                  <div>
+                      <p class="pragraph">Message:</p><br>
+                      <div class="sms-main-container">
+                          <small id="sms-r" class="sms"></small>
+                      </div>
+                  </div>
+                  <a href=""><input type="button" value="Replay" id="replay-email" class="email-replay"> </a> 
+              </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script>       
+        function loadDada(){
+            // Read from local storage
+            var contactData = localStorage.getItem("contactData");
+            if (contactData) {
+                displayContactData(JSON.parse(contactData));
+            }
+        };
+        
+        function displayContactData(data) {
+            document.getElementById("name-r").textContent = data.name;
+            document.getElementById("email-r").textContent = data.email;
+            document.getElementById("date-r").textContent = data.formattedDate;
+            document.getElementById("time-r").textContent = data.formattedTime;
+            document.getElementById("sms-r").textContent = data.message;
+        }
+
+    </script>
 
     <script src="../scripts/dashboard.js"></script>
   </body>
