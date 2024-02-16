@@ -5,6 +5,7 @@
   --main-div-color: #3c4858;
   --headings: #ff6300;
   --text-color: #ffffff;
+   --validate: #D7332F;
 }
 *{
     padding: 0;
@@ -27,32 +28,12 @@ body{
     background-color: #03010E;
     padding: 20px 20px;
   }
-  
-  #nam{
-    color: red;
-    padding-top: 0rem;
-    margin-top: 0rem;
-    font-size: 17px;
-  }
-  #secret{
-    color: red;
-    padding-top: 0rem;
-    margin-top: 0rem;
-    font-size: 17px;
-
-  }
-  #email{
-    color: red;
-    padding-top: 0rem;
-    margin-top: 0rem;
-    font-size: 17px;
-  }
-  #comfirm{
-    color: red;
-    padding-top: 0rem;
-    margin-top: 0rem;
-    font-size: 17px;
-  }
+.pargraph {
+  width: 100%;
+  padding: 0;
+  font-size: 13px;
+  color: var(--validate);
+}
   .leftnav{
     height: 5rem;
     top: 0;

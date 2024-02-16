@@ -33,16 +33,10 @@ function sendMessage() {
 
   var currentDate = new Date();
   var formattedDate = currentDate.toISOString().split("T")[0]; // Get date in "YYYY-MM-DD" format
-  var formattedTime = currentDate.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  }); // Get time in "HH:mm AM/PM" format
+  var formattedTime = currentDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit",}); // Get time in "HH:mm AM/PM" format
 
   // Save to local storage
-  localStorage.setItem(
-    "contactData",
-    JSON.stringify({ name, email, message, formattedDate, formattedTime })
-  );
+  localStorage.setItem("contactData", JSON.stringify({ name, email, message, formattedDate, formattedTime }));
 
   // Other logic for sending the message (e.g., to the server)
   // ...
