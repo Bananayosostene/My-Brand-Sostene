@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="shortcut icon" type="image/png" href="../images/mylog.png" />
+    <link rel="stylesheet" href="./../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/allpage.css" />
+    <link rel="stylesheet" href="./../css/addblog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <style>
+    .main-blog{
+      height: 100vh;
+    }
+    button{
+      width: 7rem; 
+      height: 2rem; 
+      border-radius:  5px; 
+      background-color: #ff6300; 
+      color: white; 
+      border: none;
+    }
+  </style>
+  <body>
+    <div class="dashboard">
+      <div class="left-panel side">
+        <div class="main-dashboard side">
+
+
+                <div class="sidebar side">
+                <div class="nav-buttons">
+                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
+                    <ul>
+                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
+                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
+                        <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
+                        <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
+                    </ul>
+                    <ul> 
+                      <li><a href="../index.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    <!--right side  -->
+    <div class="right-panel">
+        <div class="topnav">
+          <div class="menu-div">
+             <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
+             <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
+            <p>Add New Blog</p>
+          </div>
+           <div class="right-topnav">
+            <div class="seacrh">
+                <input type="text" placeholder="Search.." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+                <div class="notfication-div">
+                <button type="button" class="icon-button">
+                  <span class="material-icons">notifications</span>
+                  <span class="icon-button__badge">2</span>
+                </button>
+              </div>
+              <div class="profile">
+                 <div class="profile-container">
+                    <img
+                    src="../images/portfolio4.png"
+                    alt="Profile Picture"
+                    class="profile-img" />
+                </div>
+          </div>
+          </div>         
+      </div>
+      <div class="main-blog">
+        <div><p>Add Blog: <input type="image" id="add-blog"/></p></div>
+        <div><p>Add title:</p> <input type="text" id="title"/></div>
+        <div><p>Add more:</p> </div>
+        <!-- <input type="button" value="Add +" > -->
+        <button id="add-blog">Add +</button>
+      </div>
+    </div>
+    <script src="../scripts/dashboard.js"></script>
+  </body>
 </html>

@@ -5,14 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIn</title>
     <link rel="stylesheet" href="../css/moreblogs.css">
-    <link rel="stylesheet" href="./../css/login.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="../images/mylog.png">
     <style>
       .left-section{
           /* width: 100%; */
           padding-right: 2rem;
+          background-color: #03010E;
+          color: white;
       }
+      .right-section{
+        padding-top: 1rem;
+        background-color: #03010E;
+        color: white;
+      }
+     .right-section section{
+      padding: 0 .5rem;
+     }
      .left-section > div {
           margin-top: 1rem;
           flex-basis: 10%;
@@ -27,16 +36,72 @@
           transition: 1s;
 }
 .sdisc {
-  margin-top: 6rem;
+  margin-top: 1rem;
+   background-color: #03010E;
 }
-.sdisc h3 {
+.sdisc h3{
   padding-bottom: 0.5rem;
+  color: #ff6300;
+}
+.more-sdisc h3{
+  padding: 1rem 0 1rem 0;
+  color: #ff6300;
 }
 .blog-imgs{
-  width: 90%;
-  height: 7rem;
+  width: 100%;
+  height: 12rem;
 }
-
+.right-imgs{
+  width: 100%;
+   background-color: #03010E;
+}
+section{
+  margin-bottom: 5rem;
+}
+.likes{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.likes i{
+  font-size: 28px;
+  border-radius: 50%;
+  border: 1px #ff6300 solid;
+  padding: .5rem;
+  /* background-color: white; */
+}
+.likes .like:hover{
+  border: 1px white solid;
+  background-color: #ff6300;
+  transition: 1s;
+}
+.likes .dislike:hover{
+    border: 1px white solid;
+  background-color: red;
+  /* transition: 1s; */
+}
+.likes p{
+  font-size: 48px;
+  color: #ff6300;
+}
+textarea{
+  border: 0;
+  background-color: #03010e;
+  border: 1px solid #ff6300;
+  outline: 0;
+  width: 60%;
+  height: 5rem;
+  padding-top: 1rem;
+  color: white;
+  font-size: 12px;
+}
+.comment-button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
     </style>
 <body>
       <div class="nav">
@@ -45,7 +110,7 @@
         </div>
         <div class="rightnav">
           <ul>
-            <li><a class="" href="./../index.html"></i>Home</a></li>
+            <li><a class="home" href="./../index.html"></i>Home</a></li>
           </ul>
         </div>
       </div>
@@ -54,69 +119,101 @@
           <div class="blog1">
             <div class="photo1"><img class="blog-imgs" src="../images/Andela-blog.png" alt=""></div>
             <div class="sdisc">
-              <h3>Hello there,</h3>
+              <h3 class="h3">Hello there,</h3>
               <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
                 your ticket to a career in software engineering! </p>
               </div>
-              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span> 
           </div>
       
           <div class="blog2">
             <div class="photo1"><img class="blog-imgs" src="../images/laravel.jpg" alt=""></div>
             <div class="sdisc">
-              <h3> Dairy Management stem</h3>
+              <h3 class="h3">Dairy Management</h3>
               <p>Laravel is a free and open-source PHP web framework, created by Taylor Otwell of web applications.............
               </p>  
               </div>
-              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
           </div>
 
         <div class="blog3">
           <div class="photo1"><img class="blog-imgs" src="../images/react-native.jpg" alt=""></div>
           <div class="sdisc">
-            <h3>React native</h3>
+            <h3 class="h3">React native</h3>
             <p>
               React Native has become a popular framework to build cross-platform apps with JavaScript. Its main advantage is .............
             </p>
             </div>
-            <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
         </div>          
-        <div class="blog1">
-            <div class="photo1"><img class="blog-imgs" src="../images/Andela-blog.png" alt=""></div>
-            <div class="sdisc">
-              <h3>Hello there,</h3>
-              <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
-                your ticket to a career in software engineering! </p>
-              </div>
-              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span> 
-          </div>
-      
-          <div class="blog2">
-            <div class="photo1"><img class="blog-imgs" src="../images/laravel.jpg" alt=""></div>
-            <div class="sdisc">
-              <h3> Dairy Management system</h3>
-              <p>Laravel is a free and open-source PHP web framework, created by Taylor Otwell and intended  applications.............
-              </p>  
-              </div>
-              <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
-          </div>
-
-        <div class="blog3">
-          <div class="photo1"><img class="blog-imgs" src="../images/react-native.jpg" alt=""></div>
-          <div class="sdisc">
-            <h3>React native</h3>
-            <p>
-              React Native has become a popular framework to build cross-platform apps with JavaScript. Its main advantage is .............
-            </p>
-            </div>
-            <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
-        </div>
         </div>
         <div class="right-section">
-            <!-- Content for the right section goes here -->
-
-
+          <section id="blog1">
+            <div class="more-blog1">
+              <div class="more-photo1"><img class="right-imgs" src="../images/Andela-blog.png" alt=""></div>
+              <div class="more-sdisc">
+                <h3>Hello there,</h3>
+                <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
+                  your ticket to a career in software engineering! Welcome to Andela. You are beginning an experience that will influence how you think, what you do, and what you will achieve for the rest of your career. <br><br><br>
+                 Because of your endeavor, you have been selected to be a beneficiary of the ATLP, a special program by Andela. After 9 months, you will become part of a 500+ Andela Global alumni who successfully passed through Andela and are now changing the world through cutting edge tech solutions they provide to their respective communities.
+                 Of course, we would like to inform you that there is hard work between now and your exit. Acquiring knowledge that will change you and your surroundings is not easy but we chose you from many because we believe our [you and us] combined efforts for your learning path will be a success based on our assessments. You will have access to the most modern tools and technologies and guidance by the experienced Learning/work managers that you would hardly see elsewhere.   
+                 Meanwhile, we would like to bring to your attention some important programs that will take place  for you to have a clear understanding of what  Andela is and what is expected of you before we start our program.</p>
+             
+                <div class="comment-div">
+                  <div class="likes"><i class="like fa-regular fa-thumbs-up"></i> <p>5</p> <i class="dislike fa-regular fa-thumbs-down"></i></div>
+                  <div><textarea name="" id="wcomment" cols="10" rows="10" placeholder="Write comment" required></textarea> 
+                    <div class="comment-button">
+                      <p>2 comment(s)</p>
+                      <button>Add comment</button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+          </section>          
+          <section id="blog2">
+            <div class="more-blog1">
+              <div class="photo1"><img class="right-imgs" src="../images/laravel.jpg" alt=""></div>
+              <div class="more-sdisc">
+                <h3>Hello there,</h3>
+                <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
+                  your ticket to a career in software engineering! Welcome to Andela. You are beginning an experience that will influence how you think, what you do, and what you will achieve for the rest of your career. <br><br><br>
+                 Because of your endeavor, you have been selected to be a beneficiary of the ATLP, a special program by Andela. After 9 months, you will become part of a 500+ Andela Global alumni who successfully passed through Andela and are now changing the world through cutting edge tech solutions they provide to their respective communities.
+                 Of course, we would like to inform you that there is hard work between now and your exit. Acquiring knowledge that will change you and your surroundings is not easy but we chose you from many because we believe our [you and us] combined efforts for your learning path will be a success based on our assessments. You will have access to the most modern tools and technologies and guidance by the experienced Learning/work managers that you would hardly see elsewhere.   
+                 Meanwhile, we would like to bring to your attention some important programs that will take place  for you to have a clear understanding of what  Andela is and what is expected of you before we start our program.</p>
+                  <div class="comment-div">
+                  <div class="likes"><i class="like fa-regular fa-thumbs-up"></i> <p>5</p> <i class="dislike fa-regular fa-thumbs-down"></i></div>
+                  <div><textarea name="" id="wcomment" cols="10" rows="10" placeholder="Write comment" required></textarea> 
+                    <div class="comment-button">
+                      <p>2 comment(s)</p>
+                      <button>Add comment</button>
+                    </div>
+                    </div>
+                  </div>
+             </div>
+            </div>
+          </section>          
+          <section id="blog3">
+            <div class="more-blog2">
+              <div class="photo1"><img class="right-imgs" src="../images/react-native.jpg" alt=""></div>
+              <div class="more-sdisc">
+                <h3>Hello there,</h3>
+                <p>You’re invited to join cohort 30 of the Andela Technical Leadership Program; 
+                  your ticket to a career in software engineering! Welcome to Andela. You are beginning an experience that will influence how you think, what you do, and what you will achieve for the rest of your career. <br><br><br>
+                 Because of your endeavor, you have been selected to be a beneficiary of the ATLP, a special program by Andela. After 9 months, you will become part of a 500+ Andela Global alumni who successfully passed through Andela and are now changing the world through cutting edge tech solutions they provide to their respective communities.
+                 Of course, we would like to inform you that there is hard work between now and your exit. Acquiring knowledge that will change you and your surroundings is not easy but we chose you from many because we believe our [you and us] combined efforts for your learning path will be a success based on our assessments. You will have access to the most modern tools and technologies and guidance by the experienced Learning/work managers that you would hardly see elsewhere.   
+                 Meanwhile, we would like to bring to your attention some important programs that will take place  for you to have a clear understanding of what  Andela is and what is expected of you before we start our program.</p>
+                  <div class="comment-div">
+                  <div class="likes"><i class="like fa-regular fa-thumbs-up"></i> <p>5</p> <i class="dislike fa-regular fa-thumbs-down"></i></div>
+                  <div><textarea name="" id="wcomment" cols="10" rows="10" placeholder="Write comment" required></textarea> 
+                    <div class="comment-button">
+                      <p>2 comment(s)</p>
+                      <button>Add comment</button>
+                    </div>
+                    </div>
+                  </div>
+             </div>
+            </div>
+          </section>          
         </div>
     </div>
+    <script src="../scripts/moreblogs.js"></script>
 </body>
 </html>

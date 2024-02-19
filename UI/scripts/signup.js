@@ -58,7 +58,14 @@ function signup() {
     // If all validations pass, you can proceed with form submission or further actions
     // For example, you can submit the form using AJAX or redirect to another page
     // For simplicity, we'll just display a success message here
+    localStorage.setItem("Users", JSON.stringify({ email, name, pass,male, female }));
+
     document.getElementById("reg-success").textContent = "Signup successful!";
+      
+
+    setTimeout(function () {
+         window.location.href = "../pages/login.html";
+       }, 2000);
 
 
     resetSignUp();
@@ -72,8 +79,8 @@ function validateEmail(email) {
 
 
 function resetSignUp() {
-    var email = document.getElementById("email").value ="";
-    var name = document.getElementById("name").value ="";
-    var pass = document.getElementById("pass").value ="";
-    var cpass = document.getElementById("cpass").value ="";
+    document.getElementById("email").value ="";
+    document.getElementById("name").value ="";
+    document.getElementById("pass").value ="";
+    document.getElementById("cpass").value ="";
 }

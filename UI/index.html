@@ -27,7 +27,7 @@
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#blogs">Blogs </a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="./pages/login.html" >LogIn</a></li>
+          <li><a href="./pages/login.html" id="signout">LogIn</a></li>
         </ul>
       </div>
     </div>
@@ -249,7 +249,7 @@
    <!-- displaying blogs    -->
    
         </div>
-      <!-- <a href="./pages/allblogs.html"><button class="seemore" id="rmore">READMORE BLOGS</button></a>   -->
+      <a href="./pages/moreblogs.html"><button class="seemore" id="rmore">READMORE BLOGS</button></a>  
       </div>
      </section>
 
@@ -270,7 +270,7 @@
             <form id="contactForm">
                 <input type="text" id="name" placeholder="Name" style="border-bottom: 1px solid #ff6300;"> <p id="name-p" class="pargraph"></p><br>  
                 <input type="text" id="email" placeholder="Email" style="border-bottom: 1px solid #ff6300;"> <p id="email-p" class="pargraph"></p><p id="email-val-p" class="pargraph"></p><br>
-                <textarea name="" id="message" cols="10" rows="10" placeholder="Message" required></textarea> <p id="message-p" class="pargraph"></p>
+                <textarea name="" id="message" cols="10" rows="10" placeholder="Message"></textarea> <p id="message-p" class="pargraph"></p>
                 <br>
                 <input type="button" value="SEND MESSAGE" id="submit" class="sending" onclick="sendMessage()"> 
             </form>
@@ -305,6 +305,7 @@
 
                  
 
-     <script src="./scripts/index.js"></script> 
+     <script src="./scripts/index.js"></script>
+     <script src="./scripts/logout.js"></script> 
   </body>
 </html>

@@ -16,12 +16,44 @@
   box-sizing: border-box;
   font-family: "poppins", sans-serif;
 }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-
-body {
-  overflow: hidden; 
+:root {
+  --main-color: #03010E;
+  --main-div-color: #3c4858;
+  --headings: #ff6300;
+  --text-color: #ffffff;
+   --validate: #D7332F;
 }
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+  }
 
+body{
+    background-color:#03010E;
+    overflow: hidden;
+}
+.nav{
+    height: 5rem;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #03010E;
+    padding: 20px 20px;
+  }
+    label.logo, .home{
+   color: #ff6300;
+    font-size: 20px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+  }
 .container {
     display: flex;
     height: 100vh; 
@@ -32,7 +64,6 @@ body {
     /* flex: 1; */
     overflow-y: auto; 
     height: 100%; 
-    border: 1px solid #ccc; 
 }
 
 .left-section {

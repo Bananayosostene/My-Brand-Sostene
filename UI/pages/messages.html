@@ -30,9 +30,10 @@
                   <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
                     <ul>
                         <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
+                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
                         <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
                         <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
-                    </ul><br><br><br><br>
+                    </ul>
                     <ul> 
                       <li><a href="../index.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
                     </ul>
@@ -103,53 +104,8 @@
                       <th colspan="2">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td id="name-r">Sostene</td>
-                      <td id="email-r">sostene@example.com</td>
-                      <td id="date-r">2023-01-01</td>
-                      <td id="time-r">12:30 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Additional rows go here -->
-                     <td>1</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-01</td>
-                      <td>12:30 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>                     
-                    <td>1</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-01</td>
-                      <td>12:30 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>                     
-                    <td>1</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-01</td>
-                      <td>12:30 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-  
+                  <tbody id="message_data">
+                    
                   </tbody>
                 </table>
               </div>
@@ -160,22 +116,37 @@
       </div>
     </div>
 
-          <script>       
+          <script> 
+          let message_data = document.getElementById("message_data");
+        
+          
+  function getContacts() {
+  const contactsString = localStorage.getItem("contacts");
+  return contactsString ? JSON.parse(contactsString) : [];
+   }
         function loadDada(){
             // Read from local storage
-            var contactData = localStorage.getItem("contactData");
-            if (contactData) {
-                displayContactData(JSON.parse(contactData));
-            }
-        };
-        
-        function displayContactData(data) {
-            document.getElementById("name-r").textContent = data.name;
-            document.getElementById("email-r").textContent = data.email;
-            document.getElementById("date-r").textContent = data.formattedDate;
-            document.getElementById("time-r").textContent = data.formattedTime;
-            document.getElementById("sms-r").textContent = data.message;
-        }
+            
+          };
+          var contactData = getContacts();
+          contactData.map((contact, index)=>{
+            const row = document.createElement('tr');
+               
+           row.innerHTML = `
+        <td>${contact.id}</td>
+        <td>${contact.name}</td>
+        <td>${contact.email}</td>
+        <td>${contact.formattedDate}</td>
+        <td>${contact.formattedTime}</td>
+        <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
+        <td><button class="delete-btn">Delete</button></td>
+      `;
+      message_data.appendChild(row);
+    });
+  
+
+          console.log(message_data);
+      
 
     </script>
 
