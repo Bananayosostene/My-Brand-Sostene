@@ -1,11 +1,11 @@
 function generateUniqueId() {
   const timestamp = new Date().getTime();
   const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
-  return `${timestamp}_${random}`;
+  return `${timestamp}${random}`;
 }
 
 const uniqueId = generateUniqueId();
-console.log(uniqueId);
+// console.log(uniqueId);
 
 // Function to get the contacts from local storage
 function getContacts() {
@@ -41,9 +41,6 @@ function deleteContact(contactId) {
   );
   localStorage.setItem("contacts", JSON.stringify(updatedContacts));
 }
-
-
-
 
 function sendMessage() {
   var name = document.getElementById("name").value;
@@ -92,17 +89,12 @@ function sendMessage() {
     email: email,
     message: message,
     date: date,
-    time: time
-   })
-  
-  
-  // localStorage.setItem("contactData", JSON.stringify({ Id, name, email, message, formattedDate, formattedTime }));
+    time: time,
+  });
 
-  // Other logic for sending the message (e.g., to the server)
-  // ...
-
-  // Optional: Display a confirmation message
   document.getElementById("sms-sent").textContent = "Message sent!";
+  alert("send success");
+  window.location.reload();
   resetForm();
 }
 

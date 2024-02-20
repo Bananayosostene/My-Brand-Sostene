@@ -1,61 +1,29 @@
-let blog1 = document.querySelector(".blog1");
-let blog2 = document.querySelector(".blog2");
-let blog3 = document.querySelector(".blog3");
-let blog4 = document.querySelector(".blog4");
-let blog5 = document.querySelector(".blog5");
-let blog6 = document.querySelector(".blog6");
 
 
-blog1.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "block";
-  document.getElementById("more-blog2").style.display = "none";
-  document.getElementById("more-blog3").style.display = "none";
-  document.getElementById("more-blog4").style.display = "none";
-  document.getElementById("more-blog5").style.display = "none";
-  document.getElementById("more-blog6").style.display = "none";
-});
+        function getBlogs() {
+          const blogsString = localStorage.getItem("blogs");
+          return blogsString ? JSON.parse(blogsString) : [];
+        }
 
-blog2.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "none";
-  document.getElementById("more-blog2").style.display = "block";
-  document.getElementById("more-blog3").style.display = "none";
-  document.getElementById("more-blog4").style.display = "none";
-  document.getElementById("more-blog5").style.display = "none";
-  document.getElementById("more-blog6").style.display = "none";
-});
 
-blog3.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "none";
-  document.getElementById("more-blog2").style.display = "none";
-  document.getElementById("more-blog3").style.display = "block";
-  document.getElementById("more-blog4").style.display = "none";
-  document.getElementById("more-blog5").style.display = "none";
-  document.getElementById("more-blog6").style.display = "none";
-});
 
-blog4.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "none";
-  document.getElementById("more-blog2").style.display = "none";
-  document.getElementById("more-blog3").style.display = "none";
-  document.getElementById("more-blog4").style.display = "block";
-  document.getElementById("more-blog5").style.display = "none";
-  document.getElementById("more-blog6").style.display = "none";
-});
+document.addEventListener("DOMContentLoaded", function () {
+  
+  var moreBlogs = getBlogs();
+  moreBlogs.map((blog, index) => {
+    const allblog = document.getElementById("allblog");
+    allblog.innerHTML += `
 
-blog5.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "none";
-  document.getElementById("more-blog2").style.display = "none";
-  document.getElementById("more-blog3").style.display = "none";
-  document.getElementById("more-blog4").style.display = "none";
-  document.getElementById("more-blog5").style.display = "block";
-  document.getElementById("more-blog6").style.display = "none";
-});
-
-blog6.addEventListener("click", () => {
-  document.getElementById("more-blog1").style.display = "none";
-  document.getElementById("more-blog2").style.display = "none";
-  document.getElementById("more-blog3").style.display = "none";
-  document.getElementById("more-blog4").style.display = "none";
-  document.getElementById("more-blog5").style.display = "none";
-  document.getElementById("more-blog6").style.display = "block";
-});
+            <div class="blog1">
+                <div><img class="portfolio-imgs" src="${blog.blogImg}"/></div>
+                <div class="sdisc">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.blogDisc}</p>
+                </div>
+                <input type="button" value="READ MORE" id="submit" class="sending"> <span id="success"></span>
+            </div>
+          
+        `;
+  });
+  
+})

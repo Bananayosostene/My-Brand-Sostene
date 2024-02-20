@@ -17,62 +17,92 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body onload="loadDada()">
+  <body>
     <div class="dashboard">
       <div class="left-panel side">
         <div class="main-dashboard side">
-
-
-                <div class="sidebar side">
-                <div class="nav-buttons">
-                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
-                    <ul>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
-                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
-                        <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
-                        <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
-                    </ul>
-                    <ul> 
-                      <li><a href="../index.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
-                    </ul>
-                </div>
+          <div class="sidebar side">
+            <div class="nav-buttons">
+              <center>
+                <div class="logo-div"><p class="log">SOSTENE</p></div>
+              </center>
+              <ul>
+                <li>
+                  <a href="./dashboard.html"
+                    ><i class="fa-solid fa-table"></i
+                    ><span class="txt nav-txt">Dashboard</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./users.html"
+                    ><i class="fa-solid fa-users"></i
+                    ><span class="txt nav-txt">Users</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./messages.html"
+                    ><i class="fa-solid fa-message"></i
+                    ><span class="txt nav-txt">Message</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./blogs.html"
+                    ><i class="fa-solid fa-blog"></i
+                    ><span class="txt nav-txt">Blogs</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <li onclick="logout()">
+                  <a href="../pages/login.html" class="logout-btn"
+                    ><span class="logout-txt">Logout</span
+                    ><i class="fa-solid fa-right-from-bracket"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
-
-
-       
+          </div>
         </div>
       </div>
 
       <!--right side  -->
       <div class="right-panel">
-          <div class="topnav">
-            <div class="menu-div">
-               <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
-               <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
-              <p>Dashboard</p>
+        <div class="topnav">
+          <div class="menu-div">
+            <i class="left bx bx-menu" onclick="toggleLeftPanel()"></i>
+            <i
+              id="close"
+              class="right bx bx-menu"
+              onclick="toggleRightPanel()"
+            ></i>
+            <p>Dashboard</p>
+          </div>
+          <div class="right-topnav">
+            <div class="seacrh">
+              <input type="text" placeholder="Search.." />
+              <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-             <div class="right-topnav">
-              <div class="seacrh">
-                  <input type="text" placeholder="Search.." />
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                  <div class="notfication-div">
-                  <button type="button" class="icon-button">
-                    <span class="material-icons">notifications</span>
-                    <span class="icon-button__badge">2</span>
-                  </button>
-                </div>
-                <div class="profile">
-                   <div class="profile-container">
-                      <img
-                      src="../images/portfolio4.png"
-                      alt="Profile Picture"
-                      class="profile-img" />
-                  </div>
+            <div class="notfication-div">
+              <button type="button" class="icon-button">
+                <span class="material-icons">notifications</span>
+                <span class="icon-button__badge">2</span>
+              </button>
             </div>
-            </div>         
+            <div class="profile">
+              <div class="profile-container">
+                <img
+                  src="../images/portfolio4.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="main-content">
@@ -98,7 +128,7 @@
                       </div>
                       <center><p class="n-blog">4</p></center>
                     </div>
-                  </div>                  
+                  </div>
                   <div class="sms-blogs">
                     <div>
                       <div class="blogs">
@@ -110,102 +140,17 @@
                   </div>
                 </div>
               </div>
-
-              <div class="table-container">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                      <th colspan="2">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td id="name-r"></td>
-                      <td id="email-r"></td>
-                      <td id="date-r"></td>
-                      <td id="time-r"></td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                    <tr>
-                      <td>2</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Additional rows go here -->
-                    <tr>
-                      <td>3</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Sostene</td>
-                      <td>sostene@example.com</td>
-                      <td>2023-01-02</td>
-                      <td>02:45 PM</td>
-                      <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
           </section>
 
           <!-- My blogs -->
-         
 
           <!-- My messages -->
-         
         </div>
       </div>
     </div>
 
-       <script>       
-        function loadDada(){
-            // Read from local storage
-            var contactData = localStorage.getItem("contactData");
-            if (contactData) {
-                displayContactData(JSON.parse(contactData));
-            }
-        };
-        
-        function displayContactData(data) {
-            document.getElementById("name-r").textContent = data.name;
-            document.getElementById("email-r").textContent = data.email;
-            document.getElementById("date-r").textContent = data.formattedDate;
-            document.getElementById("time-r").textContent = data.formattedTime;
-            document.getElementById("sms-r").textContent = data.message;
-        }
-
-    </script>
-
+    <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>
   </body>
 </html>

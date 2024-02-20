@@ -17,163 +17,194 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="dashboard">
       <div class="left-panel side">
         <div class="main-dashboard side">
-
-
-                <div class="sidebar side">
-                <div class="nav-buttons">
-                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
-                    <ul>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
-                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
-                        <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
-                        <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
-                    </ul>
-                    <ul> 
-                      <li><a href="../index.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
-                    </ul>
-                </div>
+          <div class="sidebar side">
+            <div class="nav-buttons">
+              <center>
+                <div class="logo-div"><p class="log">SOSTENE</p></div>
+              </center>
+              <ul>
+                <li>
+                  <a href="./dashboard.html"
+                    ><i class="fa-solid fa-table"></i
+                    ><span class="txt nav-txt">Dashboard</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./users.html"
+                    ><i class="fa-solid fa-users"></i
+                    ><span class="txt nav-txt">Users</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./messages.html"
+                    ><i class="fa-solid fa-message"></i
+                    ><span class="txt nav-txt">Message</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./blogs.html"
+                    ><i class="fa-solid fa-blog"></i
+                    ><span class="txt nav-txt">Blogs</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="../index.html" class="logout-btn"
+                    ><span class="logout-txt">Logout</span
+                    ><i class="fa-solid fa-right-from-bracket"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
-
-
-       
+          </div>
         </div>
       </div>
 
       <!--right side  -->
       <div class="right-panel">
-          <div class="topnav">
-            <div class="menu-div">
-               <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
-               <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
-              <p>Blogs</p>
+        <div class="topnav">
+          <div class="menu-div">
+            <i class="left bx bx-menu" onclick="toggleLeftPanel()"></i>
+            <i
+              id="close"
+              class="right bx bx-menu"
+              onclick="toggleRightPanel()"
+            ></i>
+            <p>Blogs</p>
+          </div>
+          <div class="right-topnav">
+            <div class="seacrh">
+              <input type="text" placeholder="Search.." />
+              <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-             <div class="right-topnav">
-              <div class="seacrh">
-                  <input type="text" placeholder="Search.." />
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                  <div class="notfication-div">
-                  <button type="button" class="icon-button">
-                    <span class="material-icons">notifications</span>
-                    <span class="icon-button__badge">2</span>
-                  </button>
-                </div>
-                <div class="profile">
-                   <div class="profile-container">
-                      <img
-                      src="../images/portfolio4.png"
-                      alt="Profile Picture"
-                      class="profile-img" />
-                  </div>
+            <div class="notfication-div">
+              <button type="button" class="icon-button">
+                <span class="material-icons">notifications</span>
+                <span class="icon-button__badge">2</span>
+              </button>
             </div>
-            </div>         
+            <div class="profile">
+              <div class="profile-container">
+                <img
+                  src="../images/portfolio4.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
 
         <div class="main-content">
           <!-- My dashboard -->
-          <section id="blog-content" class="dash-section" >
-                <div class="container">
-                <div class="dash-main-nav">
-                  <div class="sms-blogs">
-                    <div>
-                      <div class="blogs">
-                        <i class="fa-solid fa-blog"></i>
-                        <p class="p">Blogs</p>
-                      </div>
-                      <center><p class="n-blog">4</p></center>
+          <section id="blog-content" class="dash-section">
+            <div class="container">
+              <div class="dash-main-nav">
+                <div class="sms-blogs">
+                  <div>
+                    <div class="blogs">
+                      <i class="fa-solid fa-blog"></i>
+                      <p class="p">Blogs</p>
                     </div>
+                    <center><p class="n-blog">4</p></center>
                   </div>
                 </div>
-               <a href="./addblog.html"><button style="width: 7rem; height: 2rem; border-radius: 5px 5px 0 0; background-color: #ff6300; color: white; border: none;">Add New blog</button></a> 
               </div>
+              <a href="./addblog.html"
+                ><button
+                  style="
+                    width: 7rem;
+                    height: 2rem;
+                    border-radius: 5px 5px 0 0;
+                    background-color: #ff6300;
+                    color: white;
+                    border: none;
+                  "
+                >
+                  Add New blog
+                </button></a
+              >
+            </div>
 
-              <div class="table-container">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Blog</th>
-                      <th>Title</th>
-                      <th>Comments</th>
-                      <th>Likes</th>
-                      <th>Time</th>
-                      <th colspan="2">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td><img src="../images/Andela-blog.png" alt=""></td>
-                      <td>ATLP</td>
-                      <td>34</td>
-                      <td>6 days <b>ago</b></td>
-                      <td>12</td>
-                      <td><button class="show-btn">Show</button></td>
-                      <td><button class="update-btn">Update</button></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                     <tr>
-                      <td>2</td>
-                      <td><img src="../images/Andela-blog.png" alt=""></td>
-                      <td>ATLP</td>
-                      <td>34</td>
-                      <td>6 days <b>ago</b></td>
-                      <td>12</td>
-                      <td><button class="show-btn">Show</button></td>
-                      <td><button class="update-btn">Update</button></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <!-- Additional rows go here -->
-                    <tr>
-                      <td>3</td>
-                      <td><img src="../images/Andela-blog.png" alt=""></td>
-                      <td>ATLP</td>
-                      <td>34</td>
-                      <td>6 days <b>ago</b></td>
-                      <td>12</td>
-                      <td><button class="show-btn">Show</button></td>
-                      <td><button class="update-btn">Update</button></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td><img src="../images/Andela-blog.png" alt=""></td>
-                      <td>ATLP</td>
-                      <td>34</td>
-                      <td>6 days <b>ago</b></td>
-                      <td>12</td>
-                      <td><button class="show-btn">Show</button></td>
-                      <td><button class="update-btn">Update</button></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td><img src="../images/Andela-blog.png" alt=""></td>
-                      <td>ATLP</td>
-                      <td>34</td>
-                      <td>6 days <b>ago</b></td>
-                      <td>12</td>
-                      <td><button class="show-btn">Show</button></td>
-                      <td><button class="update-btn">Update</button></td>
-                      <td><button class="delete-btn">Delete</button></td>
-                    </tr>
-                   
-                  </tbody>
-                </table>
-              </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Blog</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Comments</th>
+                    <th>Likes</th>
+                    <th>Time</th>
+                    <th colspan="2">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBlogs"></tbody>
+              </table>
+            </div>
           </section>
-         
         </div>
       </div>
     </div>
+
+    <script>
+      let tableBlogs = document.getElementById("tableBlogs");
+
+      function getBlogs() {
+        const blogsString = localStorage.getItem("blogs");
+        return blogsString ? JSON.parse(blogsString) : [];
+      }
+      function deleteBlogs(blogId) {
+        const blogs = getBlogs();
+        const updatedBlogs = blogs.filter((blog) => blog.id != blogId);
+        localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+        alert("Blog deleted successful");
+         
+        window.location.reload();
+      }
+      function redirectUpdate(id){
+         window.location.href =  `addblog.html?${id}`;
+      }
+      function updateBlog(){
+         const blogs = getBlogs();
+            const index = blogs.findIndex(
+            (blog) => blog.id === updatedBlogs.id
+         );
+       
+         if (index !== -1) {
+           contacts[index] = updatedContact;
+           localStorage.setItem("contacts", JSON.stringify(contacts));
+         }
+
+      }
+
+      var blogData = getBlogs();
+      blogData.map((blog, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${blog.id}</td>
+          <td><img src="${blog.blogImg}" /></td>
+          <td>${blog.title}</td>
+          <td>${blog.blogDisc.slice(4,10)}</td>
+          <td></td>
+          <td></td>
+          <td><button class="update-btn" onclick="redirectUpdate(${blog.id})>Update</button></td>
+          <td><button class="delete-btn" onclick="deleteBlogs(${blog.id})" >Delete</button></td>
+        `;
+        tableBlogs.appendChild(row);
+      });
+    </script>
 
     <script src="../scripts/dashboard.js"></script>
   </body>
