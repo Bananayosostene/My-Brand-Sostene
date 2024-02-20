@@ -174,7 +174,8 @@
         window.location.reload();
       }
       function redirectUpdate(id) {
-        window.location.href = `addblog.html?${id}`;
+        console.log(id);
+        window.location.href = `addblog.html?blogId=${id}`;
       }
       function updateBlog() {
         const blogs = getBlogs();
@@ -193,7 +194,7 @@
           <td>${blog.id}</td>
           <td><img src="${blog.blogImg}" /></td>
           <td>${blog.title}</td>
-          <td>${blog.blogDisc.slice(4, 10)}</td>
+          <td>${blog.blogDisc.slice(0, 15)}....</td>
           <td></td>
           <td></td>
           <td></td>
@@ -201,10 +202,9 @@
           <td><button class="update-btn" onclick="redirectUpdate(${
             blog.id
           })">Update</button>
-         <button class="delete-btn" onclick="deleteBlogs(${
-           blog.id
-         })" >Delete</button></td>
-        `;
+          <button class="delete-btn" onclick="deleteBlogs(${
+            blog.id
+          })" >Delete</button></td>`;
         tableBlogs.appendChild(row);
       });
     </script>

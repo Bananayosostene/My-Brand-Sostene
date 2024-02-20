@@ -17,18 +17,21 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <style>
-    .main-blog{
+    .main-blog {
       height: 100vh;
     }
-    button{
-      width: 7rem; 
-      height: 2rem; 
-      border-radius:  5px; 
-      background-color: #ff6300; 
-      color: white; 
+    button {
+      width: 7rem;
+      height: 2rem;
+      border-radius: 5px;
+      background-color: #ff6300;
+      color: white;
       border: none;
     }
   </style>
@@ -36,150 +39,219 @@
     <div class="dashboard">
       <div class="left-panel side">
         <div class="main-dashboard side">
-
-
-                <div class="sidebar side">
-                <div class="nav-buttons">
-                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
-                    <ul>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
-                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
-                        <li><a href="./messages.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
-                        <li><a href="./blogs.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
-                    </ul>
-                    <ul> 
-                      <li onclick="logout()"><a href="../pages/login.html" class="logout-btn"><span class="logout-txt">Logout</span><i class="fa-solid fa-right-from-bracket"></i></a></li>         
-                    </ul>
-                </div>
+          <div class="sidebar side">
+            <div class="nav-buttons">
+              <center>
+                <div class="logo-div"><p class="log">SOSTENE</p></div>
+              </center>
+              <ul>
+                <li>
+                  <a href="./dashboard.html"
+                    ><i class="fa-solid fa-table"></i
+                    ><span class="txt nav-txt">Dashboard</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./users.html"
+                    ><i class="fa-solid fa-users"></i
+                    ><span class="txt nav-txt">Users</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./messages.html"
+                    ><i class="fa-solid fa-message"></i
+                    ><span class="txt nav-txt">Message</span></a
+                  >
+                </li>
+                <li>
+                  <a href="./blogs.html"
+                    ><i class="fa-solid fa-blog"></i
+                    ><span class="txt nav-txt">Blogs</span></a
+                  >
+                </li>
+              </ul>
+              <ul>
+                <li onclick="logout()">
+                  <a href="../pages/login.html" class="logout-btn"
+                    ><span class="logout-txt">Logout</span
+                    ><i class="fa-solid fa-right-from-bracket"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
       </div>
 
-    <!--right side  -->
-    <div class="right-panel">
+      <!--right side  -->
+      <div class="right-panel">
         <div class="topnav">
           <div class="menu-div">
-             <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
-             <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
+            <i class="left bx bx-menu" onclick="toggleLeftPanel()"></i>
+            <i
+              id="close"
+              class="right bx bx-menu"
+              onclick="toggleRightPanel()"
+            ></i>
             <p>Add New Blog</p>
           </div>
-           <div class="right-topnav">
+          <div class="right-topnav">
             <div class="seacrh">
-                <input type="text" placeholder="Search.." />
-                <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search.." />
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="notfication-div">
+              <button type="button" class="icon-button">
+                <span class="material-icons">notifications</span>
+                <span class="icon-button__badge">2</span>
+              </button>
+            </div>
+            <div class="profile">
+              <div class="profile-container">
+                <img
+                  src="../images/portfolio4.png"
+                  alt="Profile Picture"
+                  class="profile-img"
+                />
               </div>
-                <div class="notfication-div">
-                <button type="button" class="icon-button">
-                  <span class="material-icons">notifications</span>
-                  <span class="icon-button__badge">2</span>
-                </button>
-              </div>
-              <div class="profile">
-                 <div class="profile-container">
-                    <img
-                    src="../images/portfolio4.png"
-                    alt="Profile Picture"
-                    class="profile-img" />
-                </div>
+            </div>
           </div>
-          </div>         
+        </div>
+        <!-- Your HTML code -->
+        <div class="main-blog">
+          <div>
+            <p>Add Blog: <input type="file" id="addImg" /></p>
+            <!-- <img src="" class="img" alt="" width="50" height="50" /> -->
+          </div>
+          <div>
+            <p>Add title:</p>
+            <input type="text" id="title" />
+          </div>
+          <div>
+            <p>Add more:</p>
+            <textarea name="" id="blogDisc" cols="80" rows="5"></textarea>
+          </div>
+          <button onclick="addBlogbtn()">Add +</button>
+        </div>
       </div>
- <!-- Your HTML code -->
-<div class="main-blog">
-    <div><p>Add Blog: <input type="file" id="addImg"/></p></div>
-    <div><p>Add title:</p> <input type="text" id="title"/></div>
-    <div><p>Add more:</p> 
-        <textarea name="" id="blogDisc" cols="80" rows="5"></textarea>
     </div>
-    <button onclick="addBlogbtn()">Add +</button>
-</div>
-
-    </div>
-<script>
-  function generateUniqueId() {
-    const timestamp = new Date().getTime();
-    const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
-    return `${timestamp}${random}`;
-  }
-
-  const uniqueId = generateUniqueId();
-
-  // Function to get the blogs from local storage
-  function getBlogs() {
-    const blogsString = localStorage.getItem("blogs");
-    return blogsString ? JSON.parse(blogsString) : [];
-  }
-
-  // Function to add a new blog to local storage
-  function addBlog(blog) {
-    const blogs = getBlogs();
-    blogs.push(blog);  // Fix: Use 'blog' instead of 'blogs'
-    localStorage.setItem("blogs", JSON.stringify(blogs));
-  }
-
-  // Function to update a blog in local storage
-  function updateBlogs(updatedBlogs) {
-    const blogs = getBlogs();
-    const index = blogs.findIndex((blog) => blog.id === updatedBlogs.id);
-
-    if (index !== -1) {
-      blogs[index] = updatedBlogs;
-      localStorage.setItem("blogs", JSON.stringify(blogs));
-    }
-  }
-
-  // Function to delete a blog from local storage
-  function deleteBlogs(blogId) {
-    const blogs = getBlogs();
-    const updatedBlogs = blogs.filter((blog) => blog.id !== blogId);
-    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
-  }
-  function inputToURL(inputElement){
-    var file = inputElement.files[0];
-    return window.URL.createObjectURL(file);
-  }
-  
-
-  async function addBlogbtn() {
-    var addImg = document.getElementById("addImg");
-    var title = document.getElementById("title").value;
-    var blogDisc = document.getElementById("blogDisc").value;
+    <script>
+      var addImg = document.getElementById("addImg");
+      var title = document.getElementById("title");
+      var blogDisc = document.getElementById("blogDisc");
+      // var img = document.querySelector(".img");
 
 
-      // console.log(inputToURL(addImg), title, blogDisc);
-       const fileToDataUrl = async (file) => {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          resolve(e.target.result);
-        };
-        reader.onerror = (e) => {
-          reject(e);
-        };
-        reader.readAsDataURL(file);
-      });
-    };
-      const file = addImg.files[0];
-      const res = await fileToDataUrl(file);
+      // id uniqueId
+      function generateUniqueId() {
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
+        return `${timestamp}${random}`;
+      }
 
-      addBlog({
-        id:uniqueId,
-        blogImg: `${res}`,
-        title: title,
-        blogDisc: blogDisc
+      const uniqueId = generateUniqueId();
+
+
+
+        //  geet params
+      const param = new URLSearchParams(window.location.search);
+      const blogId = param.get("blogId");
+
+      //  Reusable functions CRUD
+
+
+      function getBlogs() {
+        const blogsString = localStorage.getItem("blogs");
+        return blogsString ? JSON.parse(blogsString) : [];
+      }
+     
+      function addBlog(blog) {
+        const blogs = getBlogs();
+        blogs.push(blog); 
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+      }
       
-  
-    });
+      function updateBlogs(data) {
+        console.log(data);
+        const blogs = getBlogs();
+        console.log(blogs);
+        const index = blogs.findIndex((blog) => blog.id == data.id);
+        if (index !== -1) {
+          blogs[index] = data;
+          localStorage.setItem("blogs", JSON.stringify(blogs));
+        } else {
+          console.log("Not found");
+        }
+
+
+      }
+      function deleteBlogs(blogId) {
+        const blogs = getBlogs();
+        const updatedBlogs = blogs.filter((blog) => blog.id !== blogId);
+        localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+      }
+
+        function getById(id) {
+        const blogs = getBlogs();
+        return blogs.find((blog) => blog.id == id);
+      }
+
+
+      //  end here
+
+
+//   IRI KUMFASHA KUHINDURA CONTENT  YA FORM 
+
+
      
 
+      if (blogId) {
+        // img.src = getById(blogId).blogImg;
+        title.value = getById(blogId)?.title;
+        blogDisc.innerHTML = getById(blogId)?.blogDisc;
+      }
+      async function addBlogbtn() {
+        // console.log(inputToURL(addImg), title, blogDisc);
 
-      window.location.href = "blogs.html";
+        let res;
 
-    }
+        const file = addImg.files[0];
 
-    
-    
-</script>
+        if (file) {
+          const fileToDataUrl = (file) => {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                resolve(e.target.result);
+              };
+              reader.onerror = (e) => {
+                reject(e);
+              };
+              reader.readAsDataURL(file);
+            });
+          };
+          res = await fileToDataUrl(file);
+        }
+
+        if (blogId) {
+          updateBlogs({
+            id: blogId,
+            title: title.value || getById(blogId)?.title,
+            blogDisc: blogDisc.value || getById(blogId)?.blogDisc,
+            blogImg: res || getById(blogId)?.blogImg,
+          });
+          window.location.href = "blogs.html";
+        } else {
+          addBlog({
+            id: uniqueId,
+            blogImg: `${res}`,
+            title: title.value,
+            blogDisc: blogDisc.value,
+          });
+          window.location.href = "blogs.html";
+        }
+      }
+    </script>
 
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>
