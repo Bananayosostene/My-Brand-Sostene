@@ -170,23 +170,20 @@
         const updatedBlogs = blogs.filter((blog) => blog.id != blogId);
         localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
         alert("Blog deleted successful");
-         
+
         window.location.reload();
       }
-      function redirectUpdate(id){
-         window.location.href =  `addblog.html?${id}`;
+      function redirectUpdate(id) {
+        window.location.href = `addblog.html?${id}`;
       }
-      function updateBlog(){
-         const blogs = getBlogs();
-            const index = blogs.findIndex(
-            (blog) => blog.id === updatedBlogs.id
-         );
-       
-         if (index !== -1) {
-           contacts[index] = updatedContact;
-           localStorage.setItem("contacts", JSON.stringify(contacts));
-         }
+      function updateBlog() {
+        const blogs = getBlogs();
+        const index = blogs.findIndex((blog) => blog.id === updatedBlogs.id);
 
+        if (index !== -1) {
+          contacts[index] = updatedContact;
+          localStorage.setItem("contacts", JSON.stringify(contacts));
+        }
       }
 
       var blogData = getBlogs();
@@ -196,11 +193,17 @@
           <td>${blog.id}</td>
           <td><img src="${blog.blogImg}" /></td>
           <td>${blog.title}</td>
-          <td>${blog.blogDisc.slice(4,10)}</td>
+          <td>${blog.blogDisc.slice(4, 10)}</td>
           <td></td>
           <td></td>
-          <td><button class="update-btn" onclick="redirectUpdate(${blog.id})>Update</button></td>
-          <td><button class="delete-btn" onclick="deleteBlogs(${blog.id})" >Delete</button></td>
+          <td></td>
+          <td></td>
+          <td><button class="update-btn" onclick="redirectUpdate(${
+            blog.id
+          })">Update</button>
+         <button class="delete-btn" onclick="deleteBlogs(${
+           blog.id
+         })" >Delete</button></td>
         `;
         tableBlogs.appendChild(row);
       });
