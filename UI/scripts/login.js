@@ -16,10 +16,11 @@ function login() {
     document.getElementById("secret").innerHTML = "Enter Your Password";
     return false;
   }
+
+
+
+
   const users = getUsers();
-
-  console.log(users);
-
   let isRegistered = false;
 
   isRegistered = users.find((user) => {
@@ -27,17 +28,12 @@ function login() {
   });
 
   if (isRegistered) {
-    alert("Login success");
+    // alert("Login success");
     localStorage.setItem("loggedUser", JSON.stringify(isRegistered));
-    console.log(isRegistered);
+    // console.log(isRegistered);
     window.location.href = "dashboard.html";
+    
   } else {
     alert("User not found, signup first");
   }
-}
-
-function authenticate(username, password) {
-  // Replace this with actual server-side authentication logic
-  // For demonstration, checking against hardcoded values
-  return username === "Sostene" && password === "sostene123";
 }

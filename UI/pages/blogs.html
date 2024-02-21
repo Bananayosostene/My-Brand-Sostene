@@ -174,7 +174,7 @@
         window.location.reload();
       }
       function redirectUpdate(id) {
-        console.log(id);
+        // console.log(id);
         window.location.href = `addblog.html?blogId=${id}`;
       }
       function updateBlog() {
@@ -186,6 +186,14 @@
           localStorage.setItem("contacts", JSON.stringify(contacts));
         }
       }
+
+
+      function addComment(comment) {
+       const comments = getComments();
+       contacts.push(comment);
+       localStorage.setItem("comments", JSON.stringify(comments));
+       }
+      
 
       var blogData = getBlogs();
       blogData.map((blog, index) => {
