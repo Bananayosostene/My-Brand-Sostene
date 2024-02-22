@@ -55,6 +55,7 @@
 }
 .right-imgs{
   width: 100%;
+  height: 30rem;
    background-color: #03010E;
 }
 section{
@@ -123,18 +124,97 @@ textarea{
         <div id="rightBlogs" class="right-section">
          
         </div>
+
+               <div>
+                  
+                  <textarea  id="wComment" cols="10" rows="10" placeholder="Write comment" required></textarea>
+                  <div class="comment-button">
+                    <p>2 comment(s)</p>
+                    <button onclick="handleAddComment()" id="addCom">Add comment</button>
+                  </div>
+                   <div id="comList" style="color: aliceblue;">
+                    <h1 style="color: #ff6300;">Comments</h1>
+                      
+                    </div>
+                 
     </div>
 <script>
+    function generateUniqueId() {
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
+        return `${timestamp}${random}`;
+      }
 
-      // get params
+
+      let id =  generateUniqueId();
+
+         // get params
       const param = new URLSearchParams(window.location.search);
       const blogId = param.get("blogId");
 
 
+       const  comment  = document.getElementById("wComment");
+
+
+       const getComments = ()=> {
+         const comments =  JSON.parse(localStorage.getItem("comments"))  || [];
+         let commentOnBlog  =  comments.filter( comment => comment.blogId == blogId);
+         return commentOnBlog; 
+       }
+         
+       let commentsOnBlog  = getComments();
+
+       commentsOnBlog.map(comment => {
+        document.getElementById("comList").innerHTML +=`
+        <div>    
+        <h1>${comment.name}</h1>
+        <h4>${comment.comment}</h4>
+        </div>
+        `
+       })
 
 
 
+       const addComment  =  (data) =>{
+        const comments  = getComments();
+         comments.push({
+          id:data.id,
+          blogId:data.blogId,
+          comment: data.comment,
+          name:data.name
+         })
+         localStorage.setItem("comments" , JSON.stringify( comments));
+        console.log(comments);
+       }
 
+       const handleAddComment = ()=> {
+        console.log(comment.value);
+       if (!comment.value) {
+        alert("Null comment not allowed")
+        return;
+       }
+
+       if(!localStorage.getItem("loggedUser")){
+        alert("Login first to comment");
+        window.location.href = `login.html`
+
+        return;
+       }
+       const user =  JSON.parse(localStorage.getItem("loggedUser"));
+        addComment({
+          id,
+          blogId,
+          comment:comment.value,
+          name: user.name,
+        })
+        window.location.reload()
+       }
+        function getById(id) {
+        const blogs = getBlogs();
+        return blogs.find((blog) => blog.id == id);
+      }
+
+      let singlePost  =  getById(blogId);
 
 
   function getBlogs() {
@@ -142,58 +222,58 @@ textarea{
     return blogsString ? JSON.parse(blogsString) : [];
   }
 
-  function increase() {
-    let count = parseInt(document.getElementById("count").textContent);
-    count++;
-    document.getElementById("count").textContent = count;
-  }
 
-  function decrease() {
-    let count = parseInt(document.getElementById("count").textContent);
-    count--;
-    document.getElementById("count").textContent = count;
-  }
+
+  // function increase() {
+  //   let count = parseInt(document.getElementById("count").textContent);
+  //   count++;
+  //   document.getElementById("count").textContent = count;
+  // }
+
+  // function decrease() {
+  //   let count = parseInt(document.getElementById("count").textContent);
+  //   count--;
+  //   document.getElementById("count").textContent = count;
+  // }
 
   document.addEventListener("DOMContentLoaded", function () {
     var moreBlogs = getBlogs();
-    moreBlogs.map((blog, index) => {
-      const leftBlogs = document.getElementById("leftBlogs");
-      const rightBlogs = document.getElementById("rightBlogs");
-      leftBlogs.innerHTML += `
-                <div class="blog1">
-                  <a href="#blog1">
-                    <div class="photo1"><img class="blog-imgs" src="${blog.blogImg}" alt=""></div>
-                    <div class="sdisc">
-                      <h3 class="h3">${blog.title}</h3>
-                      <p>${blog.blogDisc.slice(0, 150)}.......</p>
-                    </div>
-                  </a>
-                </div>`;
+    const rightBlogs = document.getElementById("rightBlogs");
 
-      rightBlogs.innerHTML += `
-        <section id="blog1">
-          <div class="more-blog1">
-            <div class="more-photo1"><img class="right-imgs" src="${blog.blogImg}" alt=""></div>
+        rightBlogs.innerHTML = `
+        <section>
+          <div >
+            <div class="more-photo1"><img class="right-imgs" src="${singlePost.blogImg}" alt=""></div>
             <div class="more-sdisc">
-              <h3>${blog.title}</h3>
-              <p>${blog.blogDisc}</p>
+              <h3>${singlePost.title}</h3>
+              <p>${singlePost.blogDisc}</p>
               <div class="comment-div">
                 <div class="likes">
                   <i class="like fa-regular fa-thumbs-up" onclick="increase()"></i>
-                  <p id="count">5</p>
+                  <p id="count">0</p>
                   <i class="dislike fa-regular fa-thumbs-down" onclick="decrease()"></i>
                 </div>
-                <div>
-                  <textarea name="" id="wcomment" cols="10" rows="10" placeholder="Write comment" required></textarea>
-                  <div class="comment-button">
-                    <p>2 comment(s)</p>
-                    <button>Add comment</button>
-                  </div>
-                </div>
+        
               </div>
+                
+                </div>
             </div>
           </div>
+         
         </section>`;
+
+    moreBlogs.map((blog, index) => {
+      const leftBlogs = document.getElementById("leftBlogs");
+      leftBlogs.innerHTML += `
+                <div class="blog1">
+                  <a href="?blogId=${blog.id}">
+                    <div class="photo1"><img class="blog-imgs" src="${blog.blogImg}" alt=""></div>
+                    <div class="sdisc">
+                      <h3 class="h3">${blog.title}</h3>
+                      <p>${blog.blogDisc.slice(0, 150)}.....</p>
+                    </div>
+                  </a>
+                </div>`;
     });
   });
 </script>

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div><img class="portfolio-imgs" src="${blog.blogImg}"/></div>
                 <div class="sdisc">
                     <h3>${blog.title}</h3>
-                    <p>${blog.blogDisc.slice(0, 150)} .........</p>
+                    <p>${blog.blogDisc.slice(0, 70)} .........</p>
                 </div>
                 <input type="button" value="READ MORE" id="submit" class="sending" onclick="redirectSingleBlog(${blog.id})"> <span id="success"></span>
             </div>

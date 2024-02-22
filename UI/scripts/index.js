@@ -42,11 +42,21 @@ function deleteContact(contactId) {
   localStorage.setItem("contacts", JSON.stringify(updatedContacts));
 }
 
+function validateEmail(email) {
+  var emailRegex = /^\S+@\S+\.\S+$/;
+  return emailRegex.test(email);
+}
+
+function resetForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+}
 function sendMessage() {
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var message = document.getElementById("message").value;
-
+  
   if (name.trim() === "") {
     document.getElementById("name-p").innerHTML = "Please enter your name";
     return false;
@@ -93,44 +103,9 @@ function sendMessage() {
   });
 
   document.getElementById("sms-sent").textContent = "Message sent!";
-  alert("send success");
+  // alert("send success");
   window.location.reload();
   resetForm();
 }
 
-function validateEmail(email) {
-  var emailRegex = /^\S+@\S+\.\S+$/;
-  return emailRegex.test(email);
-}
 
-function resetForm() {
-  document.getElementById("name").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("message").value = "";
-}
-
-//
-
-// Example usage:
-const newContact = { id: 1, name: "John Doe", email: "john@example.com" };
-
-// Create
-addContact(newContact);
-
-// Read
-const allContacts = getContacts();
-console.log("All Contacts:", allContacts);
-
-// Update
-const updatedContact = {
-  id: 1,
-  name: "Updated Name",
-  email: "updated@example.com",
-};
-updateContact(updatedContact);
-console.log("Updated Contacts:", getContacts());
-
-// Delete
-const contactIdToDelete = 1;
-deleteContact(contactIdToDelete);
-console.log("Contacts after deletion:", getContacts());
