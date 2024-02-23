@@ -166,6 +166,20 @@
 
         window.location.reload();
       }
+function updateUser(userId) {
+  //  <td><button class="update-btn" onclick="updateUser(${user.id})">Update</button></td>
+  const users = getUsers();
+  const index = users.findIndex(
+    (user) => user.id === userId.id
+  );
+
+  if (index !== -1) {
+    users[index] = userId;
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  alert("Updated success");
+}
+
 
         var userData = getUsers();
         console.log(Table_users);
@@ -178,6 +192,7 @@
           <td>${user.name}</td>
           <td>${user.pass}</td>
           <td>${user.gender}</td>
+         
           <td><button class="delete-btn" onclick="deleteUser(${user.id})">Delete</button></td>
           </tr>
         `;

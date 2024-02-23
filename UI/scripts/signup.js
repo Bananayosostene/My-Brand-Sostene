@@ -45,7 +45,8 @@ function signup() {
   var pass = document.getElementById("pass").value;
   var cpass = document.getElementById("cpass").value;
   var male = document.getElementById("male").checked ? "M" : "";;
-  var female = document.getElementById("female").checked ? "F" : "";;
+  var female = document.getElementById("female").checked ? "F" : "";
+  var role = "user";
 
   if (email.trim() === "") {
     document.getElementById("sms-e").innerHTML = "Please enter your email";
@@ -110,6 +111,7 @@ function signup() {
     pass: pass,
     male: male,
     gender: male || female,
+    role: role,
   });
 
   document.getElementById("reg-success").textContent = "Signup successful!";

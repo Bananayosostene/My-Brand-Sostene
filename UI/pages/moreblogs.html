@@ -93,17 +93,43 @@ textarea{
   background-color: #03010e;
   border: 1px solid #ff6300;
   outline: 0;
-  width: 60%;
+  width: 100%;
   height: 5rem;
   padding-top: 1rem;
   color: white;
   font-size: 12px;
+}
+.bottomcomment{
+  width: 15rem;
+  /* border: 2px red solid; */
+  /* position: absolute; */
 }
 .comment-button{
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 60%;
+}
+#addCom{
+  border: 0;
+  outline: 0;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid #ff6300;
+  background-color: #03010E;
+  color: white;
+  padding: .3rem;
+  margin: .5rem;
+}
+.comdiv{
+  width: 12rem;
+  height: fit-content;
+  background-color: #03010E;
+  box-shadow: 0px 0px 5px white;
+  margin: 1rem;
+  padding: .3rem;
+}
+.user{
+  margin-right: 10px;
 }
     </style>
 <body>
@@ -121,23 +147,21 @@ textarea{
         <div id="leftBlogs" class="left-section">
           <!-- left side -->
         </div>
+
         <div id="rightBlogs" class="right-section">
          
         </div>
+        <div class="bottomcomment">
+           <textarea  id="wComment" cols="10" rows="10" placeholder="Write comment" required></textarea>
+           <div class="comment-button">
+             <!-- <p>comment(s)</p> -->
+             <button onclick="handleAddComment()" id="addCom">Add comment</button>
+           </div>
+            <div id="comList" style="color: aliceblue;">
+             <h1 style="color: #ff6300; font-size: 15px; padding-bottom: 1rem;">Comments</h1>
+             </div>
+           </div>
 
-               <div>
-                  
-                  <textarea  id="wComment" cols="10" rows="10" placeholder="Write comment" required></textarea>
-                  <div class="comment-button">
-                    <p>2 comment(s)</p>
-                    <button onclick="handleAddComment()" id="addCom">Add comment</button>
-                  </div>
-                   <div id="comList" style="color: aliceblue;">
-                    <h1 style="color: #ff6300;">Comments</h1>
-                      
-                    </div>
-                 
-    </div>
 <script>
     function generateUniqueId() {
         const timestamp = new Date().getTime();
@@ -166,9 +190,9 @@ textarea{
 
        commentsOnBlog.map(comment => {
         document.getElementById("comList").innerHTML +=`
-        <div>    
-        <h1>${comment.name}</h1>
-        <h4>${comment.comment}</h4>
+        <div class="comdiv">    
+        <h1 style="font-size:20px;"><i class="user fa-solid fa-user"></i>${comment.name}</h1>
+        <h4 style="font-size:12px; margin-left: 30px;">${comment.comment}</h4>
         </div>
         `
        })
@@ -224,17 +248,23 @@ textarea{
 
 
 
-  // function increase() {
-  //   let count = parseInt(document.getElementById("count").textContent);
-  //   count++;
-  //   document.getElementById("count").textContent = count;
-  // }
+   let likeCounter = 0;
 
-  // function decrease() {
-  //   let count = parseInt(document.getElementById("count").textContent);
-  //   count--;
-  //   document.getElementById("count").textContent = count;
-  // }
+    function updateCounter() {
+      document.getElementById('counter').innerText =  likeCounter + ' Like(s)' ;
+    }
+
+    function increaseLikes() {
+      likeCounter++;
+      updateCounter();
+    }
+
+    function decreaseLikes() {
+      if (likeCounter > 0) {
+        likeCounter--;
+        updateCounter();
+      }
+    }
 
   document.addEventListener("DOMContentLoaded", function () {
     var moreBlogs = getBlogs();
@@ -249,9 +279,10 @@ textarea{
               <p>${singlePost.blogDisc}</p>
               <div class="comment-div">
                 <div class="likes">
-                  <i class="like fa-regular fa-thumbs-up" onclick="increase()"></i>
-                  <p id="count">0</p>
-                  <i class="dislike fa-regular fa-thumbs-down" onclick="decrease()"></i>
+                  <i class="like fa-regular fa-thumbs-up" onclick="increaseLikes()"></i>
+                  <div id="counter"> 0 Like(s)</div>
+                    
+                  <i class="dislike fa-regular fa-thumbs-down" onclick="decreaseLikes()"></i>
                 </div>
         
               </div>
