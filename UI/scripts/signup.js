@@ -44,7 +44,7 @@ function signup() {
   var name = document.getElementById("name").value;
   var pass = document.getElementById("pass").value;
   var cpass = document.getElementById("cpass").value;
-  var male = document.getElementById("male").checked ? "M" : "";;
+  var male = document.getElementById("male").checked ? "M" : "";
   var female = document.getElementById("female").checked ? "F" : "";
   var role = "user";
 

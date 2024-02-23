@@ -21,6 +21,28 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
+                  <style>
+                input{
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            color: white;
+            background-color: #03010E;
+                }
+                .change{
+            border: 0;
+            background-color: #03010e;
+            border: 1px solid  #ff6300;
+            outline: 0;
+            width: 7rem;
+            height: 2.5rem;
+            color: #fff;
+                  
+                }
+              </style>
   </head>
   <body >
     <div class="dashboard">
@@ -123,6 +145,18 @@
                 </div>
               </div>
 
+        <form action="" id="userForm" style="display: none;">
+        <div><input type="text" id="email" placeholder="Email"></div>
+        <div><input type="text" id="name" placeholder="User name"></div>
+        <div><input type="password"  id="pass" placeholder="Password"></div>
+        <div><input type="text" id="role" placeholder="role"></div>
+        <div style="display: flex;">
+        <span class="span"><input type="radio" value="Male" name="gender" id="male"> Male</span>
+        <span class="span"><input type="radio" value="Female" name="gender" id="female"> Female</span>
+        </div>
+        <div ><input type="button"  value="Update" onclick="updateBtn()" class="change"></div>
+    </form>
+
               <div class="table-container">
                 <table>
                   <thead>
@@ -151,7 +185,19 @@
     </div>
 
     <script>
+      var userForm =document.getElementById("userForm")
       var Table_users = document.getElementById("Table_users");
+
+
+      var email = document.getElementById("email").value;
+      var name = document.getElementById("name").value;
+      var pass = document.getElementById("pass").value;
+      var male = document.getElementById("male").checked ? "M" : "";;
+      var female = document.getElementById("female").checked ? "F" : "";
+      var role = document.getElementById("role");
+
+
+
       function getUsers() {
         const usersString = localStorage.getItem("users");
         return usersString ? JSON.parse(usersString) : [];
@@ -167,17 +213,54 @@
         window.location.reload();
       }
 function updateUser(userId) {
-  //  <td><button class="update-btn" onclick="updateUser(${user.id})">Update</button></td>
+   var email = document.getElementById("email");
+      var name = document.getElementById("name");
+      var pass = document.getElementById("pass");
+       var role = document.getElementById("role");
+       var male = document.getElementById("male");
+      var female = document.getElementById("female");
+      var role = document.getElementById("role");
+
+   userForm.style.display = "block"
   const users = getUsers();
   const index = users.findIndex(
-    (user) => user.id === userId.id
-  );
+    (user) => user.id == userId
+    );
+    const user=users[index]
+    name.value=user.name
+email.value=user.email
+pass.value=user.pass
+role.value=user.role
+if(user.gender =="M"){
+ male.checked="true"; 
+}
+else if(user.gender =="F"){
+female.checked="true"
+}
 
-  if (index !== -1) {
-    users[index] = userId;
-    localStorage.setItem("users", JSON.stringify(users));
-  }
-  alert("Updated success");
+}
+
+function updateBtn(userId){
+  var email = document.getElementById("email");
+      var name = document.getElementById("name");
+      var pass = document.getElementById("pass");
+       var role = document.getElementById("role");
+       var male = document.getElementById("male");
+       var male = document.getElementById("male").checked ? "M" : "";
+       var female = document.getElementById("female").checked ? "F" : "";
+       const users = getUsers();
+  const index = users.findIndex(
+    (user) => user.id == userId
+    );
+    const user=users[index]
+ user.name=name.value
+user.email=email.value
+ user.pass=pass.value
+ user.role=role.value
+ user.gender= male || female
+  var name = document.getElementById("name");
+   localStorage.setItem("users", JSON.stringify(users));
+  console.log(name.value)
 }
 
 
@@ -192,7 +275,7 @@ function updateUser(userId) {
           <td>${user.name}</td>
           <td>${user.pass}</td>
           <td>${user.gender}</td>
-         
+         <td><button class="update-btn" onclick="updateUser(${user.id})">Update</button></td>
           <td><button class="delete-btn" onclick="deleteUser(${user.id})">Delete</button></td>
           </tr>
         `;

@@ -170,9 +170,9 @@ body {
 input[type="button"] {
   border: 0;
   background-color: #03010e;
-  border-bottom: 1px solid var(--headings);
+  border: 1px solid var(--headings);
   outline: 0;
-  width: 100%;
+  width: 10rem;
   padding-top: 1rem;
   color: #fff;
 }
