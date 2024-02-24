@@ -139,7 +139,7 @@
                         <i class="fa-solid fa-users"></i>
                         <p class="p">Users</p>
                       </div>
-                      <center><p class="n-blog">4</p></center>
+                      <center><p class="n-blog" id="n_users">4</p></center>
                     </div>
                   </div>
                 </div>
@@ -280,6 +280,7 @@ user.email=email.value
           </tr>
         `;
         });
+        document.getElementById("n_users").innerHTML = userData.length;
     </script>
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>

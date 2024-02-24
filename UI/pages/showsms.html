@@ -76,7 +76,7 @@
 
     </style>
   </head>
-  <body onload="loadDada()">
+  <body>
     <div class="dashboard">
       <div class="left-panel side">
         <div class="main-dashboard">
@@ -139,8 +139,33 @@
         <div class="main-content">
             <section class="sms-container">
               <div id="showSms" class="sms-show">
+                                    <div>
+                       <p class="pragraph">Sender Name:</p>
+                       <small id="name"></small>
+                   </div><br>
+                   <div>
+                      <p class="pragraph">Email:</p>
+                       <small id="email"></small>
+                   </div><br>
+
+               <div>
+                       <p class="pragraph">Date:</p>
+                       <small id="date"></small>
+                   </div><br>
+                   <div>
+                       <p class="pragraph">Time:</p>
+                       <small id="time"></small>
+                   </div><br
+                   <div>
+                       <p class="pragraph">Message:</p><br>
+                       <div class="sms-main-container">
+                           <small id="sms" class="sms"></small>
+                       </div>
+                   </div>
                  
-                  <a href=""><input type="button" value="Replay" id="replay-email" class="email-replay"> </a> 
+                 <a href="javascript:void(0);" id="replay-email" class="email-replay">
+  <input type="button" value="Replay">
+</a>
               </div>
           </section>
         </div>
@@ -148,56 +173,59 @@
     </div>
 
     <script>
+      
+var emailElement = document.getElementById("email");
 
-           //        let showMessage = document.getElementById("showSms");
-      // function showData() {
 
-      //   var contactData = getContacts();
-      //   contactData.map((contact, index) => {
+var myName = document.getElementById("name");
+var email = document.getElementById("email");
+var date = document.getElementById("date");  // Assuming you have an element with id "date"
+var time = document.getElementById("time");  // Assuming you have an element with id "time"
+var sms = document.getElementById("sms");    // Assuming you have an element with id "sms"
 
-      //             show_message.innerHTML =  `
-      //               <div>
-      //                 <p class="pragraph">Sender Name:</p>
-      //                 <small>${contact.id}</small>
-      //             </div><br>
-      //             <div>
-      //               <p class="pragraph">Sender Name:</p>
-      //                 <small>${contact.name}</small>
-      //             </div><br>
-      //             <div>
-      //                 <p class="pragraph">Email:</p>
-      //                 <small>${contact.email}</small>
-      //             </div><br>
+const param = new URLSearchParams(window.location.search);
+const smsId = param.get("smsId");
 
-      //             <div>
-      //                 <p class="pragraph">Date:</p>
-      //                 <small>${contact.date}</small>
-      //             </div><br>
-      //             <div>
-      //                 <p class="pragraph">Time:</p>
-      //                 <small>${contact.time}</small>
-      //             </div><br>
+function getMessages() {
+  const smsString = localStorage.getItem("contacts");
+  return smsString ? JSON.parse(smsString) : [];
+}
 
-      //             <div>
-      //                 <p class="pragraph">Message:</p><br>
-      //                 <div class="sms-main-container">
-      //                     <small id="sms-r" class="sms"></small>
-      //                 </div>
-      //             </div>
-      //     `
+function getById(id) {
+  const messages = getMessages();
+  return messages.find((sms) => sms.id == id);
+}
 
-      //     row.innerHTML = `
-      //     <td>${contact.id}</td>
-      //     <td>${contact.name}</td>
-      //     <td>${contact.email}</td>
-      //     <td>${contact.date}</td>
-      //     <td>${contact.time}</td>
-      //     <td><button class="show-btn" onclick="showBlog(${contact.id})">Show</button></a></td>
-      //     <td><button class="delete-btn">Delete</button></td>
-      //   `;
-      //     message_data.appendChild(row);
-      //   });
-      // }
+console.log(smsId);
+
+const selectedSms = getById(smsId);
+
+if (selectedSms) {
+  myName.innerText = selectedSms.name;
+  email.innerText = selectedSms.email;
+  date.innerHTML = selectedSms.date;
+  time.innerHTML = selectedSms.time;
+  sms.innerHTML = selectedSms.message;
+
+  console.log(myName.innerHTML);
+}
+
+document.getElementById("replay-email").addEventListener("click", function() {
+  // Get the email address from the displayed content
+  const emailText = emailElement.innerText.trim(); // Assuming emailElement is the element displaying the email
+
+  // Validate if it's a valid email address
+  if (/^\S+@\S+\.\S+$/.test(emailText)) {
+    // Open the user's default email client with a new email
+    window.location.href = `mailto:${emailText}?subject=Replay%20Message&cc=sbananayo98@gmail.com`;
+  } else {
+    // Handle invalid email address
+    alert("Invalid email address");
+  }
+});
+
+
+
      
     </script>
     <script src="../scripts/logout.js"></script>

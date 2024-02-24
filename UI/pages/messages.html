@@ -116,7 +116,7 @@
                       <i class="fa-regular fa-message"></i>
                       <p class="p">Message</p>
                     </div>
-                    <center><p class="n-sms">434</p></center>
+                    <center><p class="n-sms" id="n_messages">434</p></center>
                   </div>
                 </div>
               </div>
@@ -131,6 +131,7 @@
                       <th>Email</th>
                       <th>Date</th>
                       <th>Time</th>
+                      <th>Message</th>
                       <th colspan="2">Action</th>
                     </tr>
                   </thead>
@@ -145,6 +146,12 @@
 
     <script>
       let message_data = document.getElementById("message_data");
+
+
+        function redirectShow(id) {
+        // console.log(id);
+        window.location.href = `showsms.html?smsId=${id}`;
+      }
 
       function getContacts() {
         const contactsString = localStorage.getItem("contacts");
@@ -176,11 +183,13 @@
           <td>${contact.email}</td>
           <td>${contact.date}</td>
           <td>${contact.time}</td>
-          <td><a href="./showsms.html"><button class="show-btn">Show</button></a></td>
+          <td>${contact.message.slice(0,4)} ...</td>
+          <td><button class="show-btn" onclick="redirectShow(${contact.id})">Show</button></td>
           <td><button onclick="deleteContact(${contact.id})" class="delete-btn">Delete</button></td>
         `;
         message_data.appendChild(row);
       });
+      document.getElementById("n_messages").innerHTML = contactData.length;
     </script>
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>

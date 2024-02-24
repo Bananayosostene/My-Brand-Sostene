@@ -116,7 +116,7 @@
                       <i class="fa-solid fa-blog"></i>
                       <p class="p">Blogs</p>
                     </div>
-                    <center><p class="n-blog">4</p></center>
+                    <center><p class="n-blog" id="n_blogs">4</p></center>
                   </div>
                 </div>
               </div>
@@ -207,14 +207,13 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><button class="update-btn" onclick="redirectUpdate(${
-            blog.id
-          })">Update</button>
+          <td><button class="update-btn" onclick="redirectUpdate(${blog.id})">Update</button>
           <button class="delete-btn" onclick="deleteBlogs(${
             blog.id
           })" >Delete</button></td>`;
         tableBlogs.appendChild(row);
       });
+      document.getElementById("n_blogs").innerHTML = blogData.length;
     </script>
 
     <script src="../scripts/dashboard.js"></script>
