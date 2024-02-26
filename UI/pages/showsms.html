@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>show-message</title>
     <link rel="shortcut icon" type="image/png" href="../images/mylog.png" />
-    <link rel="stylesheet" href="./../css/dashboard.css" />
-    <link rel="stylesheet" href="../css/allpage.css" />
-    <link rel="stylesheet" href="./../css/addblog.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,9 +16,23 @@
     />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
+        body{
+            background-color: #03010E;
+        }
+        .backdiv{
+         margin: 2rem;
+        }
+
+        .back{
+          color: #ff6300;
+          font-size: 20px;
+          text-decoration: none;
+        }
 
 .main-content {
-  max-width: 800px;
+  
+  width: 60%;
+  height: 74vh;
   margin: 20px auto;
   padding: 20px;
   background-color: #03010e;
@@ -30,11 +41,12 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
 .sms-show {
   text-align: left;
 }
 .sms-show .pragraph{
-  color: #ff6300;
+  color: white;
 }
 
 .sms-show div {
@@ -43,8 +55,9 @@
 
 .sms-main-container {
   width: 100%;
-  padding: 20px;
-  border: 1px solid #ccc;
+  height: 5rem;
+  padding: 20px 0 20px 0;
+  border: 1px solid white;
   border-radius: 10px;
   background-color:#03010e;
 }
@@ -55,87 +68,34 @@
 }
 
 .email-replay {
-  border: 0.5px solid #03010e;
-  background-color: #03010e;
-  border: 1px solid var(--headings);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  cursor: pointer;
-  width: 10rem;
-  margin-top: 10px;
-  color: #fff;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  padding: 10px;
+    border: 0;
+    background-color: #03010E;
+    border: 1px solid white;
+    cursor: pointer;
+    outline: 0;
+    width: 100%;
+    color:#fff;
+    border-radius: 4px;
+    margin-top: 2rem;
 }
 
 .email-replay:hover {
-  background-color: #2B3245;
+    box-shadow: 0px 0px 10px white;
+    transition: 1s;
 }
 
     </style>
   </head>
   <body>
-    <div class="dashboard">
-      <div class="left-panel side">
-        <div class="main-dashboard">
 
-
-                <div class="sidebar">
-                <div class="nav-buttons">
-                  <center> <div class="logo-div"> <p class="log">SOSTENE</p> </div></center> 
-                    <ul>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-table"></i><span class="txt nav-txt">Dashboard</span></a></li>
-                        <li><a href="./users.html" ><i class="fa-solid fa-users"></i><span class="txt nav-txt">Users</span></a></li>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-message"></i><span class="txt nav-txt">Message</span></a></li>
-                        <li><a href="./dashboard.html" ><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a></li>                        
-                    </ul><br><br><br><br>
-                    <ul> 
-                      <li onclick="logout()"><a href="../pages/login.html"></a></li>         
-                    </ul>
-                </div>
-            </div>
-
-
-       
-        </div>
-      </div>
+    
 
       <!--right side  -->
-      <div class="right-panel">
-          <div class="topnav">
-              <div class="menu-div">
-                <i class='left bx bx-menu' onclick="toggleLeftPanel()" ></i>
-                <i id="close" class='right bx bx-menu' onclick="toggleRightPanel()"></i>
-            </div>
-             <div class="right-topnav">
-              <div class="seacrh">
-                  <input type="text" placeholder="Search.." />
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                  <div class="notfication-div">
-                  <button type="button" class="icon-button">
-                    <span class="material-icons">notifications</span>
-                    <span class="icon-button__badge">2</span>
-                  </button>
-                </div>
-                <div class="profile">
-                   <div class="profile-container">
-                      <img
-                      src="../images/portfolio4.png"
-                      alt="Profile Picture"
-                      class="profile-img" />
-                  </div>
-            </div>
-             <div>
-                <i id="menu" class="toggle-btn fa-solid fa-bars"></i>       
-              </div>
-            </div>         
-        </div>
+      
 
 
      <!-- message container -->
+     <div class="backdiv"> <a href="./messages.html" class="back">Back</a></div>
         <div class="main-content">
             <section class="sms-container">
               <div id="showSms" class="sms-show">
@@ -163,14 +123,12 @@
                        </div>
                    </div>
                  
-                 <a href="javascript:void(0);" id="replay-email" class="email-replay">
-  <input type="button" value="Replay">
-</a>
+                 <a href="javascript:void(0);" id="replay-email">
+                   <input type="button" value="Replay"  class="email-replay"></a>
               </div>
           </section>
         </div>
-      </div>
-    </div>
+    
 
     <script>
       
@@ -229,6 +187,5 @@ document.getElementById("replay-email").addEventListener("click", function() {
      
     </script>
     <script src="../scripts/logout.js"></script>
-    <script src="../scripts/dashboard.js"></script>
   </body>
 </html>
