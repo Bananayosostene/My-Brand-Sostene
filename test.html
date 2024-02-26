@@ -1,9 +1,24 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
 
 function getLoggedUser() {
   const usersString = localStorage.getItem("loggedUser");
   return usersString ? JSON.parse(usersString) : [];
 }
+
+
+const user = getLoggedUser();
+
+console.log(user.role)
+
 
 
 if (!localStorage.getItem("loggedUser")) {
@@ -16,17 +31,11 @@ function logout() {
 }
 
 
-const user = getLoggedUser();
-
-if (user.role == "user") {
-  alert("You are normal user");
-  window.location.href = "../index.html";
-}
 
 
 
 
 
-
-
-
+    </script>
+</body>
+</html>

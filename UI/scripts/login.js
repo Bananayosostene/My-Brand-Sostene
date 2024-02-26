@@ -22,7 +22,7 @@ function login() {
 
   const users = getUsers();
   let isRegistered = false;
-  let isAdmin = true;
+  let isAdmin = false;
 
   isAdmin = users.find((user) => {
     return user.pass == pass && user.name == names && user.role == "admin";
