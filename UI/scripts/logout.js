@@ -20,7 +20,7 @@ const user = getLoggedUser();
 
 if (user.role == "user") {
   alert("You are normal user");
-  // window.location.href = "../index.html";
+  window.location.href = "../index.html";
 }
 
 

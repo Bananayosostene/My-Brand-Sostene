@@ -46,7 +46,7 @@ function login() {
     // alert("Login success");
     localStorage.setItem("loggedUser", JSON.stringify(isRegistered));
     // console.log(isRegistered);
-    window.location.href = "dashboard.html";
+    window.location.href = "../index.html";
   }
   else {
     alert("User not found, please sign up!")
