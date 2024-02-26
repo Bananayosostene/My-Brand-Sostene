@@ -86,8 +86,9 @@ body {
 
         .nav-buttons ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            height: fit-content;
+            padding: .2rem;
+            margin: .2rem;
         }
 
         .nav-buttons ul li a {
@@ -103,14 +104,15 @@ body {
             color: var(--text-color);
             border: none;
             cursor: pointer;
+            height: max-content;
             
         }
         .txt{
           padding-left: 1rem;
         }
         .logout-txt{
-          padding-right: 1rem;
-          margin-left: 2rem;
+          display: flex;
+          
         }
 
 .logo-div p {
@@ -335,6 +337,23 @@ tr td img {
   height: 2rem;
 }
 
+@media screen and (max-width: 990px) {
+    .nav-buttons ul li a{
+    display: flex;
+    font-size: 15px;
+    padding: 5px;
+  }
+  .left-panel {
+ /* display: none; */
+  }
+  
+
+   .right-panel {
+    width: 100%;
+  }
+ 
+}
+
 @media only screen and (max-width: 780px) {
    .seacrh {
   display: flex;
@@ -352,18 +371,36 @@ tr td img {
   padding-left: 0.5rem;
   background-color: var(--main-color);
   border-bottom: 1px var(--headings) solid;
-
+  
 }
 .seacrh i{
   position: relative;
   /* border: 1px red solid; */
   color: white;
 }
+  .nav-buttons ul li a{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 0;
+  }
+    .nav-buttons ul li a span{
+    padding: 5px;
+   }
   
 }
 
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {
+   .nav-buttons ul li a span{
+    display: none;
+   }
+    .nav-buttons ul li a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
   th,
   td {
@@ -397,16 +434,4 @@ tr td img {
   }
 }
 
-
-@media screen and (max-width: 990px) {
-  .left-panel {
- display: none;
-  }
-  
-
-   .right-panel {
-    width: 100%;
-  }
- 
-}
 

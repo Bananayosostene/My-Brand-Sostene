@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body{
+            background-color: #03010E;
+        }
+        .homediv{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .back{
+          color: #ff6300;
+          font-size: 20px;
+          text-decoration: none;
+        }
+      form{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .role-div{
+        margin-bottom: 1rem;
+        width: 40%;
+      }
+      h2{
+        color: white;
+      }
+      .role{
+        border: 0;
+        outline: 0;
+        border-bottom: 1px solid #ff6300;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+        width: 99%;
+        height: 2rem;
+        background-color:  #03010E;
+        color: white;
+        text-align: center;
+      }
+      .button{
+    border: 0;
+    background-color: #03010E;
+    border: 1px solid #ff6300;
+    cursor: pointer;
+    outline: 0;
+    width: 100%;
+    color:#fff;
+    border-radius: 4px;
+      }
+      .button:hover{
+         box-shadow: 0px 0px 20px white;
+         transition: 1s;
+      }
+      
+    </style>
+</head>
+<body>
+    <form action="" id="submitUser">
+        <div class="role-div">
+          <div class="homediv">
+            <h1></h1>
+            <center><h2> Roles</h2></center>
+            <a href="./users.html" class="back">Back</a>
+          </div>
+            <center><input type="text"  id="email" placeholder="Change user role"  style="display: none;"></center>
+            <center><input type="text"  id="name" placeholder="Change user role"   style="display: none;"></center>
+            <center><input type="pass"  id="pass" placeholder="Change user role"   style="display: none;"></center>
+            <center><input type="text"  id="gender" placeholder="Change user role" style="display: none;"></center>
+            <center><input type="text" class="role" id="role" placeholder="Change user role" ></center>
+
+           <center><input type="button" class="button" value="change" onclick="changeRole()"></center> 
+        </div>
+    </form>
+    <script>
+
+
+      var email =document.getElementById("email");
+      var names =document.getElementById("name");
+      var pass =document.getElementById("pass");
+      var gender =document.getElementById("gender");
+      var role =document.getElementById("role");
+      
+      var change = document.getElementById("change");
+
+      const param = new URLSearchParams(window.location.search);
+      const userId = param.get("userId");
+
+      function getUsers(){
+         const userString = localStorage.getItem("users");
+         return userString ? JSON.parse(userString) : [];
+      }  
+      function getById(id) {
+      const users = getUsers();
+      return users.find((user) => user.id == id);
+      }
+
+      
+      function updateRole(data) {
+        console.log(data);
+        const users = getUsers();
+        console.log(users);
+        const index = users.findIndex((user) => user.id == data.id);
+        if (index !== -1) {
+          users[index] = data;
+          localStorage.setItem("users", JSON.stringify(users));
+        } else {
+          console.log("Not found");
+        }
+      }
+
+
+
+
+      console.log(userId);
+
+      const selectedUser = getById(userId);
+
+      if(selectedUser){
+        email.value =selectedUser.email
+        names.value =selectedUser.name
+        pass.value =selectedUser.pass
+        gender.value =selectedUser.gender
+        role.value =selectedUser.role
+      }
+   function changeRole(){
+    console.log(userId)
+     if(userId) {
+       updateRole({
+         id: userId,
+         email: email.value,
+         name: names.value,
+         pass: pass.value,
+         gender: gender.value,
+         role: role.value,
+       });
+       window.location.href = "users.html";
+     }
+   }
+
+
+
+    </script>
+</body>
+</html>
