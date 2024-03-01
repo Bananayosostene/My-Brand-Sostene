@@ -192,7 +192,14 @@
        contacts.push(comment);
        localStorage.setItem("comments", JSON.stringify(comments));
        }
+
+         const getComments = ()=> {
+         const comments =  JSON.parse(localStorage.getItem("comments"))  || [];
+         let commentOnBlog  =  comments.filter( comment => comment.blogId == blogId);
+         return commentOnBlog; 
+       }
       
+       console.log("hhhhhhhhhhh",getComments.length);
 
       var blogData = getBlogs();
       blogData.map((blog, index) => {
@@ -202,7 +209,6 @@
           <td><img src="${blog.blogImg}" /></td>
           <td>${blog.title}</td>
           <td>${blog.blogDisc.slice(0, 15)}....</td>
-          <td></td>
           <td></td>
           <td></td>
           <td></td>
