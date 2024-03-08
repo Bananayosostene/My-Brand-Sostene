@@ -1,31 +1,3 @@
-function generateUniqueId() {
-  const timestamp = new Date().getTime();
-  const random = Math.floor(Math.random() * 10000); // Adjust the range as needed
-  return `${timestamp}${random}`;
-}
-
-const uniqueId = generateUniqueId();
-
-// Function to get the contacts from local storage
-function getUsers() {
-  const usersString = localStorage.getItem("users");
-  return usersString ? JSON.parse(usersString) : [];
-}
-
-// Function to add a new user to local storage
-function addUsers(user) {
-  const users = getUsers();
-  users.push(user);
-  localStorage.setItem("users", JSON.stringify(users)); // Corrected variable name
-}
-
-// Function to delete a user from local storage
-function deleteUser(userId) {
-  const users = getUsers();
-  const updatedUsers = users.filter((user) => user.id !== userId);
-  localStorage.setItem("users", JSON.stringify(updatedUsers));
-}
-
 // Email validation function
 function validateEmail(email) {
   var re = /\S+@\S+\.\S+/;
@@ -39,7 +11,7 @@ function resetSignUp() {
   document.getElementById("cpass").value = "";
 }
 
-function signup() {
+async function signup() {
   var email = document.getElementById("email").value;
   var name = document.getElementById("name").value;
   var pass = document.getElementById("pass").value;
@@ -51,23 +23,21 @@ function signup() {
   if (email.trim() === "") {
     document.getElementById("sms-e").innerHTML = "Please enter your email";
     return;
-    }
+  }
 
   if (!validateEmail(email)) {
     document.getElementById("sms-e").innerHTML = "Invalid email address";
     return;
-    }
-  else {
-      document.getElementById("sms-e").innerHTML = "";
-    }
+  } else {
+    document.getElementById("sms-e").innerHTML = "";
+  }
 
   if (name.length < 1) {
     document.getElementById("sms-n").innerHTML = "Username is required";
     return;
-    }
-  else {
-      document.getElementById("sms-n").innerHTML = "";
-    }
+  } else {
+    document.getElementById("sms-n").innerHTML = "";
+  }
 
   if (pass.length < 4) {
     document.getElementById("sms-p").innerHTML =
@@ -83,42 +53,63 @@ function signup() {
 
   if (cpass === "") {
     document.getElementById("sms-p").innerHTML = "Please repeat password";
-    }
-  else {
-      document.getElementById("sms-p").innerHTML = "";
-    }
+  } else {
+    document.getElementById("sms-p").innerHTML = "";
+  }
 
   if (pass !== cpass) {
     document.getElementById("sms-conf-p").innerHTML = "Passwords do not match";
     return;
-    }
-  else {
-      document.getElementById("sms-conf-p").innerHTML ="";
-    }
+  } else {
+    document.getElementById("sms-conf-p").innerHTML = "";
+  }
 
   if (!male && !female) {
-    document.getElementById("sms-gender").innerHTML ="Please select your gender";
+    document.getElementById("sms-gender").innerHTML =
+      "Please select your gender";
     return;
-    }
-  else {
-      document.getElementById("sms-gender").innerHTML = "";
-    }
+  } else {
+    document.getElementById("sms-gender").innerHTML = "";
+  }
 
-  addUsers({
-    id: uniqueId,
-    email: email,
-    name: name,
-    pass: pass,
-    male: male,
-    gender: male || female,
-    role: role,
-  });
+  console.log(name, email, pass, female ,male);
+
+   try {
+      const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/user/post";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          username: name,
+          password: pass,
+          // gender: male || female,
+          // role: role,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Registration successful
+      document.getElementById("reg-success").textContent =
+        "Signup successful! Redirecting to login page...";
+      setTimeout(function () {
+        window.location.href = "../pages/login.html";
+      }, 2000);
+    } catch (error) {
+      console.error("Error during signup:", error);
+      // Handle the error if needed
+    }
 
   document.getElementById("reg-success").textContent = "Signup successful!";
 
-  setTimeout(function () {
-    window.location.href = "../pages/login.html";
-  }, 2000);
+  // setTimeout(function () {
+  //   window.location.href = "../pages/login.html";
+  // }, 2000);
 
-  resetSignUp();
+  // resetSignUp();
 }

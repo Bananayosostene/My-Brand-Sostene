@@ -115,7 +115,7 @@
                       <i class="fa-solid fa-blog"></i>
                       <p class="p">Blogs</p>
                     </div>
-                    <center><p class="n-blog" id="n_blogs">4</p></center>
+                    <center><p class="n-blog" id="n_blogs"></p></center>
                   </div>
                 </div>
               </div>
@@ -160,65 +160,57 @@
     <script>
       let tableBlogs = document.getElementById("tableBlogs");
 
-      function getBlogs() {
-        const blogsString = localStorage.getItem("blogs");
-        return blogsString ? JSON.parse(blogsString) : [];
-      }
-      function deleteBlogs(blogId) {
-        const blogs = getBlogs();
-        const updatedBlogs = blogs.filter((blog) => blog.id != blogId);
-        localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
-        alert("Blog deleted successful");
 
-        window.location.reload();
-      }
       function redirectUpdate(id) {
         // console.log(id);
         window.location.href = `addblog.html?blogId=${id}`;
       }
-      function updateBlog() {
-        const blogs = getBlogs();
-        const index = blogs.findIndex((blog) => blog.id === updatedBlogs.id);
 
-        if (index !== -1) {
-          contacts[index] = updatedContact;
-          localStorage.setItem("contacts", JSON.stringify(contacts));
-        }
-      }
+const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
 
+// Make a GET request using the Fetch API
+fetch(apiUrl, {
+  method: "GET",
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((userData) => {
+    // Process the retrieved user data
+    console.log("User Data:", userData.data);
+    fillBlogs(userData.data);
+    console.log("length of data", fillBlogs.length);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
-      function addComment(comment) {
-       const comments = getComments();
-       contacts.push(comment);
-       localStorage.setItem("comments", JSON.stringify(comments));
-       }
+  const fillBlogs  = (blogs) => {
+     let counter = 1;
+     blogs.map((blog) =>{
+       const row = document.createElement("tr");
+       row.innerHTML = `
+         <td>${counter}</td>
+         <td><img src="${blog.image}" /></td>
+         <td>${blog.title}</td>
+         <td>${blog.description.slice(0, 15)}....</td>
+         <td>${blog.comments.comment}</td>
+         <td>${blog.likes}</td>
+         <td></td>
+         <td><button class="update-btn" onclick="redirectUpdate(${blog._id})">Update</button>
+         <button class="delete-btn" onclick="deleteBlogs(${
+           blog._id
+         })" >Delete</button></td>`;
+       tableBlogs.appendChild(row);
+       counter++; 
+       document.getElementById("n_blogs").innerHTML = counter -1;
+     })
+  }
 
-         const getComments = ()=> {
-         const comments =  JSON.parse(localStorage.getItem("comments"))  || [];
-         let commentOnBlog  =  comments.filter( comment => comment.blogId == blogId);
-         return commentOnBlog; 
-       }
       
-       console.log("hhhhhhhhhhh",getComments.length);
-
-      var blogData = getBlogs();
-      blogData.map((blog, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${blog.id}</td>
-          <td><img src="${blog.blogImg}" /></td>
-          <td>${blog.title}</td>
-          <td>${blog.blogDisc.slice(0, 15)}....</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button class="update-btn" onclick="redirectUpdate(${blog.id})">Update</button>
-          <button class="delete-btn" onclick="deleteBlogs(${
-            blog.id
-          })" >Delete</button></td>`;
-        tableBlogs.appendChild(row);
-      });
-      document.getElementById("n_blogs").innerHTML = blogData.length;
     </script>
 
     <script src="../scripts/dashboard.js"></script>
