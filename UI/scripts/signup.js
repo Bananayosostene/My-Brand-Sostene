@@ -72,7 +72,7 @@ async function signup() {
     document.getElementById("sms-gender").innerHTML = "";
   }
 
-  console.log(name, email, pass, female ,male);
+  // console.log(name, email, pass, female ,male);
 
    try {
       const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/user/post";

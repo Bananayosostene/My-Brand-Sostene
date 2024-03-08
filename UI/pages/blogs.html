@@ -197,7 +197,7 @@ fetch(apiUrl, {
          <td><img src="${blog.image}" /></td>
          <td>${blog.title}</td>
          <td>${blog.description.slice(0, 15)}....</td>
-         <td>${blog.comments.comment}</td>
+         <td>${blog.comments.length}</td>
          <td>${blog.likes}</td>
          <td></td>
          <td><button class="update-btn" onclick="redirectUpdate(${blog._id})">Update</button>
@@ -210,7 +210,7 @@ fetch(apiUrl, {
      })
   }
 
-      
+      // map(item =>item.comment)
     </script>
 
     <script src="../scripts/dashboard.js"></script>

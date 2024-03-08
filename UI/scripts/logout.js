@@ -1,18 +1,18 @@
 
 
 function getLoggedUser() {
-  const usersString = localStorage.getItem("loggedUser");
+  const usersString = localStorage.getItem("token");
   return usersString ? JSON.parse(usersString) : [];
 }
 
 
-if (!localStorage.getItem("loggedUser")) {
+if (!localStorage.getItem("token")) {
   alert("Login first");
   window.location.href = "login.html";
 }
 
 function logout() {
-  localStorage.removeItem("loggedUser");
+  localStorage.removeItem("token");
 }
 
 

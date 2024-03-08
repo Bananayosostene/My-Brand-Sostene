@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn</title>
+    <title>Blog Details</title>
     <link rel="stylesheet" href="../css/moreblogs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/png" href="../images/mylog.png">
 </head>
+
 <body>
     <div class="nav">
         <div class="leftnav">
@@ -21,116 +22,155 @@
             </ul>
         </div>
     </div>
-    <divclass="container">
-        <div id="leftBlogs" class="left-section">
 
-        </div>
-
-        <div id="rightBlogs" class="right-section">
-
-        </div>
+    <div class="container">
+        <div id="leftBlogs" class="left-section"></div>
+        <div id="rightBlogs" class="right-section"></div>
     </div>
+
     <script>
-const param = new URLSearchParams(window.location.search);
-const blogId = param.get("blogId");
+        const param = new URLSearchParams(window.location.search);
+        const blogId = param.get("blogId");
 
-console.log("bog  id",blogId)
+        const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
 
+        // Make a GET request using the Fetch API
+        fetch(apiUrl, {
+            method: "GET",
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(userData => {
+                // Process the retrieved user data
+                console.log('User Data:', userData.data);
+                fillBlogs(userData.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
 
+        console.log("fetch here");
 
-const apiUrl =  "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
+        const fillBlogs = (blogs) => {
+            const leftBlog = document.getElementById("leftBlogs");
 
-// Make a GET request using the Fetch API
-fetch(apiUrl, {
-  method: "GET",
-
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(userData => {
-    // Process the retrieved user data
-    console.log('User Data:', userData.data);
-    fillBlogs(userData.data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-console.log("fetch here")
-const fillBlogs = (blogs) => {
-  blogs.map((blog) => {
-    const leftBlog = document.getElementById("leftBlogs");
-    leftBlog.innerHTML += `
-
-            <div class="inner">
-              <a href="?blogId=${blog._id}"
-              <div>
-                <img src="${blog.image}" alt="">
-                    <h3>${blog.title}</h3>
-                    <p>${blog.description}</p>
-                </div>
-                </a>
-            </div>
-          
-        `;
-  });
-};
-
-
-  const apiUrl2 = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
-
- fetch(apiUrl2)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((blogData) =>{ blogData.data
-    console.log("response data", blogData.data)
-    fillBlog(blogData.data)
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      return null;
-    });
-
-
-    const fillBlog = (thisBlog)=>{
-var rightBlogs = document.getElementById("rightBlogs");
-
-rightBlogs.innerHTML = `
-            <div class="inner-right">
-                <img  src="${thisBlog.image}" alt="">
-                <div>
-                    <h3>${thisBlog.title}</h3>
-                    <p>${thisBlog.description}</p>
-                    <div class="comment-div">
-                        <div class="likes">
-                            <i class="like fas fa-heart"></i>
-                            <div id="counter">${thisBlog.likes} Like(s)</div>
+            blogs.forEach((blog) => {
+                const blogLink = document.createElement("a");
+                blogLink.href = `?blogId=${blog._id}`;
+                blogLink.innerHTML = `
+                    <div class="inner">
+                        <div>
+                            <img src="${blog.image}" alt="">
+                            <h3>${blog.title}</h3>
+                            <p>${blog.description}</p>
                         </div>
-                        <div class="bottomcomment">
-                            <textarea id="wComment" cols="10" rows="10" placeholder="Write comment"></textarea>
-                            <div class="comment-button">
-                                <button onclick="handleAddComment()" id="addCom">Add comment</button>
+                    </div>
+                `;
+                leftBlog.appendChild(blogLink);
+            });
+        };
+
+        const apiUrl2 = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
+
+        fetch(apiUrl2)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((blogData) => {
+                console.log("response data", blogData.data)
+                fillBlog(blogData.data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                return null;
+            });
+
+        async function liking() {
+            if (!localStorage.getItem("token")) {
+                alert("Login first to like");
+                window.location.href = "login.html";
+                return;
+            } else {
+                try {
+                    const apiUrl1 = `https://brand-backend-v2xk.onrender.com/brand/blog/like/${blogId}`;
+
+                    const response = await fetch(apiUrl1, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Failed to like the blog");
+                    }
+
+                    // Fetch the updated blog data after liking
+                    const updatedBlogResponse = await fetch(
+                        `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`,
+                        {
+                            method: "GET",
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                            },
+                        }
+                    );
+
+                    if (!updatedBlogResponse.ok) {
+                        throw new Error("Failed to fetch updated blog data");
+                    }
+
+                    const updatedBlogData = await updatedBlogResponse.json();
+
+                    // Call the fillBlog function with the updated data to refresh the UI
+                    fillBlog(updatedBlogData.data);
+                } catch (error) {
+                    console.error("Error during liking:", error);
+                }
+            }
+        }
+
+        const fillBlog = (thisBlog) => {
+            const rightBlog = document.getElementById("rightBlogs");
+
+            rightBlog.innerHTML = `
+                <div class="inner-right">
+                    <img src="${thisBlog.image}" alt="">
+                    <div>
+                        <h3>${thisBlog.title}</h3>
+                        <p>${thisBlog.description}</p>
+                        <div class="comment-div">
+                            <div class="likes">
+                                <i class="like fas fa-heart" onclick="liking()"></i>
+                                <div id="counter">${thisBlog.likes} Like(s)</div>
                             </div>
-                            <div id="comList" style="color: aliceblue;">
-                                <h1 style="color: #ff6300; font-size: 15px; padding-bottom: 1rem;">Comment(s)</h1>
+                            <div class="bottomcomment">
+                                <textarea id="wComment" cols="10" rows="10" placeholder="Write comment"></textarea>
+                                <div class="comment-button">
+                                    <button onclick="handleAddComment()" id="addCom">Add comment</button>
+                                </div>
+                                <div id="comList" style="color: aliceblue;">
+                                    <h1 style="color: #ff6300; font-size: 15px; padding-bottom: 1rem;">Comment(s)</h1>
+                                </div>
                             </div>
-                        </div>
-                        <div class="comdiv">
-                            <h1 style="font-size:20px;"><i class="user fas fa-user"></i>Sostene</h1>
-                            <h4 style="font-size:12px; margin-left: 30px;">Good job</h4>
+                            <div class="comdiv">
+                                <h1 style="font-size:20px;"><i class="user fas fa-user"></i>Sostene</h1>
+                                <h4 style="font-size:12px; margin-left: 30px;">${thisBlog.comments.map(item => item.comment)}</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-`
-    }
+            `;
+        };
     </script>
 </body>
+
 </html>
