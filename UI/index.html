@@ -274,7 +274,7 @@
 
     <script>
 
-  if (!localStorage.getItem("loggedUser")) {
+  if (!localStorage.getItem("token")) {
     
     document.getElementById("signout").innerText = "login";
     // console.log("hello");
@@ -286,13 +286,14 @@
 
 
 document.getElementById("signout").addEventListener('click', function (){
-  if (!localStorage.getItem("loggedUser")) {
+  if (!localStorage.getItem("token")) {
     
     window.location.href = `pages/login.html`;
     // console.log("hello");
   }
   else {
-    localStorage.removeItem("loggedUser")
+    localStorage.removeItem("token")
+    localStorage.removeItem("role");
     window.location.href = `index.html`;
   }
 })

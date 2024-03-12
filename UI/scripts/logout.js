@@ -1,9 +1,8 @@
 
 
-function getLoggedUser() {
-  const usersString = localStorage.getItem("token");
-  return usersString ? JSON.parse(usersString) : [];
-}
+
+  const user = localStorage.getItem("token");
+
 
 
 if (!localStorage.getItem("token")) {
@@ -13,15 +12,16 @@ if (!localStorage.getItem("token")) {
 
 function logout() {
   localStorage.removeItem("token");
+  localStorage.removeItem("role");
 }
 
-
-const user = getLoggedUser();
-
-if (user.role == "user") {
+const userRole = localStorage.getItem("role");
+if (userRole == "user") {
   alert("You are normal user");
   window.location.href = "../index.html";
 }
+
+
 
 
 

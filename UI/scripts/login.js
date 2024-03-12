@@ -36,19 +36,14 @@ console.log(names, pass);
      const userData = await response.json();
      console.log("token: ", userData);
      localStorage.setItem("token", userData.tokenisthe);
+     localStorage.setItem("role", userData.data.role);
      
-
      if (userData.data.role == "admin") {
-          window.location.href = "dashboard.html";
+       window.location.href = "dashboard.html";
+     } else {
+      console.log("you are user");
+      window.location.href = "../index.html";
      }
-     else {
-       
-     }
-     
-
-      
-      // document.getElementById("reg-success").textContent =
-        "Signup successful! Redirecting to login page...";
         
       
     } catch (error) {
@@ -56,6 +51,5 @@ console.log(names, pass);
       // Handle the error if needed
     }
 
-  document.getElementById("reg-success").textContent = "Signup successful!";
   
 }

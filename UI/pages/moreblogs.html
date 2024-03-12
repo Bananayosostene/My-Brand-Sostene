@@ -32,9 +32,12 @@
         const param = new URLSearchParams(window.location.search);
         const blogId = param.get("blogId");
 
+        
+
+        // displaying all blogs
+
         const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
 
-        // Make a GET request using the Fetch API
         fetch(apiUrl, {
             method: "GET",
         })
@@ -46,16 +49,97 @@
             })
             .then(userData => {
                 // Process the retrieved user data
-                console.log('User Data:', userData.data);
                 fillBlogs(userData.data);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
 
-        console.log("fetch here");
 
-        const fillBlogs = (blogs) => {
+
+
+        const apiUrl1 = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
+
+        fetch(apiUrl1)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((blogData) => {
+                console.log("response data", blogData.data)
+                fillBlog(blogData.data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                return null;
+            });
+
+        async function liking() {
+            var addLike = document.getElementById("addLike")
+            if (!localStorage.getItem("token")) {
+                alert("Login first to like");
+                window.location.href = "login.html";
+                return;
+            } else {
+                   
+                try {
+                    const apiUrl3 = `https://brand-backend-v2xk.onrender.com/brand/blog/like/${blogId}`;
+
+                    const response = await fetch(apiUrl3, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`, 
+                        },
+                        body: JSON.stringify({
+                        addLike: true,
+                      }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Failed to like the blog");
+                    }
+                    alert("Blog liked successfully");
+                    window.location.reload();
+
+                } catch (error) {
+                    console.error("Error during liking:", error);
+                }
+            }
+        }
+
+
+
+        //Fetch single blog
+
+          try {
+            const updatedBlogResponse =  fetch(`https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`,
+                {
+                    method: "GET",
+                    headers: {
+                                "Content-Type": "application/json",
+                             },
+                }
+
+            );
+          
+            if (!updatedBlogResponse.ok) {
+                throw new Error("Failed to fetch updated blog data");
+            }
+          
+            const updatedBlogData =  updatedBlogResponse.json();
+          
+            fillBlog(updatedBlogData.data);
+          } catch (error) {
+            console.error("Error during liking:", error);
+          }
+  
+
+        
+        //fetching left blogs
+                const fillBlogs = (blogs) => {
             const leftBlog = document.getElementById("leftBlogs");
 
             blogs.forEach((blog) => {
@@ -74,73 +158,56 @@
             });
         };
 
-        const apiUrl2 = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
 
-        fetch(apiUrl2)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((blogData) => {
-                console.log("response data", blogData.data)
-                fillBlog(blogData.data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                return null;
-            });
+         // create comments
 
-        async function liking() {
-            if (!localStorage.getItem("token")) {
-                alert("Login first to like");
-                window.location.href = "login.html";
-                return;
-            } else {
-                try {
-                    const apiUrl1 = `https://brand-backend-v2xk.onrender.com/brand/blog/like/${blogId}`;
+  async function AddComment() {
+    var wComment = document.getElementById("wComment").value;
 
-                    const response = await fetch(apiUrl1, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${localStorage.getItem("token")}`,
-                        },
-                    });
+    if (!localStorage.getItem("token")) {
+        alert("Login first to comment");
+        window.location.href = "login.html";
+        return;
+    }
+    if(wComment.trim() == " "){
+      document.getElementById("paragraph").innerHTML = "Empty comment not allowed";
+    }
 
-                    if (!response.ok) {
-                        throw new Error("Failed to like the blog");
-                    }
+    try {
+        const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/createCom/${blogId}`;
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`, 
+            },
+            body: JSON.stringify({
+                comment: wComment,
+            }),
+        });
 
-                    // Fetch the updated blog data after liking
-                    const updatedBlogResponse = await fetch(
-                        `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`,
-                        {
-                            method: "GET",
-                            headers: {
-                                Authorization: `Bearer ${localStorage.getItem("token")}`,
-                            },
-                        }
-                    );
-
-                    if (!updatedBlogResponse.ok) {
-                        throw new Error("Failed to fetch updated blog data");
-                    }
-
-                    const updatedBlogData = await updatedBlogResponse.json();
-
-                    // Call the fillBlog function with the updated data to refresh the UI
-                    fillBlog(updatedBlogData.data);
-                } catch (error) {
-                    console.error("Error during liking:", error);
-                }
-            }
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const fillBlog = (thisBlog) => {
-            const rightBlog = document.getElementById("rightBlogs");
+        alert("Comment added successfully!");
+        
+        window.location.reload()
 
+    } catch (error) {
+        console.error("Error adding comment:", error);
+    }
+}
+
+
+
+
+
+
+        const fillBlog = (thisBlog) => {
+
+            const rightBlog = document.getElementById("rightBlogs");
+            thisBlog.commentedBy.map(item => item._id)
             rightBlog.innerHTML = `
                 <div class="inner-right">
                     <img src="${thisBlog.image}" alt="">
@@ -150,21 +217,24 @@
                         <div class="comment-div">
                             <div class="likes">
                                 <i class="like fas fa-heart" onclick="liking()"></i>
-                                <div id="counter">${thisBlog.likes} Like(s)</div>
+                                <div id="addLike">${thisBlog.likes} Like(s)</div>
                             </div>
                             <div class="bottomcomment">
                                 <textarea id="wComment" cols="10" rows="10" placeholder="Write comment"></textarea>
+                                <p id ="paragraph"></p> 
                                 <div class="comment-button">
-                                    <button onclick="handleAddComment()" id="addCom">Add comment</button>
+                                    <button onclick="AddComment()" id="addCom">Add comment</button>
                                 </div>
                                 <div id="comList" style="color: aliceblue;">
                                     <h1 style="color: #ff6300; font-size: 15px; padding-bottom: 1rem;">Comment(s)</h1>
                                 </div>
                             </div>
-                            <div class="comdiv">
-                                <h1 style="font-size:20px;"><i class="user fas fa-user"></i>Sostene</h1>
-                                <h4 style="font-size:12px; margin-left: 30px;">${thisBlog.comments.map(item => item.comment)}</h4>
-                            </div>
+                           ${thisBlog.comments.map(comment => `
+                                <div class="comdiv">
+                                    <h1 style="font-size:20px;"><i class="user fas fa-user"></i>${comment.username}</h1>
+                                    <h4 style="font-size:12px; margin-left: 30px;">${comment.comment}</h4>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
+
+
 function redirectSingleBlog(id) {
   window.location.href = `pages/moreblogs.html?blogId=${id}`;
-  console.log(id);
 }
 
 const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
 
-// Make a GET request using the Fetch API
 fetch(apiUrl, {
   method: "GET",
 })
@@ -16,7 +16,6 @@ fetch(apiUrl, {
     return response.json();
   })
   .then((userData) => {
-    // Process the retrieved user data
     console.log("User Data:", userData.data);
     fillBlogs(userData.data);
   })
@@ -27,8 +26,8 @@ console.log("fetch here");
 
 const fillBlogs = (blogs) => {
   const slicedBlogs = blogs.slice(0, 3);
-
   slicedBlogs.map((blog) => {
+    console.log("id.........", blog._id);
     const allblog = document.getElementById("allblog");
     allblog.innerHTML += `
       <div>

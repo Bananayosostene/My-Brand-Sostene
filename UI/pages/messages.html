@@ -60,7 +60,7 @@
               <ul>
                 <li onclick="logout()">
                   <a href="../pages/login.html" class="logout-btn"
-                    ><span class="logout-txt">Logout</span
+                    ><i class="fa-solid fa-right-from-bracket"></i><span class="logout-txt">Logout</span
                     ></a>
                 </li>
               </ul>
@@ -115,7 +115,7 @@
                       <i class="fa-regular fa-message"></i>
                       <p class="p">Message</p>
                     </div>
-                    <center><p class="n-sms" id="n_messages">434</p></center>
+                    <center><p class="n-sms" id="n_messages"></p></center>
                   </div>
                 </div>
               </div>
@@ -152,43 +152,55 @@
         window.location.href = `showsms.html?smsId=${id}`;
       }
 
-      function getContacts() {
-        const contactsString = localStorage.getItem("contacts");
-        return contactsString ? JSON.parse(contactsString) : [];
-      }
+      
 
-      function deleteContact(id) {
-        const isConfirmed = window.confirm("Are you sure you want to proceed?");
-        // console.log(id);
 
-        if (isConfirmed) {
-          const contacts = getContacts();
-          const updateContacts = contacts.filter((contact) => contact.id != id);
-          console.log(updateContacts);
-          localStorage.setItem("contacts", JSON.stringify(updateContacts));
-          alert("delete success");
-          window.location.reload();
-        } else {
-          alert("delete canceled!");
-        }
-      }
+          
+      const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/contact/gets";
+      
+      // Make a GET request using the Fetch API
+      fetch(apiUrl, {
+        method: "GET",
+          headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((userData) => {
+          console.log("User Data:", userData.data)
+          FillContact(userData.data)
+          console.log("length of data", FillContact.length);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      
 
-      var contactData = getContacts();
-      contactData.map((contact, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${contact.id}</td>
-          <td>${contact.name}</td>
-          <td>${contact.email}</td>
-          <td>${contact.date}</td>
-          <td>${contact.time}</td>
-          <td>${contact.message.slice(0,4)} ...</td>
-          <td><button class="show-btn" onclick="redirectShow(${contact.id})">Show</button></td>
-          <td><button onclick="deleteContact(${contact.id})" class="delete-btn">Delete</button></td>
-        `;
-        message_data.appendChild(row);
-      });
-      document.getElementById("n_messages").innerHTML = contactData.length;
+
+      const FillContact = (contacts) =>{
+          
+        let count = 1;
+        contacts.map((contact) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${count}</td>
+            <td>${contact.name}</td>
+            <td>${contact.email}</td>
+            <td>${contact.message.slice(0,4)} ...</td>
+            <td>${contact.createdAt}</td>
+            <td><button class="show-btn" onclick="redirectShow(${contact._id})">Show</button></td>
+            <td><button onclick="deleteContact(${contact._id})" class="delete-btn">Delete</button></td>
+          `;
+          message_data.appendChild(row);
+          count++;
+        });
+        document.getElementById("n_messages").innerHTML = count -1;
+      };
     </script>
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>

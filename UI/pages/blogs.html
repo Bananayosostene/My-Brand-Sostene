@@ -60,7 +60,7 @@
               <ul>
                 <li>
                   <a href="../index.html" class="logout-btn"
-                    ><span class="logout-txt">Logout</span
+                    ><i class="fa-solid fa-right-from-bracket"></i><span class="logout-txt">Logout</span
                     ></a>
                 </li>
               </ul>
@@ -158,61 +158,94 @@
     </div>
 
     <script>
-      let tableBlogs = document.getElementById("tableBlogs");
+     
 
+        let tableBlogs = document.getElementById("tableBlogs");
 
-      function redirectUpdate(id) {
-        // console.log(id);
-        window.location.href = `addblog.html?blogId=${id}`;
+  
+    async function deleteBlog(id) {
+      if (!localStorage.getItem("token")) {
+          alert("Login first to delete");
+          window.location.href = "login.html";
+          return;
       }
+      const isConfirmed = window.confirm("Are you sure you want to proceed?");
+      if(isConfirmed){
 
-const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
-
-// Make a GET request using the Fetch API
-fetch(apiUrl, {
-  method: "GET",
-})
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+        try {
+            const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/delete/${id}`;
+    
+            const response = await fetch(apiUrl, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error("Failed to delete the blog");
+            }
+    
+            alert("Blog deleted successfully");
+             window.location.reload()
+           
+        } catch (error) {
+            console.error("Error during blog deletion:", error);
+        }
+      }else {
+          alert("delete canceled!");
+        }
+     }
+  
+  
+  
+  
+  const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
+  
+  // Make a GET request using the Fetch API
+  fetch(apiUrl, {
+    method: "GET",
   })
-  .then((userData) => {
-    // Process the retrieved user data
-    console.log("User Data:", userData.data);
-    fillBlogs(userData.data);
-    console.log("length of data", fillBlogs.length);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
-
-  const fillBlogs  = (blogs) => {
-     let counter = 1;
-     blogs.map((blog) =>{
-       const row = document.createElement("tr");
-       row.innerHTML = `
-         <td>${counter}</td>
-         <td><img src="${blog.image}" /></td>
-         <td>${blog.title}</td>
-         <td>${blog.description.slice(0, 15)}....</td>
-         <td>${blog.comments.length}</td>
-         <td>${blog.likes}</td>
-         <td></td>
-         <td><button class="update-btn" onclick="redirectUpdate(${blog._id})">Update</button>
-         <button class="delete-btn" onclick="deleteBlogs(${
-           blog._id
-         })" >Delete</button></td>`;
-       tableBlogs.appendChild(row);
-       counter++; 
-       document.getElementById("n_blogs").innerHTML = counter -1;
-     })
-  }
-
-      // map(item =>item.comment)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((userData) => {
+      // Process the retrieved user data
+      console.log("User Data:", userData.data);
+      fillBlogs(userData.data);
+      console.log("length of data", fillBlogs.length);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  
+    const fillBlogs  = (blogs) => {
+      let counter = 1;
+      blogs.map((blog) =>{
+        console.log("id is .......",blog._id);
+        const row = document.createElement("tr");
+        row.innerHTML = `
+           <td>${counter}</td>
+           <td><img src="${blog.image}" /></td>
+           <td>${blog.title}</td>
+           <td>${blog.description.slice(0, 15)}....</td>
+           <td>${blog.comments.length}</td>
+           <td>${blog.likes}</td>
+           <td><button class="update-btn" onclick="redirectUpdate('${blog._id}')">Update</button>
+            <button class="delete-btn" onclick="deleteBlog('${blog._id}')" >Delete</button></td>`;
+            tableBlogs.appendChild(row);
+            counter++; 
+            
+          })
+          document.getElementById("n_blogs").innerHTML = counter -1;
+         }
+          function redirectUpdate(id) {
+          window.location.href = `addblog.html?blogId=${id}`;
+        }
     </script>
-
     <script src="../scripts/dashboard.js"></script>
   </body>
 </html>

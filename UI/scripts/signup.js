@@ -85,8 +85,8 @@ async function signup() {
           email: email,
           username: name,
           password: pass,
-          // gender: male || female,
-          // role: role,
+          gender: male || female,
+          role: role,
         }),
       });
 
@@ -107,9 +107,5 @@ async function signup() {
 
   document.getElementById("reg-success").textContent = "Signup successful!";
 
-  // setTimeout(function () {
-  //   window.location.href = "../pages/login.html";
-  // }, 2000);
-
-  // resetSignUp();
+  resetSignUp();
 }

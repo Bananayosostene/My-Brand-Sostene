@@ -137,7 +137,7 @@
                         <i class="fa-solid fa-users"></i>
                         <p class="p">Users</p>
                       </div>
-                      <center><p class="n-blog" id="n_users">4</p></center>
+                      <center><p class="n-blog" id="n_users"></p></center>
                     </div>
                   </div>
                 </div>
@@ -173,6 +173,14 @@
     </div>
 
     <script>
+
+
+      function redirectRoles(id) {
+          window.location.href = `addblog.html?blogId=${id}`;
+        }
+
+
+
       var userForm = document.getElementById("userForm");
       var Table_users = document.getElementById("Table_users");
 
@@ -180,43 +188,45 @@
         function redirectRoles(id) {
         window.location.href = `rolePage.html?userId=${id}`;
         }
+      const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/user/gets";
+       fetch(apiUrl, {
+        method: "GET",
+        headers:{
+          Authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+       })
+       .then((response) => {
+        if(!response.ok) {
+          throw new Error("Network response was not ok")
+        } 
+        return response.json();    
+       })
+       .then((userData) => {
+         FIllUsers(userData.data)
+       })
+       .catch((error) => {
+        console.log("Error:", error);
+       })
 
-      function getUsers() {
-        const usersString = localStorage.getItem("users");
-        return usersString ? JSON.parse(usersString) : [];
-      }
 
-      function deleteUser(userId) {
-        console.log(userId);
-        const users = getUsers();
-        const updatedUsers = users.filter((user) => user.id != userId);
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
-        alert("User deleted successful");
-
-        window.location.reload();
-      }
-
-
-
-
-      var userData = getUsers();
-      console.log(Table_users);
-      console.log(userData);
-      userData.map((user, index) => {
-        Table_users.innerHTML += `
-          <tr>
-          <td>${user.id}</td>
-          <td>${user.email}</td>
-          <td>${user.name}</td>
-          <td>${user.pass}</td>
-          <td>${user.gender}</td>
-          <td>${user.role}</td>
-         <td><button class="update-btn" onclick="redirectRoles(${user.id})">Role</button></td>
-          <td><button class="delete-btn" onclick="deleteUser(${user.id})">Delete</button></td>
-          </tr>
-        `;
-      });
-      document.getElementById("n_users").innerHTML = userData.length;
+      const FIllUsers = (users) =>{
+        counter = 1;
+        users.map((user) => {
+          Table_users.innerHTML += `
+            <tr>
+            <td>${counter}</td>
+            <td>${user.email}</td>
+            <td>${user.username}</td>
+            <td>${user.gender}</td>
+            <td>${user.role}</td>
+           <td><button class="update-btn" onclick="redirectRoles('${user._id}')">Role</button></td>
+            <td><button class="delete-btn" onclick="deleteUser(${user._id})">Delete</button></td>
+            </tr>
+          `;
+          counter++;
+        });
+        document.getElementById("n_users").innerHTML = counter -1;
+      };
     </script>
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>
