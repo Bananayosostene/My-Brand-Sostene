@@ -137,13 +137,7 @@
     </div>
     <script>
       
-      //  get params
-      
-      // const param = new URLSearchParams(window.location.search);
-      // const blogId = param.get("blogId");
-      // console.log("Blog ID:", blogId);
-
-      // Function to extract blogId from URL parameters
+ 
 function getBlogIdFromParams() {
   const param = new URLSearchParams(window.location.search);
   return param.get("blogId");
@@ -185,11 +179,11 @@ async function fillForm(blogId) {
 // Get the blogId from URL params
 
 // Call the fillForm function with the extracted blogId
-const blogId = getBlogIdFromParams();
+  const blogId = getBlogIdFromParams();
   fillForm(blogId);
 
 
-      async function addBlog() {
+async function addBlog() {
         
   const blogId = getBlogIdFromParams();
 
@@ -212,35 +206,37 @@ const blogId = getBlogIdFromParams();
           } else {
             document.getElementById("paragraph2").innerHTML = "";
           }
-          if (blogDisc.trim() === "") {
-            document.getElementById("paragraph3").innerHTML = "Fill blog description";
+          if (blogDisc.length < 200) {
+            document.getElementById("paragraph3").innerHTML = "Fill at least 200 character";
             return;
           } else {
             document.getElementById("paragraph3").innerHTML = "";
           }
-          if (blogId) {
-            console.log("Blog ID:", blogId);
-
-
-            
-
-
-           try {
-    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
+    
+    
+if (blogId) {
+    console.log("Blog ID:", blogId);
+  try {
+    const apiUrl = `http://localhost:5000/brand/blog/update/${blogId}`;
     console.log("API URL:", apiUrl);
     const formData = new FormData();
     console.log("FormData:", formData);
+
     formData.append("image", addImg);
     formData.append("title", title);
     formData.append("description", blogDisc);
 
+        for( let [key, value] of formData.entries()){
+      console.log("form data",key, value)
+    }
     const response = await fetch(apiUrl, {
-        method: "PUT", // Use PUT for update
+        method: "PATCH", // Use PUT for update
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: formData,
-    });
+    })
+
 
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -288,6 +284,20 @@ const blogId = getBlogIdFromParams();
          document.getElementById("blogDisc").value = "";
       }
       
+
+
+
+
+
+    // .then(response => response.json()
+    // .then(data =>{
+    //   console.log(data)
+    //   // alert("Blog updated successfully!");
+    // // clearForm();
+    // })
+    // .catch(error =>{
+    //   console.log("error",error)
+    // }));
     </script>
 
     <script src="../scripts/logout.js"></script>

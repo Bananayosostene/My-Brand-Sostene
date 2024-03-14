@@ -421,6 +421,8 @@ input[type="button"] {
   float: left;
   margin-top: 1rem;
   color: #fff;
+  align-self: flex-end;
+
 }
 input[type="button"]:hover {
   box-shadow: 0px 0px 10px white;
@@ -459,7 +461,7 @@ input[type="button"]:hover {
   margin-left: 6%;
   padding-right: 0rem;
   align-self: auto;
-  height: 70%;
+  height: 28rem;
   box-shadow: 0px 0px 40px black;
 }
 .allblog > div:hover {
@@ -527,8 +529,8 @@ input[type="text"] {
 .sdisc {
   margin-top: 4rem;
 }
-.sdisc h3 {
-  padding-bottom: 0.5rem;
+.sdisc h3 ,.bdisc h3{
+  padding-bottom: 1rem;
 }
 #contact{
   margin-top: 6rem;

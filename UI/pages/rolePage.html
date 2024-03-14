@@ -68,10 +68,10 @@
             <center><h2> Roles</h2></center>
             <a href="./users.html" class="back">Back</a>
           </div>
-            <center><input type="text"  id="email" placeholder="Change user role"  style="display: none;"></center>
-            <center><input type="text"  id="name" placeholder="Change user role"   style="display: none;"></center>
-            <center><input type="pass"  id="pass" placeholder="Change user role"   style="display: none;"></center>
-            <center><input type="text"  id="gender" placeholder="Change user role" style="display: none;"></center>
+            <center><input type="text"  id="email" placeholder="Change user role"  style="display: block;"></center>
+            <center><input type="text"  id="name" placeholder="Change user role"   style="display: flex;"></center>
+            <center><input type="pass"  id="pass" placeholder="Change user role"   style="display: flex;"></center>
+            <center><input type="text"  id="gender" placeholder="Change user role" style="display: flex;"></center>
             <center><input type="text" class="role" id="role" placeholder="Change user role" ></center>
 
            <center><input type="button" class="button" value="change" onclick="changeRole()"></center> 
@@ -80,69 +80,71 @@
     <script>
 
 
-      var email =document.getElementById("email");
-      var names =document.getElementById("name");
-      var pass =document.getElementById("pass");
-      var gender =document.getElementById("gender");
+  
+      function getUserIdFromParams(){
+        const param = new URLSearchParams(window.location.search);
+        const userId = param.get("userId");
+      }
+
       var role =document.getElementById("role");
-      
       var change = document.getElementById("change");
 
-      const param = new URLSearchParams(window.location.search);
-      const userId = param.get("userId");
 
-      function getUsers(){
-         const userString = localStorage.getItem("users");
-         return userString ? JSON.parse(userString) : [];
-      }  
-      function getById(id) {
-      const users = getUsers();
-      return users.find((user) => user.id == id);
-      }
+async function fillForm(id) {
+  try {
+    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/user/get/${id}`;
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    else{
+
+      const userRole = await response.json();
+      console.log("Fetched user Data:", userRole);
       
-      function updateRole(data) {
-        console.log(data);
-        const users = getUsers();
-        console.log(users);
-        const index = users.findIndex((user) => user.id == data.id);
-        if (index !== -1) {
-          users[index] = data;
-          localStorage.setItem("users", JSON.stringify(users));
-        } else {
-          console.log("Not found");
-        }
+      document.getElementById("role").value = userRole.data.role;
+    }
+
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+  }
+}
+
+
+async function changeRole(){
+  const userId = getUserIdFromParams();
+  
+  console.log("user id from params", userId)
+  try {
+    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/user/update/${userId}`;
+    const response = await fetch(apiUrl, {
+        method: "PUT", // Use PUT for update
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        role: role,
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
-
-
-
-      console.log(userId);
-
-      const selectedUser = getById(userId);
-
-      if(selectedUser){
-        email.value =selectedUser.email
-        names.value =selectedUser.name
-        pass.value =selectedUser.pass
-        gender.value =selectedUser.gender
-        role.value =selectedUser.role
-      }
-   function changeRole(){
-    console.log(userId)
-     if(userId) {
-       updateRole({
-         id: userId,
-         email: email.value,
-         name: names.value,
-         pass: pass.value,
-         gender: gender.value,
-         role: role.value,
-       });
-       window.location.href = "users.html";
-     }
-   }
-    </script>
-    <script src="../scripts/logout.js"></script>
+      
+    alert("Blog updated successfully!");
+    window.location.href = "users.html";
+    clearForm();
+  } catch (error) {
+    console.error("Error updating blog:", error);
+  }
+}
+let userId = getUserIdFromParams();
+fillForm(userId)
+</script>
+<script src="../scripts/logout.js"></script>
 </body>
 </html>
