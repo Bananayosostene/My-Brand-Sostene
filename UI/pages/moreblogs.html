@@ -76,7 +76,7 @@
                 return null;
             });
 
-        async function liking() {
+        async function likeBlog(id) {
             var addLike = document.getElementById("addLike")
             if (!localStorage.getItem("token")) {
                 alert("Login first to like");
@@ -85,7 +85,7 @@
             } else {
                    
                 try {
-                    const apiUrl3 = `https://brand-backend-v2xk.onrender.com/brand/blog/like/${blogId}`;
+                    const apiUrl3 = `https://brand-backend-v2xk.onrender.com/brand/blog/like/${id}`;
 
                     const response = await fetch(apiUrl3, {
                         method: "POST",
@@ -93,16 +93,20 @@
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${localStorage.getItem("token")}`, 
                         },
-                        body: JSON.stringify({
-                        addLike: true,
-                      }),
                     });
 
                     if (!response.ok) {
                         throw new Error("Failed to like the blog");
                     }
-                    alert("Blog liked successfully");
-                    window.location.reload();
+                    const result = await response.json();
+                    const data = result.data
+                    document.getElementById('likeCount').innerText = `${data.likes} :Like(s) `;
+
+                 if (data.likedBy.includes(localStorage.getItem("userId"))) {
+                     alert("liked success");
+                   } else {
+                         alert("disliked 😥");
+                     }               
 
                 } catch (error) {
                     console.error("Error during liking:", error);
@@ -150,7 +154,7 @@
                         <div>
                             <img src="${blog.image}" alt="">
                             <h3>${blog.title}</h3>
-                            <p>${blog.description}</p>
+                            <p>${blog.description.slice(0,150)}...</p>
                         </div>
                     </div>
                 `;
@@ -216,8 +220,8 @@
                         <p>${thisBlog.description}</p>
                         <div class="comment-div">
                             <div class="likes">
-                                <i class="like fas fa-heart" onclick="liking()"></i>
-                                <div id="addLike">${thisBlog.likes} Like(s)</div>
+                                <i class="like fas fa-heart" onclick="likeBlog('${thisBlog._id}')"></i>
+                                <div id="likeCount">${thisBlog.likes} Like(s)</div>
                             </div>
                             <div class="bottomcomment">
                                 <textarea id="wComment" cols="10" rows="10" placeholder="Write comment"></textarea>

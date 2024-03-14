@@ -13,6 +13,7 @@ if (!localStorage.getItem("token")) {
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("role");
+  localStorage.removeItem("userId");
 }
 
 const userRole = localStorage.getItem("role");

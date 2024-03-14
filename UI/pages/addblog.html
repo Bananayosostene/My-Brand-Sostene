@@ -34,6 +34,10 @@
       color: white;
       border: none;
     }
+    .p{
+      font-size: 12px;
+      color: red;
+    }
   </style>
   <body>
     <div class="dashboard">
@@ -114,32 +118,80 @@
         <div class="main-blog">
           <div>
             <p>Add Blog: <input type="file" id="addImg" /></p>
-            <p id="paragraph1"></p>
+            <p id="paragraph1" class="p"></p>
             <!-- <img src="" class="img" alt="" width="50" height="50" /> -->
           </div>
           <div>
             <p>Add title:</p>
             <input type="text" id="title"/>
-            <p id="paragraph2"></p>
+            <p id="paragraph2" class="p"></p>
           </div>
           <div>
             <p>Add more:</p>
             <textarea name="" id="blogDisc" cols="80" rows="5"></textarea>
-            <p id="paragraph3"></p>
+            <p id="paragraph3" class="p"></p>
           </div>
           <button onclick="addBlog()">Add +</button>
         </div>
       </div>
     </div>
     <script>
+      
+      //  get params
+      
+      // const param = new URLSearchParams(window.location.search);
+      // const blogId = param.get("blogId");
+      // console.log("Blog ID:", blogId);
 
-              //  get params
-              
+      // Function to extract blogId from URL parameters
+function getBlogIdFromParams() {
+  const param = new URLSearchParams(window.location.search);
+  return param.get("blogId");
+}
+
+// Function to fetch blog data and fill the form
+async function fillForm(blogId) {
+  try {
+    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const blogData = await response.json();
+    console.log("Fetched Blog Data:", blogData);
+    
+    // Fill the form with fetched data
+    var addImgInput = document.getElementById("addImg");
+    var titleInput = document.getElementById("title");
+    var blogDiscInput = document.getElementById("blogDisc");
+    
+    
+    addImgInput.value = ''; 
+    titleInput.value = blogData.data.title;
+    blogDiscInput.value = blogData.data.description;
+
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+  }
+}
+
+// Get the blogId from URL params
+
+// Call the fillForm function with the extracted blogId
+const blogId = getBlogIdFromParams();
+  fillForm(blogId);
+
+
       async function addBlog() {
         
-          const param = new URLSearchParams(window.location.search);
-          const blogId = param.get("blogId");
-
+  const blogId = getBlogIdFromParams();
 
           var addImgInput = document.getElementById("addImg");
           var title = document.getElementById("title").value;
@@ -148,7 +200,9 @@
           if (!addImgInput.files || addImgInput.files.length === 0) {
             document.getElementById("paragraph1").innerHTML = "Select a blog image";
             return;
-          } 
+          } else {
+            document.getElementById("paragraph1").innerHTML = "";
+          }
         
           var addImg = addImgInput.files[0];
         
@@ -166,35 +220,39 @@
           }
           if (blogId) {
             console.log("Blog ID:", blogId);
-           try {
-               const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
-               console.log("API URL:", apiUrl);
-               const formData = new FormData();
-               console.log("FormData:", formData);
-               formData.append("image", addImg);
-               formData.append("title", title);
-               formData.append("description", blogDisc);
-           
-               const response = await fetch(apiUrl, {
-                 method: "PUT", // Use PUT for update
-                 headers: {
-                   Authorization: `Bearer ${localStorage.getItem("token")}`,
-           },
-           body: formData,
-         });
-     
-         if (!response.ok) {
-           throw new Error(`HTTP error! Status: ${response.status}`);
-         }
-     
-         alert("Blog updated successfully!");
-         clearForm()
-         window.location.href = "blogs.htm";
-       } catch (error) {
-         console.error("Error updating blog:", error);
-       }
 
+
+            
+
+
+           try {
+    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
+    console.log("API URL:", apiUrl);
+    const formData = new FormData();
+    console.log("FormData:", formData);
+    formData.append("image", addImg);
+    formData.append("title", title);
+    formData.append("description", blogDisc);
+
+    const response = await fetch(apiUrl, {
+        method: "PUT", // Use PUT for update
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    alert("Blog updated successfully!");
+    clearForm();
+    window.location.href = "blogs.htm";
+} catch (error) {
+    console.error("Error updating blog:", error);
+}
+}
      else {  
           try {
             const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/post";

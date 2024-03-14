@@ -55,12 +55,19 @@
 
 .sms-main-container {
   width: 100%;
-  height: 5rem;
-  /* padding: 20px 0 20px 0px; */
+  max-height: 5rem;
+  overflow-y: auto; /* Enable vertical scrolling */
   border: 1px solid white;
   border-radius: 10px;
-  background-color:#03010e;
+  background-color: #03010e;
+  padding: 10px;
 }
+
+.smss {
+  white-space: pre-wrap; /* Preserve new lines and wrap text */
+}
+
+
 
 .sms-main-container p {
   margin: 0;
@@ -88,9 +95,7 @@ small{
     box-shadow: 0px 0px 10px white;
     transition: 1s;
 }
-.smss{
-  padding: 10px;
-}
+
 
     </style>
   </head>
@@ -121,10 +126,6 @@ small{
                        <small id="date"></small>
                    </div><br>
                    <div>
-                       <p class="pragraph">Time:</p>
-                       <small id="time"></small>
-                   </div><br>
-                   <div>
                        <p class="pragraph">Message:</p><br>
                        <div class="sms-main-container">
                            <small id="sms" class="smss"></small>
@@ -145,36 +146,64 @@ var emailElement = document.getElementById("email");
 
 var myName = document.getElementById("name");
 var email = document.getElementById("email");
-var date = document.getElementById("date");  // Assuming you have an element with id "date"
-var time = document.getElementById("time");  // Assuming you have an element with id "time"
-var sms = document.getElementById("sms");    // Assuming you have an element with id "sms"
+var date = document.getElementById("date");  
+var sms = document.getElementById("sms");    
 
 const param = new URLSearchParams(window.location.search);
 const smsId = param.get("smsId");
 
-function getMessages() {
-  const smsString = localStorage.getItem("contacts");
-  return smsString ? JSON.parse(smsString) : [];
-}
 
-function getById(id) {
-  const messages = getMessages();
-  return messages.find((sms) => sms.id == id);
-}
 
-console.log(smsId);
+ const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/contact/get/${smsId}`;
+      
+      // Make a GET request using the Fetch API
+      fetch(apiUrl, {
+        method: "GET",
+          headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((userData) => {
+          myName.innerText = userData.data.name;
+          email.innerText = userData.data.email;
+          date.innerHTML = userData.data.createdAt;
+          sms.innerHTML = userData.data.message;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      
 
-const selectedSms = getById(smsId);
 
-if (selectedSms) {
-  myName.innerText = selectedSms.name;
-  email.innerText = selectedSms.email;
-  date.innerHTML = selectedSms.date;
-  time.innerHTML = selectedSms.time;
-  sms.innerHTML = selectedSms.message;
 
-  console.log(myName.innerHTML);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.getElementById("replay-email").addEventListener("click", function() {
   // Get the email address from the displayed content

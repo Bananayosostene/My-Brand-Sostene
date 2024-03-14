@@ -27,14 +27,13 @@ console.log("fetch here");
 const fillBlogs = (blogs) => {
   const slicedBlogs = blogs.slice(0, 3);
   slicedBlogs.map((blog) => {
-    console.log("id.........", blog._id);
     const allblog = document.getElementById("allblog");
     allblog.innerHTML += `
       <div>
         <div><img class="portfolio-imgs" src="${blog.image}"/></div>
         <div class="sdisc">
           <h3>${blog.title}</h3>
-          <p>${blog.description}</p>
+          <p>${blog.description.slice(0,70)}...</p>
         </div>
         <input type="button" value="READ MORE" id="submit" class="sending" onclick="redirectSingleBlog('${blog._id}')">
         <span id="success"></span>

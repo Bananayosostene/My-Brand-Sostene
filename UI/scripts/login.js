@@ -35,8 +35,9 @@ console.log(names, pass);
      
      const userData = await response.json();
      console.log("token: ", userData);
-     localStorage.setItem("token", userData.tokenisthe);
+     localStorage.setItem("userId", userData.data._id);
      localStorage.setItem("role", userData.data.role);
+     localStorage.setItem("token", userData.tokenisthe);
      
      if (userData.data.role == "admin") {
        window.location.href = "dashboard.html";

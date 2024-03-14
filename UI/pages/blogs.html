@@ -214,7 +214,6 @@
     })
     .then((userData) => {
       // Process the retrieved user data
-      console.log("User Data:", userData.data);
       fillBlogs(userData.data);
       console.log("length of data", fillBlogs.length);
     })

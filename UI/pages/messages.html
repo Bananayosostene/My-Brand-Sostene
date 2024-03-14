@@ -148,10 +148,43 @@
 
 
         function redirectShow(id) {
-        // console.log(id);
         window.location.href = `showsms.html?smsId=${id}`;
       }
 
+
+    async function deleteContact(id) {
+      if (!localStorage.getItem("token")) {
+          alert("Login first to delete");
+          window.location.href = "login.html";
+          return;
+      }
+      const isConfirmed = window.confirm("Are you sure you want to proceed?");
+      if(isConfirmed){
+
+        try {
+            const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/contact/delete/${id}`;
+    
+            const response = await fetch(apiUrl, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error("Failed to delete the Contact");
+            }
+    
+            alert("Message deleted successfully");
+             window.location.reload()
+           
+        } catch (error) {
+            console.error("Error during blog deletion:", error);
+        }
+      }else {
+          alert("delete canceled!");
+        }
+     }
       
 
 
@@ -193,8 +226,8 @@
             <td>${contact.email}</td>
             <td>${contact.message.slice(0,4)} ...</td>
             <td>${contact.createdAt}</td>
-            <td><button class="show-btn" onclick="redirectShow(${contact._id})">Show</button></td>
-            <td><button onclick="deleteContact(${contact._id})" class="delete-btn">Delete</button></td>
+            <td><button class="show-btn" onclick="redirectShow('${contact._id}')">Show</button></td>
+            <td><button onclick="deleteContact('${contact._id}')" class="delete-btn">Delete</button></td>
           `;
           message_data.appendChild(row);
           count++;

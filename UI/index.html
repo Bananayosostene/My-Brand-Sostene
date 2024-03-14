@@ -294,6 +294,7 @@ document.getElementById("signout").addEventListener('click', function (){
   else {
     localStorage.removeItem("token")
     localStorage.removeItem("role");
+    localStorage.removeItem("userId");
     window.location.href = `index.html`;
   }
 })
