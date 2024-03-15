@@ -72,7 +72,7 @@
                 </li>
               </ul>
               <ul>
-                <li onclick="logout()"><a href="../pages/login.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i><span class="logout-txt">Logout</span></a>
+                <li onclick="logout()"><a href="../pages/login.html" class="logout-btn"><span class="logout-txt">Logout</span></a>
                 </li>
               </ul>
             </div>
@@ -217,7 +217,7 @@ async function addBlog() {
 if (blogId) {
     console.log("Blog ID:", blogId);
   try {
-    const apiUrl = `http://localhost:5000/brand/blog/update/${blogId}`;
+    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
     console.log("API URL:", apiUrl);
     const formData = new FormData();
     console.log("FormData:", formData);
