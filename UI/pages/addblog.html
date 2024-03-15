@@ -34,7 +34,7 @@
       color: white;
       border: none;
     }
-    .p{
+    .p {
       font-size: 12px;
       color: red;
     }
@@ -68,11 +68,17 @@
                   >
                 </li>
                 <li>
-                  <a href="./blogs.html"><i class="fa-solid fa-blog"></i><span class="txt nav-txt">Blogs</span></a>
+                  <a href="./blogs.html"
+                    ><i class="fa-solid fa-blog"></i
+                    ><span class="txt nav-txt">Blogs</span></a
+                  >
                 </li>
               </ul>
               <ul>
-                <li onclick="logout()"><a href="../pages/login.html" class="logout-btn"><span class="logout-txt">Logout</span></a>
+                <li onclick="logout()">
+                  <a href="../pages/login.html" class="logout-btn"
+                    ><span class="logout-txt">Logout</span></a
+                  >
                 </li>
               </ul>
             </div>
@@ -123,7 +129,7 @@
           </div>
           <div>
             <p>Add title:</p>
-            <input type="text" id="title"/>
+            <input type="text" id="title" />
             <p id="paragraph2" class="p"></p>
           </div>
           <div>
@@ -136,127 +142,118 @@
       </div>
     </div>
     <script>
-      
- 
-function getBlogIdFromParams() {
-  const param = new URLSearchParams(window.location.search);
-  return param.get("blogId");
-}
+      function getBlogIdFromParams() {
+        const param = new URLSearchParams(window.location.search);
+        return param.get("blogId");
+      }
 
-// Function to fetch blog data and fill the form
-async function fillForm(blogId) {
-  try {
-    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
-    const response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+      // Function to fetch blog data and fill the form
+      async function fillForm(blogId) {
+        try {
+          const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/get/${blogId}`;
+          const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
 
-    const blogData = await response.json();
-    console.log("Fetched Blog Data:", blogData);
-    
-    // Fill the form with fetched data
-    var addImgInput = document.getElementById("addImg");
-    var titleInput = document.getElementById("title");
-    var blogDiscInput = document.getElementById("blogDisc");
-    
-    
-    addImgInput.value = ''; 
-    titleInput.value = blogData.data.title;
-    blogDiscInput.value = blogData.data.description;
+          const blogData = await response.json();
+          console.log("Fetched Blog Data:", blogData);
 
-  } catch (error) {
-    console.error("Error fetching blog data:", error);
-  }
-}
-
-// Get the blogId from URL params
-
-// Call the fillForm function with the extracted blogId
-  const blogId = getBlogIdFromParams();
-  fillForm(blogId);
-
-
-async function addBlog() {
-        
-  const blogId = getBlogIdFromParams();
-
+          // Fill the form with fetched data
           var addImgInput = document.getElementById("addImg");
-          var title = document.getElementById("title").value;
-          var blogDisc = document.getElementById("blogDisc").value;
-        
-          if (!addImgInput.files || addImgInput.files.length === 0) {
-            document.getElementById("paragraph1").innerHTML = "Select a blog image";
-            return;
-          } else {
-            document.getElementById("paragraph1").innerHTML = "";
-          }
-        
-          var addImg = addImgInput.files[0];
-        
-          if (title.trim() === "") {
-            document.getElementById("paragraph2").innerHTML = "Fill blog title";
-            return;
-          } else {
-            document.getElementById("paragraph2").innerHTML = "";
-          }
-          if (blogDisc.length < 200) {
-            document.getElementById("paragraph3").innerHTML = "Fill at least 200 character";
-            return;
-          } else {
-            document.getElementById("paragraph3").innerHTML = "";
-          }
-    
-    
-if (blogId) {
-    console.log("Blog ID:", blogId);
-  try {
-    const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
-    console.log("API URL:", apiUrl);
-    const formData = new FormData();
-    console.log("FormData:", formData);
+          var titleInput = document.getElementById("title");
+          var blogDiscInput = document.getElementById("blogDisc");
 
-    formData.append("image", addImg);
-    formData.append("title", title);
-    formData.append("description", blogDisc);
+          addImgInput.value = "";
+          titleInput.value = blogData.data.title;
+          blogDiscInput.value = blogData.data.description;
+        } catch (error) {
+          console.error("Error fetching blog data:", error);
+        }
+      }
 
-        for( let [key, value] of formData.entries()){
-      console.log("form data",key, value)
-    }
-    const response = await fetch(apiUrl, {
-        method: "PATCH", // Use PUT for update
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: formData,
-    })
+      // Get the blogId from URL params
 
+      // Call the fillForm function with the extracted blogId
+      const blogId = getBlogIdFromParams();
+      fillForm(blogId);
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+      async function addBlog() {
+        const blogId = getBlogIdFromParams();
 
-    alert("Blog updated successfully!");
-    clearForm();
-    window.location.href = "blogs.htm";
-} catch (error) {
-    console.error("Error updating blog:", error);
-}
-}
-     else {  
+        var addImgInput = document.getElementById("addImg");
+        var title = document.getElementById("title").value;
+        var blogDisc = document.getElementById("blogDisc").value;
+
+        if (!addImgInput.files || addImgInput.files.length === 0) {
+          document.getElementById("paragraph1").innerHTML =
+            "Select a blog image";
+          return;
+        } else {
+          document.getElementById("paragraph1").innerHTML = "";
+        }
+
+        var addImg = addImgInput.files[0];
+
+        if (title.trim() === "") {
+          document.getElementById("paragraph2").innerHTML = "Fill blog title";
+          return;
+        } else {
+          document.getElementById("paragraph2").innerHTML = "";
+        }
+        if (blogDisc.length < 200) {
+          document.getElementById("paragraph3").innerHTML =
+            "Fill at least 200 character";
+          return;
+        } else {
+          document.getElementById("paragraph3").innerHTML = "";
+        }
+
+        if (blogId) {
+          console.log("Blog ID:", blogId);
           try {
-            const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/post";
+            const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
+            // console.log("API URL:", apiUrl);
+            const formData = new FormData();
+            console.log("FormData:", formData);
+
+            formData.append("image", addImg);
+            formData.append("title", title);
+            formData.append("description", blogDisc);
+
+            const response = await fetch(apiUrl, {
+              method: "PATCH", // Use PUT for update
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+              body: formData,
+            });
+
+            console.log(response);
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            alert("Blog updated successfully!");
+            window.location.href = "blogs.html";
+            clearForm();
+          } catch (error) {
+            console.error("Error updating blog:", error);
+          }
+        } else {
+          try {
+            const apiUrl =
+              "https://brand-backend-v2xk.onrender.com/brand/blog/post";
             const formData = new FormData();
             formData.append("image", addImg);
             formData.append("title", title);
             formData.append("description", blogDisc);
-        
+
             const response = await fetch(apiUrl, {
               method: "POST",
               headers: {
@@ -264,13 +261,13 @@ if (blogId) {
               },
               body: formData,
             });
-        
+
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
             }
-        
+
             alert("Blog added successfully!");
-            clearForm()
+            clearForm();
             window.location.href = "blogs.html";
           } catch (error) {
             console.error("Error adding blog:", error);
@@ -279,25 +276,20 @@ if (blogId) {
       }
 
       function clearForm() {
-         document.getElementById("addImg").value = "";
-         document.getElementById("title").value = "";
-         document.getElementById("blogDisc").value = "";
+        document.getElementById("addImg").value = "";
+        document.getElementById("title").value = "";
+        document.getElementById("blogDisc").value = "";
       }
-      
 
-
-
-
-
-    // .then(response => response.json()
-    // .then(data =>{
-    //   console.log(data)
-    //   // alert("Blog updated successfully!");
-    // // clearForm();
-    // })
-    // .catch(error =>{
-    //   console.log("error",error)
-    // }));
+      // .then(response => response.json()
+      // .then(data =>{
+      //   console.log(data)
+      //   // alert("Blog updated successfully!");
+      // // clearForm();
+      // })
+      // .catch(error =>{
+      //   console.log("error",error)
+      // }));
     </script>
 
     <script src="../scripts/logout.js"></script>
