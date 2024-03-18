@@ -191,7 +191,7 @@
           </div>
 
         <div class="blog3">
-          <div class="photo1"><img class="portfolio-imgs" src="./images/traffic.jpg" alt=""></div>
+          <div class="photo1"><img class="portfolio-imgs" src="./images/pharmacy.jpg" alt=""></div>
           <div class="sdisc">
             <h3>Clinic online system</h3>
             <p>
@@ -277,7 +277,6 @@
   if (!localStorage.getItem("token")) {
     
     document.getElementById("signout").innerText = "login";
-    // console.log("hello");
   }
     else {
 
@@ -289,7 +288,6 @@ document.getElementById("signout").addEventListener('click', function (){
   if (!localStorage.getItem("token")) {
     
     window.location.href = `pages/login.html`;
-    // console.log("hello");
   }
   else {
     localStorage.removeItem("token")
@@ -298,8 +296,6 @@ document.getElementById("signout").addEventListener('click', function (){
     window.location.href = `index.html`;
   }
 })
-
-
 </script>
       
      <script src="./scripts/index.js"></script>
