@@ -4,7 +4,7 @@ function getUsers() {
 }
 
 async function login() {
-  let names = document.getElementById("name").value;
+  let email = document.getElementById("name").value;
   let pass = document.getElementById("pass").value;
 
   if (names.trim() === "") {
@@ -27,7 +27,7 @@ console.log(names, pass);
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          useremail: names,
+          useremail: email,
           password: pass,
         }),
       });

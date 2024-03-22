@@ -38,7 +38,7 @@ body{
     font-weight: bold;
   }
 .container {
-    display: flex;
+    display: grid;
     height: 100vh;
     gap: 5rem; 
 }
@@ -249,3 +249,4 @@ font-size:20px;
 .user{
   margin-right: 10px;
 }
+
