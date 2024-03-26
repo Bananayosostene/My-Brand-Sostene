@@ -256,7 +256,7 @@ a {
 .refer > div {
   height: 100%;
   flex-basis: 49.5%;
-  box-shadow: 0px 0px 40px black;
+  box-shadow: 0px 0px 10px black;
 }
 
 .referleft {
@@ -292,7 +292,7 @@ a {
 }
 
 .socialup > div {
-  box-shadow: 0px 0px 3px var(--headings);
+  box-shadow: 0px 0px 2px var(--headings);
   border-radius: 5px;
   padding-top: 2rem;
   text-align: center;
@@ -461,11 +461,12 @@ input[type="button"]:hover {
   margin-left: 6%;
   padding-right: 0rem;
   align-self: auto;
-  height: 28rem;
-  box-shadow: 0px 0px 40px black;
+  height: 26rem;
+ 
+  box-shadow: 0px 0px 10px black;
 }
 .allblog > div:hover {
-  box-shadow: 0px 0px 20px rgb(209, 206, 206);
+  box-shadow: 0px 0px 10px rgb(209, 206, 206);
   transition: 1s;
 }
 .photo1 {
@@ -527,8 +528,13 @@ input[type="text"] {
   width: 90%;
 }
 .sdisc {
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 }
+  .portfolio-imgs {
+    width: 100%;
+    height: 14rem;
+  }
+
 .sdisc h3 ,.bdisc h3{
   padding-bottom: 1rem;
 }
@@ -540,7 +546,7 @@ input[type="text"] {
   padding: 3rem;
   height: 78%;
   display: flex;
-  box-shadow: 0px 0px 40px black;
+  box-shadow: 0px 0px 10px black;
 }
 
 .leftcontact {
@@ -590,7 +596,7 @@ input[type="text"] {
     font-size: 70%;
   }
   .portfolio-imgs {
-    width: 21rem;
+    width: 100%;
     height: 14rem;
   }
   .sdisc {
@@ -688,7 +694,7 @@ input[type="text"] {
     height: 78%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 40px black;
+    box-shadow: 0px 0px 10px black;
   }
   .leftcontact {
     padding: 0.2rem;
@@ -736,7 +742,7 @@ input[type="text"] {
     margin-top: 0rem;
     flex-basis: 80%;
     height: fit-content;
-    box-shadow: 0px 0px 40px black;
+    box-shadow: 0px 0px 10px black;
     padding-top: 5%;
   }
   .checkbtn {

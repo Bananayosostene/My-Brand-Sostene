@@ -49,8 +49,5 @@ console.log(email, pass);
       
     } catch (error) {
       console.error("Error during signup:", error);
-      // Handle the error if needed
     }
-
-  
 }

@@ -98,27 +98,6 @@
             ></i>
             <p>Add New Blog</p>
           </div>
-          <div class="right-topnav">
-            <div class="seacrh">
-              <input type="text" placeholder="Search.." />
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <div class="notfication-div">
-              <button type="button" class="icon-button">
-                <span class="material-icons">notifications</span>
-                <span class="icon-button__badge">2</span>
-              </button>
-            </div>
-            <div class="profile">
-              <div class="profile-container">
-                <img
-                  src="../images/portfolio4.png"
-                  alt="Profile Picture"
-                  class="profile-img"
-                />
-              </div>
-            </div>
-          </div>
         </div>
         <!-- Your HTML code -->
         <div class="main-blog">
@@ -178,9 +157,6 @@
         }
       }
 
-      // Get the blogId from URL params
-
-      // Call the fillForm function with the extracted blogId
       const blogId = getBlogIdFromParams();
       fillForm(blogId);
 
@@ -219,7 +195,6 @@
           console.log("Blog ID:", blogId);
           try {
             const apiUrl = `https://brand-backend-v2xk.onrender.com/brand/blog/update/${blogId}`;
-            // console.log("API URL:", apiUrl);
             const formData = new FormData();
             console.log("FormData:", formData);
 
@@ -228,7 +203,7 @@
             formData.append("description", blogDisc);
 
             const response = await fetch(apiUrl, {
-              method: "PATCH", // Use PUT for update
+              method: "PATCH", 
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
               },
@@ -281,17 +256,7 @@
         document.getElementById("blogDisc").value = "";
       }
 
-      // .then(response => response.json()
-      // .then(data =>{
-      //   console.log(data)
-      //   // alert("Blog updated successfully!");
-      // // clearForm();
-      // })
-      // .catch(error =>{
-      //   console.log("error",error)
-      // }));
     </script>
-
     <script src="../scripts/logout.js"></script>
     <script src="../scripts/dashboard.js"></script>
   </body>

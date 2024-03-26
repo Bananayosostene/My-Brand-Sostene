@@ -33,10 +33,10 @@ const fillBlogs = (blogs) => {
         <div><img class="portfolio-imgs" src="${blog.image}"/></div>
         <div class="bdisc">
           <h3>${blog.title}</h3>
-          <p>${blog.description.slice(0,100)}...</p>
+          <p>${blog.description.slice(0,130)}...</p>
+          <input type="button" value="READ MORE" id="submit" class="sending" onclick="redirectSingleBlog('${blog._id}')">
+          <span id="success"></span>
         </div>
-        <input type="button" value="READ MORE" id="submit" class="sending" onclick="redirectSingleBlog('${blog._id}')">
-        <span id="success"></span>
       </div>
     `;
   });
