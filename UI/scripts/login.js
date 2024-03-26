@@ -7,7 +7,7 @@ async function login() {
   let email = document.getElementById("name").value;
   let pass = document.getElementById("pass").value;
 
-  if (names.trim() === "") {
+  if (email.trim() === "") {
     document.getElementById("nam").innerHTML = "Enter UserName";
     return false;
   }
@@ -17,7 +17,7 @@ async function login() {
     return false;
   }
 
-console.log(names, pass);
+console.log(email, pass);
 
    try {
       const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/user/login";
