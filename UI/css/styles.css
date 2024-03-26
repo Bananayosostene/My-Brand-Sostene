@@ -638,7 +638,7 @@ input[type="text"] {
   .refer {
     padding: 1rem;
     height: 60rem;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
   }
 
