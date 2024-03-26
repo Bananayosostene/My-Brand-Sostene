@@ -5,7 +5,7 @@
   --main-div-color: #1c1c1c;
   --headings: #ff6300;
   --text-color: #ffffff;
-  --validate: #D7332F;
+  --validate: #d7332f;
 
   --main-color-2: #7b1fa2;
 }
@@ -22,6 +22,9 @@ section {
   /* padding-top: 1rem; */
   min-height: 100vh;
   background-color: #03010e;
+}
+#contact{
+  height: fit-content;
 }
 
 body {
@@ -256,7 +259,7 @@ a {
 .refer > div {
   height: 100%;
   flex-basis: 49.5%;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 40px black;
 }
 
 .referleft {
@@ -292,7 +295,7 @@ a {
 }
 
 .socialup > div {
-  box-shadow: 0px 0px 2px var(--headings);
+  box-shadow: 0px 0px 3px var(--headings);
   border-radius: 5px;
   padding-top: 2rem;
   text-align: center;
@@ -375,7 +378,7 @@ a {
   padding-left: -1rem;
   padding-right: 2rem;
 }
-.allblog {
+.portfolio-imgs {
   width: 100%;
   height: 18rem;
 }
@@ -407,7 +410,7 @@ textarea {
 
   color: #fff;
 }
-.sending{
+.sending {
   border: 1px var(--headings) solid;
 }
 input[type="button"] {
@@ -421,8 +424,6 @@ input[type="button"] {
   float: left;
   margin-top: 1rem;
   color: #fff;
-  align-self: flex-end;
-
 }
 input[type="button"]:hover {
   box-shadow: 0px 0px 10px white;
@@ -442,7 +443,7 @@ input[type="button"]:hover {
   padding: 1rem;
   color: #fff;
   cursor: pointer;
-  border-radius: .7rem;
+  border-radius: 0.7rem;
   font-family: "Kanit", sans-serif;
 }
 .viewmore:hover {
@@ -461,13 +462,11 @@ input[type="button"]:hover {
   margin-left: 6%;
   padding-right: 0rem;
   align-self: auto;
-  height: 24rem;
-  border-radius: 20px 20px 0 0;
- 
-  box-shadow: 0px 0px 10px black;
+  height: 70%;
+  box-shadow: 0px 0px 40px black;
 }
 .allblog > div:hover {
-  box-shadow: 0px 0px 10px rgb(209, 206, 206);
+  box-shadow: 0px 0px 20px rgb(209, 206, 206);
   transition: 1s;
 }
 .photo1 {
@@ -515,7 +514,6 @@ input[type="text"] {
 }
 
 .allcontact {
-
   background-color: #03010e;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -529,26 +527,18 @@ input[type="text"] {
   width: 90%;
 }
 .sdisc {
-  /* margin-top: 4rem; */
+  margin-top: 1rem;
 }
-  .portfolio-imgs {
-    width: 100%;
-    height: 14rem;
-    border-radius: 20px 20px 0 0;
-  }
+.sdisc h3 {
+  padding-bottom: 0.5rem;
+}
 
-.sdisc h3 ,.bdisc h3{
-  padding-bottom: 1rem;
-}
-#contact{
-  margin-top: 6rem;
-}
-.contacts {
+.contact {
   align-self: center;
   padding: 3rem;
   height: 78%;
   display: flex;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 40px black;
 }
 
 .leftcontact {
@@ -571,17 +561,20 @@ input[type="text"] {
   font-size: 13px;
   color: var(--validate);
 }
-.sent-paragraph{
+.sent-paragraph {
   width: 100%;
   padding: 0;
   font-size: 13px;
-  color: var(--headings); 
+  color: var(--headings);
 }
 #success {
   font-size: 20px;
   padding-top: 2rem;
   padding-left: 2rem;
   color: var(--headings);
+}
+.footer{
+  height: fit-content;
 }
 /* .sending {
   border: 1px var(--headings) solid;
@@ -598,15 +591,15 @@ input[type="text"] {
     font-size: 70%;
   }
   .portfolio-imgs {
-    width: 100%;
+    width: 21rem;
     height: 14rem;
   }
   .sdisc {
     margin-top: 0rem;
   }
-   .my-photo {
-  padding-bottom: 0rem;
-}
+  .my-photo {
+    padding-bottom: 0rem;
+  }
 }
 
 @media (max-width: 952px) {
@@ -621,13 +614,11 @@ input[type="text"] {
     font-size: 60%;
   }
   .my-photo {
-  padding-bottom: 0rem;
-  
-}
-.lineh {
-  margin-top: 2rem;
-}
-
+    padding-bottom: 0rem;
+  }
+  .lineh {
+    margin-top: 2rem;
+  }
 }
 
 @media (max-width: 858px) {
@@ -688,7 +679,7 @@ input[type="text"] {
     padding-right: 1rem;
     padding-top: 0;
   }
-  .contacts {
+  .contact {
     align-self: center;
     flex-basis: 98%;
     padding: 1rem;
@@ -696,7 +687,7 @@ input[type="text"] {
     height: 78%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 40px black;
   }
   .leftcontact {
     padding: 0.2rem;
@@ -733,8 +724,8 @@ input[type="text"] {
     height: fit-content;
   }
   .lineh {
-  margin-top: 2rem;
-}
+    margin-top: 2rem;
+  }
   .allblog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -744,7 +735,7 @@ input[type="text"] {
     margin-top: 0rem;
     flex-basis: 80%;
     height: fit-content;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 40px black;
     padding-top: 5%;
   }
   .checkbtn {
@@ -794,12 +785,12 @@ input[type="text"] {
     width: 100%;
   }
   .my-photo {
-  margin-left: 10%;
-  padding-bottom: 0rem;
-  padding-left: 10%;
-  height: 70%;
-  width: 80%;
-}
+    margin-left: 10%;
+    padding-bottom: 0rem;
+    padding-left: 10%;
+    height: 70%;
+    width: 80%;
+  }
 
   p .hello {
     width: 34rem;
@@ -817,7 +808,7 @@ input[type="text"] {
 
   .allmainf {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: 5rem;
     margin: 0;
     flex-basis: 100%;
@@ -828,6 +819,10 @@ input[type="text"] {
   .allmainf > div {
     margin: 0;
     flex-basis: 49%;
+  }
+  .mainf{
+    display: flex;
+    /* flex-direction: ; */
   }
   .mainf p {
     padding-top: 1rem;
