@@ -4,6 +4,13 @@ function redirectSingleBlog(id) {
   window.location.href = `pages/moreblogs.html?blogId=${id}`;
 }
 
+const loader = document.getElementById("loader");
+const allblog = document.getElementById("allblog");
+
+// Show loader before fetch
+loader.classList.remove("hidden");
+allblog.innerHTML = '';
+
 const apiUrl = "https://brand-backend-v2xk.onrender.com/brand/blog/gets";
 
 fetch(apiUrl, {
@@ -16,13 +23,20 @@ fetch(apiUrl, {
     return response.json();
   })
   .then((userData) => {
-    console.log("User Data:", userData.data);
+     loader.classList.add("hidden");
+    // console.log("User Data:", userData.data);
     fillBlogs(userData.data);
   })
   .catch((error) => {
-    console.error("Error:", error);
+    loader.classList.add("hidden");
+    // console.error("Error:", error);
+     allblog.innerHTML = `
+      <div class="error-message">
+        <p>Failed to load blogs. Please try again later.</p>
+      </div>
+    `;
   });
-console.log("fetch here");
+// console.log("fetch here");
 
 const fillBlogs = (blogs) => {
   const slicedBlogs = blogs.slice(0, 3);
@@ -34,7 +48,7 @@ const fillBlogs = (blogs) => {
         <div class="sdisc">
           <h3>${blog.title}</h3>
           <p>${blog.description.slice(0,90)}...</p>
-          <input type="button" value="READ MORE" id="submit" class="sending" onclick="redirectSingleBlog('${blog._id}')">
+          <input type="button" value="read more" id="submit" class="sending" onclick="redirectSingleBlog('${blog._id}')">
           <span id="success"></span>
         </div>
       </div>

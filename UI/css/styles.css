@@ -428,6 +428,41 @@ input[type="button"] {
 input[type="button"]:hover {
   box-shadow: 0px 0px 10px white;
 }
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #ff6300;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide loader by default */
+.loader-container.hidden {
+  display: none;
+}
+
+/* For error message */
+.error-message {
+  text-align: center;
+  padding: 20px;
+  color: #ff6300;
+}
+
 .blogs {
   padding-top: 4rem;
   width: 100%;
